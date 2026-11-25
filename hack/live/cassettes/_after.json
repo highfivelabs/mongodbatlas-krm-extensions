@@ -1,0 +1,13 @@
+{
+  "recorded": "2026-11-20T23:57:14Z",
+  "target": "cloud.mongodb.com",
+  "interactions": [
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9",
+      "status": 202,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{}"
+    }
+  ]
+}

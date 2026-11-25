@@ -1,0 +1,89 @@
+{
+  "recorded": "2026-11-20T23:56:44Z",
+  "target": "cloud.mongodb.com",
+  "vars": {
+    "project": "6b00de33e60d493199392da9"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys",
+      "body": "{\"desc\":\"{{name}}\",\"roles\":[\"ORG_READ_ONLY\"]}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"desc\":\"{{name}}\",\"id\":\"6b00de3a20d1a6b85a0dff34\",\"links\":[{\"href\":\"{{baseURL}}/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34\",\"rel\":\"self\"}],\"privateKey\":\"{{redacted}}\",\"publicKey\":\"agmvupzs\",\"roles\":[{\"orgId\":\"{{cred:orgId}}\",\"roleName\":\"ORG_READ_ONLY\"}]}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"desc\":\"{{name}}\",\"id\":\"6b00de3a20d1a6b85a0dff34\",\"links\":[{\"href\":\"{{baseURL}}/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34\",\"rel\":\"self\"}],\"privateKey\":\"{{redacted}}\",\"publicKey\":\"agmvupzs\",\"roles\":[{\"orgId\":\"{{cred:orgId}}\",\"roleName\":\"ORG_READ_ONLY\"}]}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"desc\":\"{{name}}\",\"id\":\"6b00de3a20d1a6b85a0dff34\",\"links\":[{\"href\":\"{{baseURL}}/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34\",\"rel\":\"self\"}],\"privateKey\":\"{{redacted}}\",\"publicKey\":\"agmvupzs\",\"roles\":[{\"orgId\":\"{{cred:orgId}}\",\"roleName\":\"ORG_READ_ONLY\"}]}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34",
+      "body": "{\"desc\":\"{{name}}-2\",\"roles\":[\"ORG_READ_ONLY\"]}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"desc\":\"{{name}}-2\",\"id\":\"6b00de3a20d1a6b85a0dff34\",\"links\":[{\"href\":\"{{baseURL}}/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34\",\"rel\":\"self\"}],\"privateKey\":\"{{redacted}}\",\"publicKey\":\"agmvupzs\",\"roles\":[{\"orgId\":\"{{cred:orgId}}\",\"roleName\":\"ORG_READ_ONLY\"}]}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"desc\":\"{{name}}-2\",\"id\":\"6b00de3a20d1a6b85a0dff34\",\"links\":[{\"href\":\"{{baseURL}}/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34\",\"rel\":\"self\"}],\"privateKey\":\"{{redacted}}\",\"publicKey\":\"agmvupzs\",\"roles\":[{\"orgId\":\"{{cred:orgId}}\",\"roleName\":\"ORG_READ_ONLY\"}]}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34",
+      "body": "{\"desc\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"desc\":\"hfl-live-drift\",\"id\":\"6b00de3a20d1a6b85a0dff34\",\"links\":[{\"href\":\"{{baseURL}}/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34\",\"rel\":\"self\"}],\"privateKey\":\"{{redacted}}\",\"publicKey\":\"agmvupzs\",\"roles\":[{\"orgId\":\"{{cred:orgId}}\",\"roleName\":\"ORG_READ_ONLY\"}]}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"desc\":\"hfl-live-drift\",\"id\":\"6b00de3a20d1a6b85a0dff34\",\"links\":[{\"href\":\"{{baseURL}}/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34\",\"rel\":\"self\"}],\"privateKey\":\"{{redacted}}\",\"publicKey\":\"agmvupzs\",\"roles\":[{\"orgId\":\"{{cred:orgId}}\",\"roleName\":\"ORG_READ_ONLY\"}]}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34",
+      "body": "{\"desc\":\"{{name}}-2\",\"roles\":[\"ORG_READ_ONLY\"]}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"desc\":\"{{name}}-2\",\"id\":\"6b00de3a20d1a6b85a0dff34\",\"links\":[{\"href\":\"{{baseURL}}/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34\",\"rel\":\"self\"}],\"privateKey\":\"{{redacted}}\",\"publicKey\":\"agmvupzs\",\"roles\":[{\"orgId\":\"{{cred:orgId}}\",\"roleName\":\"ORG_READ_ONLY\"}]}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"desc\":\"{{name}}-2\",\"id\":\"6b00de3a20d1a6b85a0dff34\",\"links\":[{\"href\":\"{{baseURL}}/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34\",\"rel\":\"self\"}],\"privateKey\":\"{{redacted}}\",\"publicKey\":\"agmvupzs\",\"roles\":[{\"orgId\":\"{{cred:orgId}}\",\"roleName\":\"ORG_READ_ONLY\"}]}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34",
+      "status": 204,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/6b00de3a20d1a6b85a0dff34",
+      "status": 400,
+      "contentType": "application/json",
+      "response": "{\"detail\":\"No API key with ID 6b00de3a20d1a6b85a0dff34 exists.\",\"error\":400,\"errorCode\":\"API_KEY_NOT_FOUND\",\"parameters\":[\"6b00de3a20d1a6b85a0dff34\"],\"reason\":\"Bad Request\"}"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mcpOrg": "rehearsal-mcpOrg",
+    "mcpProject": "rehearsal-mcpProject",
+    "project": 280000001
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiClouds/ANY/geographies/ANY/modelGroupNames/embed_small/rateLimits",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"endpoint\":\"ai.mongodb.com\",\"modelGroupName\":\"embed_large\",\"modelNames\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiClouds/ANY/geographies/ANY/modelGroupNames/embed_small/rateLimits",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"endpoint\":\"ai.mongodb.com\",\"modelGroupName\":\"embed_large\",\"modelNames\":[]}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiClouds/ANY/geographies/ANY/modelGroupNames/embed_small/rateLimits",
+      "body": "{\"requestsPerMinuteLimit\":2,\"tokensPerMinuteLimit\":5000}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"endpoint\":\"ai.mongodb.com\",\"modelGroupName\":\"embed_large\",\"modelNames\":[],\"requestsPerMinuteLimit\":2,\"tokensPerMinuteLimit\":5000}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiClouds/ANY/geographies/ANY/modelGroupNames/embed_small/rateLimits",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"endpoint\":\"ai.mongodb.com\",\"modelGroupName\":\"embed_large\",\"modelNames\":[],\"requestsPerMinuteLimit\":2,\"tokensPerMinuteLimit\":5000}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiClouds/ANY/geographies/ANY/modelGroupNames/embed_small/rateLimits",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"endpoint\":\"ai.mongodb.com\",\"modelGroupName\":\"embed_large\",\"modelNames\":[],\"requestsPerMinuteLimit\":2,\"tokensPerMinuteLimit\":5000}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiClouds/ANY/geographies/ANY/modelGroupNames/embed_small/rateLimits",
+      "body": "{\"requestsPerMinuteLimit\":1,\"tokensPerMinuteLimit\":5000}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"endpoint\":\"ai.mongodb.com\",\"modelGroupName\":\"embed_large\",\"modelNames\":[],\"requestsPerMinuteLimit\":1,\"tokensPerMinuteLimit\":5000}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiClouds/ANY/geographies/ANY/modelGroupNames/embed_small/rateLimits",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"endpoint\":\"ai.mongodb.com\",\"modelGroupName\":\"embed_large\",\"modelNames\":[],\"requestsPerMinuteLimit\":1,\"tokensPerMinuteLimit\":5000}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiClouds/ANY/geographies/ANY/modelGroupNames/embed_small/rateLimits",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"endpoint\":\"ai.mongodb.com\",\"modelGroupName\":\"embed_large\",\"modelNames\":[],\"requestsPerMinuteLimit\":1,\"tokensPerMinuteLimit\":5000}\n"
+    }
+  ]
+}

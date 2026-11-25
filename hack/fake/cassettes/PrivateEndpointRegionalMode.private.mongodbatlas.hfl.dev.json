@@ -1,0 +1,98 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "project": 280000001
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/privateEndpoint/regionalMode",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/privateEndpoint/regionalMode",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/280000001/privateEndpoint/regionalMode",
+      "body": "{\"enabled\":false}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/privateEndpoint/regionalMode",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/privateEndpoint/regionalMode",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":false}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/280000001/privateEndpoint/regionalMode",
+      "body": "{\"enabled\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/privateEndpoint/regionalMode",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":true}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/280000001/privateEndpoint/regionalMode",
+      "body": "{\"enabled\":false}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":false}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/privateEndpoint/regionalMode",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":false}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/280000001/privateEndpoint/regionalMode",
+      "body": "{\"enabled\":true}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":true}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/privateEndpoint/regionalMode",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":true}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/280000001/privateEndpoint/regionalMode",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"enabled\":true}\n"
+    }
+  ]
+}

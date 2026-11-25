@@ -1,0 +1,61 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "apiKey": 280000004,
+    "mcpOrg": "rehearsal-mcpOrg",
+    "mcpProject": "rehearsal-mcpProject",
+    "project": 280000001
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/logIntegrations",
+      "body": "{\"logTypes\":[\"EVENTS\"],\"otelEndpoint\":\"https://httpbin.org/status/200\",\"otelSuppliedHeaders\":[{\"name\":\"X-Hfl-Live\",\"value\":\"hfl-live-not-a-secret\"}],\"type\":\"OTEL_LOG_EXPORT\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"id\":270000014,\"logTypes\":[\"EVENTS\"],\"otelEndpoint\":\"https://httpbin.org/status/200\",\"type\":\"OTEL_LOG_EXPORT\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/logIntegrations/270000014",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000014,\"logTypes\":[\"EVENTS\"],\"otelEndpoint\":\"https://httpbin.org/status/200\",\"type\":\"OTEL_LOG_EXPORT\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/logIntegrations/270000014",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000014,\"logTypes\":[\"EVENTS\"],\"otelEndpoint\":\"https://httpbin.org/status/200\",\"type\":\"OTEL_LOG_EXPORT\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/logIntegrations/270000014",
+      "body": "{\"logTypes\":[\"EVENTS\"],\"otelEndpoint\":\"https://httpbin.org/status/204\",\"otelSuppliedHeaders\":[{\"name\":\"X-Hfl-Live\",\"value\":\"hfl-live-not-a-secret\"}],\"type\":\"OTEL_LOG_EXPORT\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000014,\"logTypes\":[\"EVENTS\"],\"otelEndpoint\":\"https://httpbin.org/status/204\",\"type\":\"OTEL_LOG_EXPORT\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/logIntegrations/270000014",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000014,\"logTypes\":[\"EVENTS\"],\"otelEndpoint\":\"https://httpbin.org/status/204\",\"type\":\"OTEL_LOG_EXPORT\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/logIntegrations/270000014",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/logIntegrations/270000014",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

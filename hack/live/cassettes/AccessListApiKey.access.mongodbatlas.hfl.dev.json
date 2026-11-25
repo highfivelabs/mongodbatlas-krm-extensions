@@ -1,0 +1,54 @@
+{
+  "recorded": "2026-11-20T23:57:09Z",
+  "target": "cloud.mongodb.com",
+  "vars": {
+    "apiKey": "{{id:1}}",
+    "mcpOrg": "6dbd4ec4-67c2-4a64-8757-8bd1886b9aa1",
+    "mcpProject": "1493dfed-0de2-4c7a-ab33-2949b842f69f",
+    "project": "6b00de33e60d493199392da9"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys",
+      "body": "{\"desc\":\"{{name}}-parent\",\"roles\":[\"ORG_READ_ONLY\"]}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"desc\":\"{{name}}-parent\",\"id\":\"{{id:1}}\",\"links\":[{\"href\":\"{{baseURL}}/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/{{id:1}}\",\"rel\":\"self\"}],\"privateKey\":\"{{redacted}}\",\"publicKey\":\"zixkyaau\",\"roles\":[{\"orgId\":\"{{cred:orgId}}\",\"roleName\":\"ORG_READ_ONLY\"}]}"
+    },
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/{{id:1}}/accessList",
+      "body": "[{\"ipAddress\":\"192.0.2.1\"}]",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"links\":[{\"href\":\"{{baseURL}}/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/{{id:1}}/accessList?pageNum=1\u0026itemsPerPage=100\",\"rel\":\"self\"}],\"results\":[{\"cidrBlock\":\"192.0.2.1/32\",\"count\":0,\"created\":\"2026-11-20T23:57:09Z\",\"ipAddress\":\"192.0.2.1\",\"links\":[{\"href\":\"{{baseURL}}/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/{{id:1}}/accessList/192.0.2.1\",\"rel\":\"self\"}]}],\"totalCount\":1}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/{{id:1}}/accessList/192.0.2.1",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"cidrBlock\":\"192.0.2.1/32\",\"count\":0,\"created\":\"2026-11-20T23:57:09Z\",\"ipAddress\":\"192.0.2.1\",\"links\":[{\"href\":\"{{baseURL}}/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/{{id:1}}/accessList/192.0.2.1\",\"rel\":\"self\"},{\"href\":\"{{baseURL}}/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/{{id:1}}\",\"rel\":\"{{baseURL}}/apiKeys\"}]}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/{{id:1}}/accessList/192.0.2.1",
+      "status": 204,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/{{id:1}}/accessList/192.0.2.1",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"detail\":\"IP address 192.0.2.1 not on access list for API key {{id:1}}.\",\"error\":404,\"errorCode\":\"API_KEY_ACCESS_LIST_ENTRY_NOT_FOUND\",\"parameters\":[\"192.0.2.1\",\"{{id:1}}\"],\"reason\":\"Not Found\"}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/{{id:1}}",
+      "status": 204,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8"
+    }
+  ]
+}

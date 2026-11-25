@@ -1,0 +1,62 @@
+{
+  "recorded": "2026-11-20T23:57:13Z",
+  "target": "cloud.mongodb.com",
+  "vars": {
+    "apiKey": "{{redacted}}",
+    "mcpOrg": "6dbd4ec4-67c2-4a64-8757-8bd1886b9aa1",
+    "mcpProject": "1493dfed-0de2-4c7a-ab33-2949b842f69f",
+    "project": "6b00de33e60d493199392da9"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/logIntegrations",
+      "body": "{\"logTypes\":[\"EVENTS\"],\"otelEndpoint\":\"https://httpbin.org/status/200\",\"otelSuppliedHeaders\":[{\"name\":\"X-Hfl-Live\",\"value\":\"hfl-live-not-a-secret\"}],\"type\":\"OTEL_LOG_EXPORT\"}",
+      "status": 201,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"id\":\"6b00de58b054b0e3c1a3d9e7\",\"logTypes\":[\"EVENTS\"],\"otelEndpoint\":\"https://httpbin.org/status/200\",\"otelSuppliedHeaders\":[{\"name\":\"X-Hfl-Live\",\"value\":\"*****************cret\"}],\"type\":\"OTEL_LOG_EXPORT\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/logIntegrations/6b00de58b054b0e3c1a3d9e7",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"id\":\"6b00de58b054b0e3c1a3d9e7\",\"logTypes\":[\"EVENTS\"],\"otelEndpoint\":\"https://httpbin.org/status/200\",\"otelSuppliedHeaders\":[{\"name\":\"X-Hfl-Live\",\"value\":\"*****************cret\"}],\"type\":\"OTEL_LOG_EXPORT\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/logIntegrations/6b00de58b054b0e3c1a3d9e7",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"id\":\"6b00de58b054b0e3c1a3d9e7\",\"logTypes\":[\"EVENTS\"],\"otelEndpoint\":\"https://httpbin.org/status/200\",\"otelSuppliedHeaders\":[{\"name\":\"X-Hfl-Live\",\"value\":\"*****************cret\"}],\"type\":\"OTEL_LOG_EXPORT\"}"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/logIntegrations/6b00de58b054b0e3c1a3d9e7",
+      "body": "{\"logTypes\":[\"EVENTS\"],\"otelEndpoint\":\"https://httpbin.org/status/204\",\"otelSuppliedHeaders\":[{\"name\":\"X-Hfl-Live\",\"value\":\"hfl-live-not-a-secret\"}],\"type\":\"OTEL_LOG_EXPORT\"}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"id\":\"6b00de58b054b0e3c1a3d9e7\",\"logTypes\":[\"EVENTS\"],\"otelEndpoint\":\"https://httpbin.org/status/204\",\"otelSuppliedHeaders\":[{\"name\":\"X-Hfl-Live\",\"value\":\"*****************cret\"}],\"type\":\"OTEL_LOG_EXPORT\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/logIntegrations/6b00de58b054b0e3c1a3d9e7",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"id\":\"6b00de58b054b0e3c1a3d9e7\",\"logTypes\":[\"EVENTS\"],\"otelEndpoint\":\"https://httpbin.org/status/204\",\"otelSuppliedHeaders\":[{\"name\":\"X-Hfl-Live\",\"value\":\"*****************cret\"}],\"type\":\"OTEL_LOG_EXPORT\"}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/logIntegrations/6b00de58b054b0e3c1a3d9e7",
+      "status": 204,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/logIntegrations/6b00de58b054b0e3c1a3d9e7",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"detail\":\"The specified integrationId 6b00de58b054b0e3c1a3d9e7 does not correspond to an integration.\",\"error\":404,\"errorCode\":\"INTEGRATION_NOT_FOUND\",\"parameters\":[\"6b00de58b054b0e3c1a3d9e7\"],\"reason\":\"Not Found\"}"
+    }
+  ]
+}

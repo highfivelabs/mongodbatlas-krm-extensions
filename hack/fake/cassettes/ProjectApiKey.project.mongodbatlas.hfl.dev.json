@@ -1,0 +1,63 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "apiKey": 280000004,
+    "mcpOrg": "rehearsal-mcpOrg",
+    "mcpProject": "rehearsal-mcpProject",
+    "orgServiceAccount": "rehearsal-orgServiceAccount",
+    "project": 280000001,
+    "projectServiceAccount": "rehearsal-projectServiceAccount"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/280000001/apiKeys",
+      "body": "{\"desc\":\"{{name}}\",\"roles\":[\"GROUP_READ_ONLY\"]}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"desc\":\"{{name}}\",\"id\":270000033,\"publicKey\":\"zmmrboas\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/apiKeys?itemsPerPage=500",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"results\":[{\"desc\":\"{{name}}\",\"id\":270000033,\"roles\":[\"GROUP_READ_ONLY\"]}]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/apiKeys?itemsPerPage=500",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"results\":[{\"desc\":\"{{name}}\",\"id\":270000033,\"roles\":[\"GROUP_READ_ONLY\"]}]}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/280000001/apiKeys/270000033",
+      "body": "{\"roles\":[\"GROUP_DATA_ACCESS_READ_ONLY\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"desc\":\"{{name}}\",\"id\":270000033}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/apiKeys?itemsPerPage=500",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"results\":[{\"desc\":\"{{name}}\",\"id\":270000033,\"roles\":[\"GROUP_DATA_ACCESS_READ_ONLY\"]}]}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/270000033",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/apiKeys?itemsPerPage=500",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"results\":[]}\n"
+    }
+  ]
+}

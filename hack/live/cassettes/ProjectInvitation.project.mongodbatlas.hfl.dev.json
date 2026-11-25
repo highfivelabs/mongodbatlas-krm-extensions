@@ -1,0 +1,89 @@
+{
+  "recorded": "2026-11-20T23:56:48Z",
+  "target": "cloud.mongodb.com",
+  "vars": {
+    "project": "6b00de33e60d493199392da9"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/invites",
+      "body": "{\"roles\":[\"GROUP_READ_ONLY\"],\"username\":\"{{name}}@example.com\"}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"createdAt\":\"2026-11-20T23:56:46Z\",\"expiresAt\":\"2026-12-20T23:56:46Z\",\"groupId\":\"6b00de33e60d493199392da9\",\"groupName\":\"{{run}}\",\"id\":\"6b00de3e7029e64b7a4e60ab\",\"inviterUsername\":\"{{cred:clientId}}\",\"roles\":[\"GROUP_READ_ONLY\"],\"username\":\"{{name}}@example.com\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/invites/6b00de3e7029e64b7a4e60ab",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"createdAt\":\"2026-11-20T23:56:46Z\",\"expiresAt\":\"2026-12-20T23:56:46Z\",\"groupId\":\"6b00de33e60d493199392da9\",\"groupName\":\"{{run}}\",\"id\":\"6b00de3e7029e64b7a4e60ab\",\"inviterUsername\":\"{{cred:clientId}}\",\"roles\":[\"GROUP_READ_ONLY\"],\"username\":\"{{name}}@example.com\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/invites/6b00de3e7029e64b7a4e60ab",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"createdAt\":\"2026-11-20T23:56:46Z\",\"expiresAt\":\"2026-12-20T23:56:46Z\",\"groupId\":\"6b00de33e60d493199392da9\",\"groupName\":\"{{run}}\",\"id\":\"6b00de3e7029e64b7a4e60ab\",\"inviterUsername\":\"{{cred:clientId}}\",\"roles\":[\"GROUP_READ_ONLY\"],\"username\":\"{{name}}@example.com\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/invites/6b00de3e7029e64b7a4e60ab",
+      "body": "{\"roles\":[\"GROUP_DATA_ACCESS_READ_ONLY\"]}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"createdAt\":\"2026-11-20T23:56:46Z\",\"expiresAt\":\"2026-12-20T23:56:46Z\",\"groupId\":\"6b00de33e60d493199392da9\",\"groupName\":\"{{run}}\",\"id\":\"6b00de3e7029e64b7a4e60ab\",\"inviterUsername\":\"{{cred:clientId}}\",\"roles\":[\"GROUP_DATA_ACCESS_READ_ONLY\"],\"username\":\"{{name}}@example.com\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/invites/6b00de3e7029e64b7a4e60ab",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"createdAt\":\"2026-11-20T23:56:46Z\",\"expiresAt\":\"2026-12-20T23:56:46Z\",\"groupId\":\"6b00de33e60d493199392da9\",\"groupName\":\"{{run}}\",\"id\":\"6b00de3e7029e64b7a4e60ab\",\"inviterUsername\":\"{{cred:clientId}}\",\"roles\":[\"GROUP_DATA_ACCESS_READ_ONLY\"],\"username\":\"{{name}}@example.com\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/invites/6b00de3e7029e64b7a4e60ab",
+      "body": "{\"roles\":[\"GROUP_CLUSTER_MANAGER\"]}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"createdAt\":\"2026-11-20T23:56:46Z\",\"expiresAt\":\"2026-12-20T23:56:46Z\",\"groupId\":\"6b00de33e60d493199392da9\",\"groupName\":\"{{run}}\",\"id\":\"6b00de3e7029e64b7a4e60ab\",\"inviterUsername\":\"{{cred:clientId}}\",\"roles\":[\"GROUP_CLUSTER_MANAGER\"],\"username\":\"{{name}}@example.com\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/invites/6b00de3e7029e64b7a4e60ab",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"createdAt\":\"2026-11-20T23:56:46Z\",\"expiresAt\":\"2026-12-20T23:56:46Z\",\"groupId\":\"6b00de33e60d493199392da9\",\"groupName\":\"{{run}}\",\"id\":\"6b00de3e7029e64b7a4e60ab\",\"inviterUsername\":\"{{cred:clientId}}\",\"roles\":[\"GROUP_CLUSTER_MANAGER\"],\"username\":\"{{name}}@example.com\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/invites/6b00de3e7029e64b7a4e60ab",
+      "body": "{\"roles\":[\"GROUP_DATA_ACCESS_READ_ONLY\"]}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"createdAt\":\"2026-11-20T23:56:46Z\",\"expiresAt\":\"2026-12-20T23:56:46Z\",\"groupId\":\"6b00de33e60d493199392da9\",\"groupName\":\"{{run}}\",\"id\":\"6b00de3e7029e64b7a4e60ab\",\"inviterUsername\":\"{{cred:clientId}}\",\"roles\":[\"GROUP_DATA_ACCESS_READ_ONLY\"],\"username\":\"{{name}}@example.com\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/invites/6b00de3e7029e64b7a4e60ab",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"createdAt\":\"2026-11-20T23:56:46Z\",\"expiresAt\":\"2026-12-20T23:56:46Z\",\"groupId\":\"6b00de33e60d493199392da9\",\"groupName\":\"{{run}}\",\"id\":\"6b00de3e7029e64b7a4e60ab\",\"inviterUsername\":\"{{cred:clientId}}\",\"roles\":[\"GROUP_DATA_ACCESS_READ_ONLY\"],\"username\":\"{{name}}@example.com\"}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/invites/6b00de3e7029e64b7a4e60ab",
+      "status": 204,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/invites/6b00de3e7029e64b7a4e60ab",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"detail\":\"An invalid invitation ID 6B00DE3E7029E64B7A4E60AB was specified.\",\"error\":404,\"errorCode\":\"INVALID_INVITATION_ID\",\"parameters\":[\"6b00de3e7029e64b7a4e60ab\"],\"reason\":\"Not Found\"}"
+    }
+  ]
+}

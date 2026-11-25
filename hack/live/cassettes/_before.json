@@ -1,0 +1,14 @@
+{
+  "recorded": "2026-11-20T23:56:36Z",
+  "target": "cloud.mongodb.com",
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups",
+      "body": "{\"name\":\"{{run}}\",\"orgId\":\"{{cred:orgId}}\"}",
+      "status": 201,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"clusterCount\":0,\"created\":\"2026-11-20T23:56:36Z\",\"id\":\"6b00de33e60d493199392da9\",\"links\":[{\"href\":\"{{baseURL}}/api/atlas/v2/groups/6b00de33e60d493199392da9\",\"rel\":\"self\"},{\"href\":\"{{baseURL}}/api/atlas/v2/groups/6b00de33e60d493199392da9/containers\",\"rel\":\"{{baseURL}}/containers\"},{\"href\":\"{{baseURL}}/api/atlas/v2/groups/6b00de33e60d493199392da9/clusters\",\"rel\":\"{{baseURL}}/clusters\"},{\"href\":\"{{baseURL}}/api/atlas/v2/groups/6b00de33e60d493199392da9/databaseUsers\",\"rel\":\"{{baseURL}}/databaseUsers\"},{\"href\":\"{{baseURL}}/api/atlas/v2/groups/6b00de33e60d493199392da9/peers\",\"rel\":\"{{baseURL}}/peers\"},{\"href\":\"{{baseURL}}/api/atlas/v2/groups/6b00de33e60d493199392da9/processes\",\"rel\":\"{{baseURL}}/processes\"},{\"href\":\"{{baseURL}}/api/atlas/v2/groups/6b00de33e60d493199392da9/whitelist\",\"rel\":\"{{baseURL}}/whitelist\"}],\"name\":\"{{run}}\",\"orgId\":\"{{cred:orgId}}\",\"withDefaultAlertsSettings\":true}"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "apiKey": 280000004,
+    "mcpOrg": "rehearsal-mcpOrg",
+    "mcpProject": "rehearsal-mcpProject",
+    "orgServiceAccount": "rehearsal-orgServiceAccount",
+    "project": 280000001,
+    "projectServiceAccount": "rehearsal-projectServiceAccount"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/clusters/example-clusterName/adaptiveSettings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"effectiveAdaptiveSettings\":{}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/clusters/example-clusterName/adaptiveSettings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"effectiveAdaptiveSettings\":{}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/clusters/example-clusterName/adaptiveSettings",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"effectiveAdaptiveSettings\":{}}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/example-groupId/clusters/example-clusterName/adaptiveSettings",
+      "body": "{}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"effectiveAdaptiveSettings\":{}}\n"
+    }
+  ]
+}

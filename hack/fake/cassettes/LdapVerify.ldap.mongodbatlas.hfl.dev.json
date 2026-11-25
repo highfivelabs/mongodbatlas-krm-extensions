@@ -1,0 +1,29 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "apiKey": 280000004,
+    "mcpOrg": "rehearsal-mcpOrg",
+    "mcpProject": "rehearsal-mcpProject",
+    "orgServiceAccount": "rehearsal-orgServiceAccount",
+    "project": 280000001,
+    "projectServiceAccount": "rehearsal-projectServiceAccount"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/example-groupId/userSecurity/ldap/verify",
+      "body": "{\"bindPassword\":\"{{redacted}}\",\"bindUsername\":\"CN=BindUser,CN=Users,DC=myldapserver,DC=mycompany,DC=com\",\"hostname\":\"example-hostname\",\"port\":636}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"request\":{\"bindPassword\":\"{{redacted}}\",\"bindUsername\":\"CN=BindUser,CN=Users,DC=myldapserver,DC=mycompany,DC=com\",\"hostname\":\"example-hostname\",\"port\":636},\"requestId\":270000028,\"status\":\"FAIL\",\"validations\":[]}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/userSecurity/ldap/verify/270000028",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"request\":{\"bindPassword\":\"{{redacted}}\",\"bindUsername\":\"CN=BindUser,CN=Users,DC=myldapserver,DC=mycompany,DC=com\",\"hostname\":\"example-hostname\",\"port\":636},\"requestId\":270000028,\"status\":\"FAIL\",\"validations\":[]}"
+    }
+  ]
+}

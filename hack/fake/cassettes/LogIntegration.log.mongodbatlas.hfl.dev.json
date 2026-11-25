@@ -1,0 +1,61 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "apiKey": 280000004,
+    "mcpOrg": "rehearsal-mcpOrg",
+    "mcpProject": "rehearsal-mcpProject",
+    "project": 280000001
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/280000001/logIntegrations",
+      "body": "{\"logTypes\":[\"MONGOD\"],\"otelEndpoint\":\"https://httpbin.org/status/200\",\"otelSuppliedHeaders\":[{\"name\":\"X-Hfl-Live\",\"value\":\"hfl-live-not-a-secret\"}],\"type\":\"OTEL_LOG_EXPORT\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"id\":270000013,\"logTypes\":[\"MONGOD\"],\"otelEndpoint\":\"https://httpbin.org/status/200\",\"type\":\"OTEL_LOG_EXPORT\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/logIntegrations/270000013",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000013,\"logTypes\":[\"MONGOD\"],\"otelEndpoint\":\"https://httpbin.org/status/200\",\"type\":\"OTEL_LOG_EXPORT\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/logIntegrations/270000013",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000013,\"logTypes\":[\"MONGOD\"],\"otelEndpoint\":\"https://httpbin.org/status/200\",\"type\":\"OTEL_LOG_EXPORT\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/atlas/v2/groups/280000001/logIntegrations/270000013",
+      "body": "{\"logTypes\":[\"MONGOD\",\"MONGOS\"],\"otelEndpoint\":\"https://httpbin.org/status/200\",\"otelSuppliedHeaders\":[{\"name\":\"X-Hfl-Live\",\"value\":\"hfl-live-not-a-secret\"}],\"type\":\"OTEL_LOG_EXPORT\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000013,\"logTypes\":[\"MONGOD\",\"MONGOS\"],\"otelEndpoint\":\"https://httpbin.org/status/200\",\"type\":\"OTEL_LOG_EXPORT\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/logIntegrations/270000013",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000013,\"logTypes\":[\"MONGOD\",\"MONGOS\"],\"otelEndpoint\":\"https://httpbin.org/status/200\",\"type\":\"OTEL_LOG_EXPORT\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/groups/280000001/logIntegrations/270000013",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/logIntegrations/270000013",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

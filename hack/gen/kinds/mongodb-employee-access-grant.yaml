@@ -1,0 +1,15 @@
+terraform: [mongodbatlas_mongodb_employee_access_grant]
+kind: MongodbEmployeeAccessGrant
+shape: upsert
+params:
+  groupId: {type: string, description: The project's ID.}
+  clusterName: {type: string}
+fields:
+  grantType: {type: string, enum: [CLUSTER_DATABASE_LOGS, CLUSTER_INFRASTRUCTURE, CLUSTER_INFRASTRUCTURE_AND_APP_SERVICES_SYNC_DATA]}
+  expirationTime: {type: string, format: date-time}
+required: [grantType, expirationTime]
+sample: {groupId: 32b6e34b3d91647abb20e7b8, clusterName: Cluster0, grantType: CLUSTER_DATABASE_LOGS, expirationTime: "2027-01-01T00:00:00Z"}
+create: {method: POST, path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess", headers: {Accept: application/vnd.atlas.2024-08-05+json, Content-Type: application/vnd.atlas.2024-08-05+json}}
+read: {method: GET, path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}", envelope: mongoDBEmployeeAccessGrant, headers: {Accept: application/vnd.atlas.2024-08-05+json}}
+update: {method: POST, path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:grantMongoDBEmployeeAccess", headers: {Accept: application/vnd.atlas.2024-08-05+json, Content-Type: application/vnd.atlas.2024-08-05+json}}
+delete: {method: POST, path: "/api/atlas/v2/groups/{groupId}/clusters/{clusterName}:revokeMongoDBEmployeeAccess", headers: {Accept: application/vnd.atlas.2024-08-05+json}}

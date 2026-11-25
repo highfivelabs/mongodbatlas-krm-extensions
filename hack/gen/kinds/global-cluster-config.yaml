@@ -1,0 +1,66 @@
+terraform: [mongodbatlas_global_cluster_config]
+kind: GlobalClusterConfig
+shape: set
+params:
+  groupId: {type: string}
+  clusterName: {type: string}
+fields:
+  managedNamespaces:
+    type: array
+    items:
+      type: object
+      required: [db, collection, customShardKey]
+      properties:
+        db: {type: string}
+        collection: {type: string}
+        customShardKey: {type: string, beside the location field Atlas adds to make the compound shard key.}
+        isCustomShardKeyHashed: {type: boolean}
+        isShardKeyUnique: {type: boolean}
+  customZoneMappings:
+    type: array
+    items:
+      type: object
+      required: [location, zone]
+      properties:
+        location: {type: string, description: The location code (US-VA, DE).}
+        zone: {type: string}
+required: [managedNamespaces]
+set:
+  field: managedNamespaces
+  keys: [db, collection]
+  list: managedNamespaces
+  batch:
+    field: customZoneMappings
+    key: location
+    at: customZoneMapping
+    value: zone
+    add:
+      method: POST
+      path: /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping
+      headers: {Accept: application/vnd.atlas.2024-08-05+json, Content-Type: application/vnd.atlas.2024-08-05+json}
+    clear:
+      method: DELETE
+      path: /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/customZoneMapping
+      headers: {Accept: application/vnd.atlas.2024-08-05+json}
+sample:
+  groupId: 32b6e34b3d91647abb20e7b8
+  clusterName: example-global-cluster
+  managedNamespaces:
+  - {db: app, collection: users, customShardKey: userId}
+  - {db: app, collection: orders, customShardKey: orderId, isCustomShardKeyHashed: false, isShardKeyUnique: false}
+  customZoneMappings:
+  - {location: US-VA, zone: Zone 1}
+  - {location: DE, zone: Zone 2}
+read:
+  method: GET
+  path: /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites
+  headers: {Accept: application/vnd.atlas.2024-08-05+json}
+create:
+  method: POST
+  path: /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces
+  headers: {Accept: application/vnd.atlas.2024-08-05+json, Content-Type: application/vnd.atlas.2024-08-05+json}
+delete:
+  method: DELETE
+  path: /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/globalWrites/managedNamespaces
+  query: {db: "{db}", collection: "{collection}"}
+  headers: {Accept: application/vnd.atlas.2024-08-05+json}

@@ -1,0 +1,123 @@
+# Inputs to krm-rest-runtime/gen/krmgen.py. Specs are pinned to the commit in each url;
+# hack/gen/fetch-specs.sh downloads them. overrides: map (Terraform type -> API item path),
+# exclude (Terraform types), excludePaths (API item paths).
+vendor: mongodbatlas
+title: MongoDB Atlas
+groupSuffix: mongodbatlas.hfl.dev
+connectionKind: Connection
+credentialKeys:
+- clientId
+- clientSecret
+baseURLHelp: 'Atlas Administration API base URL; default https://cloud.mongodb.com (Atlas for Government: https://cloud.mongodbgov.com).'
+terraform:
+  provider: mongodb/mongodbatlas
+  prefix: mongodbatlas
+  gaps: terraform-gaps.json
+specs:
+- file: specs/mongodbatlas.yaml
+  url: https://raw.githubusercontent.com/mongodb/openapi/5133085a709d9bfe2db3a14f4964a04c831a3c8c/openapi/v2.yaml
+envelope: {}
+versionedMediaTypes: true
+# Kinds written by hand (hack/gen/kinds/*.yaml, sources in each).
+handwritten: {dir: kinds}
+overrides:
+  map:
+    mongodbatlas_stream_workspace: /api/atlas/v2/groups/{groupId}/streams/{tenantName}
+    mongodbatlas_stream_privatelink_endpoint: /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}
+    mongodbatlas_cloud_backup_snapshot: /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/snapshots/{snapshotId}
+    mongodbatlas_cloud_backup_snapshot_export_bucket: /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId}
+    mongodbatlas_cloud_backup_snapshot_restore_job: /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/restoreJobs/{restoreJobId}
+    # One-off jobs (overrides.forget): Terraform's words "job", "snapshot"
+    # and "collection" are not all in their paths.
+    mongodbatlas_cloud_backup_snapshot_export_job: /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports/{exportId}
+    mongodbatlas_cloud_backup_collection_restore_job: /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}
+    # A user's membership: the org's, a project's, a team's. Terraform's
+    # word "assignment" is not in the paths.
+    mongodbatlas_cloud_user_org_assignment: /api/atlas/v2/orgs/{orgId}/users/{userId}
+    mongodbatlas_cloud_user_project_assignment: /api/atlas/v2/groups/{groupId}/users/{userId}
+    mongodbatlas_cloud_user_team_assignment: /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId}
+    # The project's LDAP settings live in its userSecurity document (PATCH;
+    # Terraform's delete only turns authentication off).
+    mongodbatlas_ldap_configuration: /api/atlas/v2/groups/{groupId}/userSecurity
+    # Data Federation and Online Archive private endpoints.
+    mongodbatlas_privatelink_endpoint_service_data_federation_online_archive: /api/atlas/v2/groups/{groupId}/privateNetworkSettings/endpointIds/{endpointId}
+    mongodbatlas_service_account_access_list_entry: /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress}
+    mongodbatlas_project_service_account_access_list_entry: /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress}
+    mongodbatlas_push_based_log_export: /api/atlas/v2/groups/{groupId}/pushBasedLogExport
+    mongodbatlas_search_deployment: /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment
+    mongodbatlas_federated_query_limit: /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}
+    mongodbatlas_service_account_secret: /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets/{secretId}
+    mongodbatlas_project_service_account_secret: /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets/{secretId}
+  # A project's push-based log export and a cluster's search deployment:
+  # singletons POST makes and PATCH updates, on the same path.
+  creates:
+    /api/atlas/v2/groups/{groupId}/pushBasedLogExport: /api/atlas/v2/groups/{groupId}/pushBasedLogExport
+    /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment: /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment
+  absent:
+    /api/atlas/v2/groups/{groupId}/pushBasedLogExport: {state: UNCONFIGURED}
+    /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/search/deployment: {id: null}
+  # A Data Federation query limit: set by PATCH (created or changed), read
+  # and deleted on its own path, with no POST or PUT.
+  patchUpserts:
+  - /api/atlas/v2/groups/{groupId}/dataFederation/{tenantName}/limits/{limitName}
+  # One-off jobs Atlas has no call to delete or cancel: deleting the object
+  # lets go of the job and leaves it in Atlas, as Terraform's delete does.
+  forget:
+    /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/backup/exports/{exportId}: Atlas has no call to delete or cancel a snapshot export job; it runs to completion and stays in the cluster's export history.
+    /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/collectionRestoreJobs/{jobId}: Atlas has no call to delete or cancel a collection restore job; it runs to completion and stays in the cluster's restore history.
+    /api/atlas/v2/groups/{groupId}/userSecurity/ldap/verify/{requestId}: Atlas has no call to delete an LDAP verification request; it stays in the project's history.
+  # A cluster's outage simulation: started by POST, read and ended on the
+  # same path, never updated (Terraform refuses an update; a changed spec is
+  # sent as a new start, which Atlas refuses while one runs).
+  postUpdates:
+  - /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/outageSimulation
+  # Listed, not got: an access list entry, and a team's member, are found in
+  # their collection's list (Terraform reads them the same way). Atlas pages
+  # lists 100 to a page unless asked; 500 is the most it gives.
+  listReads:
+    /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList: {list: results, field: ipAddress}
+    /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList: {list: results, field: ipAddress}
+    # POST .../users and DELETE .../users/{userId} are deprecated for
+    # :addUser and :removeUser (sunset 2027-07-01); the generator pairs a
+    # collection with its item, and those are the pair.
+    /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users: {list: results, field: id}
+  # The spec describes those reads as the whole page; each element has the
+  # fields written, so they are compared (and required) as usual.
+  readable:
+    /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress}: [cidrBlock, ipAddress]
+    /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress}: [cidrBlock, ipAddress]
+    /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId}: [id]
+  readQuery:
+    /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress}: {itemsPerPage: 500}
+    /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress}: {itemsPerPage: 500}
+    /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId}: {itemsPerPage: 500}
+  # An API key's roles are written as names and read back as
+  # [{orgId, roleName}]; no compare rule maps one to the other yet, so
+  # they are not compared (a change in the spec is still sent).
+  writeOnly:
+    # Atlas never reads back the LDAP bind password.
+    /api/atlas/v2/groups/{groupId}/userSecurity: [ldap.bindPassword]
+    /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}: [roles]
+    /api/atlas/v2/groups/{groupId}/logIntegrations/{id}: [apiKey, hecToken, otelSuppliedHeaders]
+    /api/atlas/v2/orgs/{orgId}/logIntegrations/{logIntegrationId}: [otelSuppliedHeaders]
+  bodyArray:
+  - /api/atlas/v2/orgs/{orgId}/apiKeys/{apiUserId}/accessList/{ipAddress}
+  - /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress}
+  - /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress}
+  - /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId}
+  excludePaths:
+  - /api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints/{endpointId}
+  wordSynonyms:
+    groups: project
+    group: project
+    cloud: ''
+    atlas: ''
+    mongodb: ''
+    invites: invitation
+    invite: invitation
+    orgs: org
+    organization: org
+    organizations: org
+  readFrom:
+    /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/secrets/{secretId}: {path: "/api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}", list: secrets, field: id}
+    /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/secrets/{secretId}: {path: "/api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}", list: secrets, field: id}

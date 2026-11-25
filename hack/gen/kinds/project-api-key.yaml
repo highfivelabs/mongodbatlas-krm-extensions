@@ -1,0 +1,22 @@
+terraform: [mongodbatlas_project_api_key]
+kind: ProjectApiKey
+shape: crud
+params:
+  groupId: {type: string}
+  orgId: {type: string, where the key is deleted.}
+fields:
+  desc: {type: string}
+  roles:
+    type: array
+    items: {type: string}
+required: [desc, roles]
+writeOnly: [roles]
+createOnly: [desc]
+id: id
+secretOutputs: [privateKey]
+serverFields: {publicKey: zmmrboas}
+sample: {groupId: 32b6e34b3d91647abb20e7b8, orgId: 4888442a3354817a7320eb61, desc: example key, roles: [GROUP_READ_ONLY]}
+create: {method: POST, path: "/api/atlas/v2/groups/{groupId}/apiKeys", headers: {Accept: application/vnd.atlas.2023-01-01+json, Content-Type: application/vnd.atlas.2023-01-01+json}}
+read: {method: GET, path: "/api/atlas/v2/groups/{groupId}/apiKeys", query: {itemsPerPage: "500"}, find: {list: results, field: id}, headers: {Accept: application/vnd.atlas.2023-01-01+json}}
+update: {method: PATCH, path: "/api/atlas/v2/groups/{groupId}/apiKeys/{id}", headers: {Accept: application/vnd.atlas.2023-01-01+json, Content-Type: application/vnd.atlas.2023-01-01+json}}
+delete: {method: DELETE, path: "/api/atlas/v2/orgs/{orgId}/apiKeys/{id}", headers: {Accept: application/vnd.atlas.2023-01-01+json}}

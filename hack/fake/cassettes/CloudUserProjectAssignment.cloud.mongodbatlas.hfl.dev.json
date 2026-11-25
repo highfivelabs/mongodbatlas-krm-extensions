@@ -1,0 +1,41 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "apiKey": 280000004,
+    "mcpOrg": "rehearsal-mcpOrg",
+    "mcpProject": "rehearsal-mcpProject",
+    "orgServiceAccount": "rehearsal-orgServiceAccount",
+    "project": 280000001,
+    "projectServiceAccount": "rehearsal-projectServiceAccount"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/example-groupId/users",
+      "body": "{\"roles\":[],\"username\":\"example-username\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"country\":\"US\",\"createdAt\":\"2000-01-01T00:00:00Z\",\"firstName\":\"John\",\"id\":270000030,\"invitationCreatedAt\":\"2000-01-01T00:00:00Z\",\"invitationExpiresAt\":\"2000-01-01T00:00:00Z\",\"inviterUsername\":\"user@example.com\",\"lastAuth\":\"2000-01-01T00:00:00Z\",\"lastName\":\"Doe\",\"mobileNumber\":\"example-mobileNumber\",\"orgMembershipStatus\":\"PENDING\",\"roles\":[],\"username\":\"example-username\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/users/270000030",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"country\":\"US\",\"createdAt\":\"2000-01-01T00:00:00Z\",\"firstName\":\"John\",\"id\":270000030,\"invitationCreatedAt\":\"2000-01-01T00:00:00Z\",\"invitationExpiresAt\":\"2000-01-01T00:00:00Z\",\"inviterUsername\":\"user@example.com\",\"lastAuth\":\"2000-01-01T00:00:00Z\",\"lastName\":\"Doe\",\"mobileNumber\":\"example-mobileNumber\",\"orgMembershipStatus\":\"PENDING\",\"roles\":[],\"username\":\"example-username\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/groups/example-groupId/users/270000030",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/users/270000030",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

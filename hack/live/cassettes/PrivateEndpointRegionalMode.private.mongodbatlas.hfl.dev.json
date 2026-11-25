@@ -1,0 +1,90 @@
+{
+  "recorded": "2026-11-20T23:56:38Z",
+  "target": "cloud.mongodb.com",
+  "vars": {
+    "project": "6b00de33e60d493199392da9"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/privateEndpoint/regionalMode",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"enabled\":false}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/privateEndpoint/regionalMode",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"enabled\":false}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/privateEndpoint/regionalMode",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"enabled\":false}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/privateEndpoint/regionalMode",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"enabled\":false}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/privateEndpoint/regionalMode",
+      "body": "{\"enabled\":true}",
+      "status": 202,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"enabled\":true}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/privateEndpoint/regionalMode",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"enabled\":true}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/privateEndpoint/regionalMode",
+      "body": "{\"enabled\":false}",
+      "status": 202,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"enabled\":false}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/privateEndpoint/regionalMode",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"enabled\":false}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/privateEndpoint/regionalMode",
+      "body": "{\"enabled\":true}",
+      "status": 202,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"enabled\":true}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/privateEndpoint/regionalMode",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"enabled\":true}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/privateEndpoint/regionalMode",
+      "body": "{\"enabled\":false}",
+      "status": 202,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"enabled\":false}"
+    }
+  ]
+}

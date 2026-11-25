@@ -1,0 +1,89 @@
+{
+  "recorded": "2026-11-20T23:56:46Z",
+  "target": "cloud.mongodb.com",
+  "vars": {
+    "project": "6b00de33e60d493199392da9"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/invites",
+      "body": "{\"roles\":[\"ORG_READ_ONLY\"],\"username\":\"{{name}}@example.com\"}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"createdAt\":\"2026-11-20T23:56:44Z\",\"expiresAt\":\"2026-12-20T23:56:44Z\",\"groupRoleAssignments\":[],\"id\":\"6b00de3c7029e64b7a4e5bc3\",\"inviterUsername\":\"{{cred:clientId}}\",\"orgId\":\"{{cred:orgId}}\",\"orgName\":\"{{cred:orgName}}\",\"roles\":[\"ORG_READ_ONLY\"],\"teamIds\":[],\"username\":\"{{name}}@example.com\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/invites/6b00de3c7029e64b7a4e5bc3",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"createdAt\":\"2026-11-20T23:56:44Z\",\"expiresAt\":\"2026-12-20T23:56:44Z\",\"groupRoleAssignments\":[],\"id\":\"6b00de3c7029e64b7a4e5bc3\",\"inviterUsername\":\"{{cred:clientId}}\",\"orgId\":\"{{cred:orgId}}\",\"orgName\":\"{{cred:orgName}}\",\"roles\":[\"ORG_READ_ONLY\"],\"teamIds\":[],\"username\":\"{{name}}@example.com\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/invites/6b00de3c7029e64b7a4e5bc3",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"createdAt\":\"2026-11-20T23:56:44Z\",\"expiresAt\":\"2026-12-20T23:56:44Z\",\"groupRoleAssignments\":[],\"id\":\"6b00de3c7029e64b7a4e5bc3\",\"inviterUsername\":\"{{cred:clientId}}\",\"orgId\":\"{{cred:orgId}}\",\"orgName\":\"{{cred:orgName}}\",\"roles\":[\"ORG_READ_ONLY\"],\"teamIds\":[],\"username\":\"{{name}}@example.com\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/invites/6b00de3c7029e64b7a4e5bc3",
+      "body": "{\"roles\":[\"ORG_BILLING_READ_ONLY\"]}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"createdAt\":\"2026-11-20T23:56:44Z\",\"expiresAt\":\"2026-12-20T23:56:44Z\",\"groupRoleAssignments\":[],\"id\":\"6b00de3c7029e64b7a4e5bc3\",\"inviterUsername\":\"{{cred:clientId}}\",\"orgId\":\"{{cred:orgId}}\",\"orgName\":\"{{cred:orgName}}\",\"roles\":[\"ORG_BILLING_READ_ONLY\"],\"teamIds\":[],\"username\":\"{{name}}@example.com\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/invites/6b00de3c7029e64b7a4e5bc3",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"createdAt\":\"2026-11-20T23:56:44Z\",\"expiresAt\":\"2026-12-20T23:56:44Z\",\"groupRoleAssignments\":[],\"id\":\"6b00de3c7029e64b7a4e5bc3\",\"inviterUsername\":\"{{cred:clientId}}\",\"orgId\":\"{{cred:orgId}}\",\"orgName\":\"{{cred:orgName}}\",\"roles\":[\"ORG_BILLING_READ_ONLY\"],\"teamIds\":[],\"username\":\"{{name}}@example.com\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/invites/6b00de3c7029e64b7a4e5bc3",
+      "body": "{\"roles\":[\"ORG_GROUP_CREATOR\"]}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"createdAt\":\"2026-11-20T23:56:44Z\",\"expiresAt\":\"2026-12-20T23:56:44Z\",\"groupRoleAssignments\":[],\"id\":\"6b00de3c7029e64b7a4e5bc3\",\"inviterUsername\":\"{{cred:clientId}}\",\"orgId\":\"{{cred:orgId}}\",\"orgName\":\"{{cred:orgName}}\",\"roles\":[\"ORG_GROUP_CREATOR\"],\"teamIds\":[],\"username\":\"{{name}}@example.com\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/invites/6b00de3c7029e64b7a4e5bc3",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"createdAt\":\"2026-11-20T23:56:44Z\",\"expiresAt\":\"2026-12-20T23:56:44Z\",\"groupRoleAssignments\":[],\"id\":\"6b00de3c7029e64b7a4e5bc3\",\"inviterUsername\":\"{{cred:clientId}}\",\"orgId\":\"{{cred:orgId}}\",\"orgName\":\"{{cred:orgName}}\",\"roles\":[\"ORG_GROUP_CREATOR\"],\"teamIds\":[],\"username\":\"{{name}}@example.com\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/invites/6b00de3c7029e64b7a4e5bc3",
+      "body": "{\"roles\":[\"ORG_BILLING_READ_ONLY\"]}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"createdAt\":\"2026-11-20T23:56:44Z\",\"expiresAt\":\"2026-12-20T23:56:44Z\",\"groupRoleAssignments\":[],\"id\":\"6b00de3c7029e64b7a4e5bc3\",\"inviterUsername\":\"{{cred:clientId}}\",\"orgId\":\"{{cred:orgId}}\",\"orgName\":\"{{cred:orgName}}\",\"roles\":[\"ORG_BILLING_READ_ONLY\"],\"teamIds\":[],\"username\":\"{{name}}@example.com\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/invites/6b00de3c7029e64b7a4e5bc3",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8",
+      "response": "{\"createdAt\":\"2026-11-20T23:56:44Z\",\"expiresAt\":\"2026-12-20T23:56:44Z\",\"groupRoleAssignments\":[],\"id\":\"6b00de3c7029e64b7a4e5bc3\",\"inviterUsername\":\"{{cred:clientId}}\",\"orgId\":\"{{cred:orgId}}\",\"orgName\":\"{{cred:orgName}}\",\"roles\":[\"ORG_BILLING_READ_ONLY\"],\"teamIds\":[],\"username\":\"{{name}}@example.com\"}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/invites/6b00de3c7029e64b7a4e5bc3",
+      "status": 204,
+      "contentType": "application/vnd.atlas.2023-01-01+json;charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/invites/6b00de3c7029e64b7a4e5bc3",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"detail\":\"An invalid invitation ID 6B00DE3C7029E64B7A4E5BC3 was specified.\",\"error\":404,\"errorCode\":\"INVALID_INVITATION_ID\",\"parameters\":[\"6b00de3c7029e64b7a4e5bc3\"],\"reason\":\"Not Found\"}"
+    }
+  ]
+}

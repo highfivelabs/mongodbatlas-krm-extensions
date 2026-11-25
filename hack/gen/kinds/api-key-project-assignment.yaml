@@ -1,0 +1,17 @@
+terraform: [mongodbatlas_api_key_project_assignment]
+kind: ApiKeyProjectAssignment
+shape: upsert
+params:
+  groupId: {type: string, description: The project's ID.}
+  apiUserId: {type: string}
+fields:
+  roles:
+    type: array
+    items: {type: string}
+required: [roles]
+writeOnly: [roles]
+sample: {groupId: 32b6e34b3d91647abb20e7b8, apiUserId: 32b6e34b3d91647abb20e7b8, roles: [GROUP_READ_ONLY]}
+create: {method: POST, path: "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}", body: {userId: "{apiUserId}"}, bodyArray: true, headers: {Accept: application/vnd.atlas.2023-01-01+json, Content-Type: application/vnd.atlas.2023-01-01+json}}
+read: {method: GET, path: "/api/atlas/v2/groups/{groupId}/apiKeys", query: {itemsPerPage: "500"}, find: {list: results, field: id, param: apiUserId}, headers: {Accept: application/vnd.atlas.2023-01-01+json}}
+update: {method: PATCH, path: "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}", headers: {Accept: application/vnd.atlas.2023-01-01+json, Content-Type: application/vnd.atlas.2023-01-01+json}}
+delete: {method: DELETE, path: "/api/atlas/v2/groups/{groupId}/apiKeys/{apiUserId}", headers: {Accept: application/vnd.atlas.2023-01-01+json}}

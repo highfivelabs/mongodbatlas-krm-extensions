@@ -1,0 +1,102 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "apiKey": 280000004,
+    "mcpOrg": "rehearsal-mcpOrg",
+    "mcpProject": "rehearsal-mcpProject",
+    "orgServiceAccount": "rehearsal-orgServiceAccount",
+    "project": 280000001,
+    "projectServiceAccount": "rehearsal-projectServiceAccount"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/Cluster0",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/Cluster0:grantMongoDBEmployeeAccess",
+      "body": "{\"expirationTime\":\"2027-01-01T00:00:00Z\",\"grantType\":\"CLUSTER_DATABASE_LOGS\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"expirationTime\":\"2027-01-01T00:00:00Z\",\"grantType\":\"CLUSTER_DATABASE_LOGS\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/Cluster0",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"mongoDBEmployeeAccessGrant\":{\"expirationTime\":\"2027-01-01T00:00:00Z\",\"grantType\":\"CLUSTER_DATABASE_LOGS\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/Cluster0",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"mongoDBEmployeeAccessGrant\":{\"expirationTime\":\"2027-01-01T00:00:00Z\",\"grantType\":\"CLUSTER_DATABASE_LOGS\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/Cluster0:grantMongoDBEmployeeAccess",
+      "body": "{\"expirationTime\":\"changed-expirationTime\",\"grantType\":\"CLUSTER_DATABASE_LOGS\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"expirationTime\":\"changed-expirationTime\",\"grantType\":\"CLUSTER_DATABASE_LOGS\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/Cluster0",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"mongoDBEmployeeAccessGrant\":{\"expirationTime\":\"changed-expirationTime\",\"grantType\":\"CLUSTER_DATABASE_LOGS\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/Cluster0:grantMongoDBEmployeeAccess",
+      "body": "{\"expirationTime\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"expirationTime\":\"hfl-live-drift\",\"grantType\":\"CLUSTER_DATABASE_LOGS\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/Cluster0",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"mongoDBEmployeeAccessGrant\":{\"expirationTime\":\"hfl-live-drift\",\"grantType\":\"CLUSTER_DATABASE_LOGS\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/Cluster0:grantMongoDBEmployeeAccess",
+      "body": "{\"expirationTime\":\"changed-expirationTime\",\"grantType\":\"CLUSTER_DATABASE_LOGS\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"expirationTime\":\"changed-expirationTime\",\"grantType\":\"CLUSTER_DATABASE_LOGS\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/Cluster0",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"mongoDBEmployeeAccessGrant\":{\"expirationTime\":\"changed-expirationTime\",\"grantType\":\"CLUSTER_DATABASE_LOGS\"}}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/Cluster0:revokeMongoDBEmployeeAccess",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/Cluster0",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

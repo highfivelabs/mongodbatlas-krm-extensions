@@ -1,0 +1,93 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "apiKey": 280000004,
+    "mcpOrg": "rehearsal-mcpOrg",
+    "mcpProject": "rehearsal-mcpProject",
+    "orgServiceAccount": "rehearsal-orgServiceAccount",
+    "project": 280000001,
+    "projectServiceAccount": "rehearsal-projectServiceAccount"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/orgs",
+      "body": "{\"name\":\"example-name\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"id\":270000021,\"isDeleted\":true,\"links\":[],\"name\":\"example-name\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/270000021",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000021,\"isDeleted\":true,\"links\":[],\"name\":\"example-name\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/270000021",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000021,\"isDeleted\":true,\"links\":[],\"name\":\"example-name\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/orgs/270000021",
+      "body": "{\"name\":\"changed-name\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000021,\"isDeleted\":true,\"links\":[],\"name\":\"changed-name\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/270000021",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000021,\"isDeleted\":true,\"links\":[],\"name\":\"changed-name\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/orgs/270000021",
+      "body": "{\"name\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000021,\"isDeleted\":true,\"links\":[],\"name\":\"hfl-live-drift\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/270000021",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000021,\"isDeleted\":true,\"links\":[],\"name\":\"hfl-live-drift\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/orgs/270000021",
+      "body": "{\"name\":\"changed-name\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000021,\"isDeleted\":true,\"links\":[],\"name\":\"changed-name\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/270000021",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"id\":270000021,\"isDeleted\":true,\"links\":[],\"name\":\"changed-name\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/orgs/270000021",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/270000021",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

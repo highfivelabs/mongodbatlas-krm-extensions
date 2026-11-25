@@ -1,0 +1,70 @@
+{
+  "recorded": "2026-11-20T23:57:08Z",
+  "target": "cloud.mongodb.com",
+  "vars": {
+    "mcpOrg": "6dbd4ec4-67c2-4a64-8757-8bd1886b9aa1",
+    "mcpProject": "1493dfed-0de2-4c7a-ab33-2949b842f69f",
+    "project": "6b00de33e60d493199392da9"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiClouds/ANY/geographies/ANY/modelGroupNames/embed_small/rateLimits",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"cloud\":\"ANY\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"modelGroupName\":\"embed_small\",\"modelNames\":[\"voyage-3.5-lite\",\"voyage-4-lite\"],\"requestsPerMinuteLimit\":3,\"tokensPerMinuteLimit\":10000}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiClouds/ANY/geographies/ANY/modelGroupNames/embed_small/rateLimits",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"cloud\":\"ANY\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"modelGroupName\":\"embed_small\",\"modelNames\":[\"voyage-3.5-lite\",\"voyage-4-lite\"],\"requestsPerMinuteLimit\":3,\"tokensPerMinuteLimit\":10000}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiClouds/ANY/geographies/ANY/modelGroupNames/embed_small/rateLimits",
+      "body": "{\"requestsPerMinuteLimit\":2,\"tokensPerMinuteLimit\":5000}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"cloud\":\"ANY\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"modelGroupName\":\"embed_small\",\"modelNames\":[\"voyage-3.5-lite\",\"voyage-4-lite\"],\"requestsPerMinuteLimit\":2,\"tokensPerMinuteLimit\":5000}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiClouds/ANY/geographies/ANY/modelGroupNames/embed_small/rateLimits",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"cloud\":\"ANY\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"modelGroupName\":\"embed_small\",\"modelNames\":[\"voyage-3.5-lite\",\"voyage-4-lite\"],\"requestsPerMinuteLimit\":2,\"tokensPerMinuteLimit\":5000}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiClouds/ANY/geographies/ANY/modelGroupNames/embed_small/rateLimits",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"cloud\":\"ANY\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"modelGroupName\":\"embed_small\",\"modelNames\":[\"voyage-3.5-lite\",\"voyage-4-lite\"],\"requestsPerMinuteLimit\":2,\"tokensPerMinuteLimit\":5000}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiClouds/ANY/geographies/ANY/modelGroupNames/embed_small/rateLimits",
+      "body": "{\"requestsPerMinuteLimit\":1,\"tokensPerMinuteLimit\":5000}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"cloud\":\"ANY\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"modelGroupName\":\"embed_small\",\"modelNames\":[\"voyage-3.5-lite\",\"voyage-4-lite\"],\"requestsPerMinuteLimit\":1,\"tokensPerMinuteLimit\":5000}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiClouds/ANY/geographies/ANY/modelGroupNames/embed_small/rateLimits",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"cloud\":\"ANY\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"modelGroupName\":\"embed_small\",\"modelNames\":[\"voyage-3.5-lite\",\"voyage-4-lite\"],\"requestsPerMinuteLimit\":1,\"tokensPerMinuteLimit\":5000}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiClouds/ANY/geographies/ANY/modelGroupNames/embed_small/rateLimits",
+      "body": "{\"requestsPerMinuteLimit\":3,\"tokensPerMinuteLimit\":10000}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"cloud\":\"ANY\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"modelGroupName\":\"embed_small\",\"modelNames\":[\"voyage-3.5-lite\",\"voyage-4-lite\"],\"requestsPerMinuteLimit\":3,\"tokensPerMinuteLimit\":10000}"
+    }
+  ]
+}

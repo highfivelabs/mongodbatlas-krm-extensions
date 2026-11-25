@@ -1,0 +1,90 @@
+{
+  "recorded": "2026-11-20T23:56:49Z",
+  "target": "cloud.mongodb.com",
+  "vars": {
+    "project": "6b00de33e60d493199392da9"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/resourcePolicies",
+      "body": "{\"description\":\"first\",\"name\":\"{{name}}\",\"policies\":[{\"body\":\"forbid (principal, action == cloud::Action::\\\"cluster.createEdit\\\", resource) when { context.cluster.regions.contains(cloud::region::\\\"aws:ap-southeast-2\\\") };\"}]}",
+      "status": 201,
+      "contentType": "application/vnd.atlas.2024-08-05+json;charset=utf-8",
+      "response": "{\"createdByUser\":{\"id\":\"6afa9f7cce11b497a64d16d5\",\"name\":\"{{cred:clientId}}\"},\"createdDate\":\"2026-11-20T23:56:48Z\",\"description\":\"first\",\"id\":\"6b00de40c2c4cdd438a3ee61\",\"lastUpdatedByUser\":{\"id\":\"6afa9f7cce11b497a64d16d5\",\"name\":\"{{cred:clientId}}\"},\"lastUpdatedDate\":\"2026-11-20T23:56:48Z\",\"name\":\"{{name}}\",\"orgId\":\"{{cred:orgId}}\",\"policies\":[{\"body\":\"forbid (principal, action == cloud::Action::\\\"cluster.createEdit\\\", resource) when { context.cluster.regions.contains(cloud::region::\\\"aws:ap-southeast-2\\\") };\",\"id\":\"6b00de40c2c4cdd438a3ee60\"}],\"version\":\"v1\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/resourcePolicies/6b00de40c2c4cdd438a3ee61",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2024-08-05+json;charset=utf-8",
+      "response": "{\"createdByUser\":{\"id\":\"6afa9f7cce11b497a64d16d5\",\"name\":\"{{cred:clientId}}\"},\"createdDate\":\"2026-11-20T23:56:48Z\",\"description\":\"first\",\"id\":\"6b00de40c2c4cdd438a3ee61\",\"lastUpdatedByUser\":{\"id\":\"6afa9f7cce11b497a64d16d5\",\"name\":\"{{cred:clientId}}\"},\"lastUpdatedDate\":\"2026-11-20T23:56:48Z\",\"name\":\"{{name}}\",\"orgId\":\"{{cred:orgId}}\",\"policies\":[{\"body\":\"forbid (principal, action == cloud::Action::\\\"cluster.createEdit\\\", resource) when { context.cluster.regions.contains(cloud::region::\\\"aws:ap-southeast-2\\\") };\",\"id\":\"6b00de40c2c4cdd438a3ee60\"}],\"version\":\"v1\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/resourcePolicies/6b00de40c2c4cdd438a3ee61",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2024-08-05+json;charset=utf-8",
+      "response": "{\"createdByUser\":{\"id\":\"6afa9f7cce11b497a64d16d5\",\"name\":\"{{cred:clientId}}\"},\"createdDate\":\"2026-11-20T23:56:48Z\",\"description\":\"first\",\"id\":\"6b00de40c2c4cdd438a3ee61\",\"lastUpdatedByUser\":{\"id\":\"6afa9f7cce11b497a64d16d5\",\"name\":\"{{cred:clientId}}\"},\"lastUpdatedDate\":\"2026-11-20T23:56:48Z\",\"name\":\"{{name}}\",\"orgId\":\"{{cred:orgId}}\",\"policies\":[{\"body\":\"forbid (principal, action == cloud::Action::\\\"cluster.createEdit\\\", resource) when { context.cluster.regions.contains(cloud::region::\\\"aws:ap-southeast-2\\\") };\",\"id\":\"6b00de40c2c4cdd438a3ee60\"}],\"version\":\"v1\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/resourcePolicies/6b00de40c2c4cdd438a3ee61",
+      "body": "{\"description\":\"second\",\"name\":\"{{name}}\",\"policies\":[{\"body\":\"forbid (principal, action == cloud::Action::\\\"cluster.createEdit\\\", resource) when { context.cluster.regions.contains(cloud::region::\\\"aws:ap-southeast-2\\\") };\"}]}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2024-08-05+json;charset=utf-8",
+      "response": "{\"createdByUser\":{\"id\":\"6afa9f7cce11b497a64d16d5\",\"name\":\"{{cred:clientId}}\"},\"createdDate\":\"2026-11-20T23:56:48Z\",\"description\":\"second\",\"id\":\"6b00de40c2c4cdd438a3ee61\",\"lastUpdatedByUser\":{\"id\":\"6afa9f7cce11b497a64d16d5\",\"name\":\"{{cred:clientId}}\"},\"lastUpdatedDate\":\"2026-11-20T23:56:48Z\",\"name\":\"{{name}}\",\"orgId\":\"{{cred:orgId}}\",\"policies\":[{\"body\":\"forbid (principal, action == cloud::Action::\\\"cluster.createEdit\\\", resource) when { context.cluster.regions.contains(cloud::region::\\\"aws:ap-southeast-2\\\") };\",\"id\":\"6b00de4068e9fda2763d8eba\"}],\"version\":\"v1\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/resourcePolicies/6b00de40c2c4cdd438a3ee61",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2024-08-05+json;charset=utf-8",
+      "response": "{\"createdByUser\":{\"id\":\"6afa9f7cce11b497a64d16d5\",\"name\":\"{{cred:clientId}}\"},\"createdDate\":\"2026-11-20T23:56:48Z\",\"description\":\"second\",\"id\":\"6b00de40c2c4cdd438a3ee61\",\"lastUpdatedByUser\":{\"id\":\"6afa9f7cce11b497a64d16d5\",\"name\":\"{{cred:clientId}}\"},\"lastUpdatedDate\":\"2026-11-20T23:56:48Z\",\"name\":\"{{name}}\",\"orgId\":\"{{cred:orgId}}\",\"policies\":[{\"body\":\"forbid (principal, action == cloud::Action::\\\"cluster.createEdit\\\", resource) when { context.cluster.regions.contains(cloud::region::\\\"aws:ap-southeast-2\\\") };\",\"id\":\"6b00de4068e9fda2763d8eba\"}],\"version\":\"v1\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/resourcePolicies/6b00de40c2c4cdd438a3ee61",
+      "body": "{\"description\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2024-08-05+json;charset=utf-8",
+      "response": "{\"createdByUser\":{\"id\":\"6afa9f7cce11b497a64d16d5\",\"name\":\"{{cred:clientId}}\"},\"createdDate\":\"2026-11-20T23:56:48Z\",\"description\":\"hfl-live-drift\",\"id\":\"6b00de40c2c4cdd438a3ee61\",\"lastUpdatedByUser\":{\"id\":\"6afa9f7cce11b497a64d16d5\",\"name\":\"{{cred:clientId}}\"},\"lastUpdatedDate\":\"2026-11-20T23:56:48Z\",\"name\":\"{{name}}\",\"orgId\":\"{{cred:orgId}}\",\"policies\":[{\"body\":\"forbid (principal, action == cloud::Action::\\\"cluster.createEdit\\\", resource) when { context.cluster.regions.contains(cloud::region::\\\"aws:ap-southeast-2\\\") };\",\"id\":\"6b00de4068e9fda2763d8eba\"}],\"version\":\"v1\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/resourcePolicies/6b00de40c2c4cdd438a3ee61",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2024-08-05+json;charset=utf-8",
+      "response": "{\"createdByUser\":{\"id\":\"6afa9f7cce11b497a64d16d5\",\"name\":\"{{cred:clientId}}\"},\"createdDate\":\"2026-11-20T23:56:48Z\",\"description\":\"hfl-live-drift\",\"id\":\"6b00de40c2c4cdd438a3ee61\",\"lastUpdatedByUser\":{\"id\":\"6afa9f7cce11b497a64d16d5\",\"name\":\"{{cred:clientId}}\"},\"lastUpdatedDate\":\"2026-11-20T23:56:48Z\",\"name\":\"{{name}}\",\"orgId\":\"{{cred:orgId}}\",\"policies\":[{\"body\":\"forbid (principal, action == cloud::Action::\\\"cluster.createEdit\\\", resource) when { context.cluster.regions.contains(cloud::region::\\\"aws:ap-southeast-2\\\") };\",\"id\":\"6b00de4068e9fda2763d8eba\"}],\"version\":\"v1\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/resourcePolicies/6b00de40c2c4cdd438a3ee61",
+      "body": "{\"description\":\"second\",\"name\":\"{{name}}\",\"policies\":[{\"body\":\"forbid (principal, action == cloud::Action::\\\"cluster.createEdit\\\", resource) when { context.cluster.regions.contains(cloud::region::\\\"aws:ap-southeast-2\\\") };\"}]}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2024-08-05+json;charset=utf-8",
+      "response": "{\"createdByUser\":{\"id\":\"6afa9f7cce11b497a64d16d5\",\"name\":\"{{cred:clientId}}\"},\"createdDate\":\"2026-11-20T23:56:48Z\",\"description\":\"second\",\"id\":\"6b00de40c2c4cdd438a3ee61\",\"lastUpdatedByUser\":{\"id\":\"6afa9f7cce11b497a64d16d5\",\"name\":\"{{cred:clientId}}\"},\"lastUpdatedDate\":\"2026-11-20T23:56:49Z\",\"name\":\"{{name}}\",\"orgId\":\"{{cred:orgId}}\",\"policies\":[{\"body\":\"forbid (principal, action == cloud::Action::\\\"cluster.createEdit\\\", resource) when { context.cluster.regions.contains(cloud::region::\\\"aws:ap-southeast-2\\\") };\",\"id\":\"6b00de41a70dbd0c0f503a7d\"}],\"version\":\"v1\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/resourcePolicies/6b00de40c2c4cdd438a3ee61",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2024-08-05+json;charset=utf-8",
+      "response": "{\"createdByUser\":{\"id\":\"6afa9f7cce11b497a64d16d5\",\"name\":\"{{cred:clientId}}\"},\"createdDate\":\"2026-11-20T23:56:48Z\",\"description\":\"second\",\"id\":\"6b00de40c2c4cdd438a3ee61\",\"lastUpdatedByUser\":{\"id\":\"6afa9f7cce11b497a64d16d5\",\"name\":\"{{cred:clientId}}\"},\"lastUpdatedDate\":\"2026-11-20T23:56:49Z\",\"name\":\"{{name}}\",\"orgId\":\"{{cred:orgId}}\",\"policies\":[{\"body\":\"forbid (principal, action == cloud::Action::\\\"cluster.createEdit\\\", resource) when { context.cluster.regions.contains(cloud::region::\\\"aws:ap-southeast-2\\\") };\",\"id\":\"6b00de41a70dbd0c0f503a7d\"}],\"version\":\"v1\"}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/resourcePolicies/6b00de40c2c4cdd438a3ee61",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2024-08-05+json;charset=utf-8",
+      "response": "{}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/resourcePolicies/6b00de40c2c4cdd438a3ee61",
+      "status": 404,
+      "contentType": "application/vnd.atlas.2024-08-05+json",
+      "response": "{\"errorCode\":\"RESOURCE_POLICY_NOT_FOUND\",\"message\":\"Resource Policy with id \\\"6b00de40c2c4cdd438a3ee61\\\" not found\",\"version\":\"1\",\"status\":\"ERROR\"}"
+    }
+  ]
+}

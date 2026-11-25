@@ -1,0 +1,76 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "apiKey": 280000004,
+    "mcpOrg": "rehearsal-mcpOrg",
+    "mcpProject": "rehearsal-mcpProject",
+    "orgServiceAccount": "rehearsal-orgServiceAccount",
+    "project": 280000001,
+    "projectServiceAccount": "rehearsal-projectServiceAccount"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/example-global-cluster/globalWrites",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"customZoneMapping\":{},\"managedNamespaces\":[]}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/example-global-cluster/globalWrites/managedNamespaces",
+      "body": "{\"collection\":\"users\",\"customShardKey\":\"userId\",\"db\":\"app\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"collection\":\"users\",\"customShardKey\":\"userId\",\"db\":\"app\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/example-global-cluster/globalWrites/managedNamespaces",
+      "body": "{\"collection\":\"orders\",\"customShardKey\":\"orderId\",\"db\":\"app\",\"isCustomShardKeyHashed\":false,\"isShardKeyUnique\":false}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"collection\":\"orders\",\"customShardKey\":\"orderId\",\"db\":\"app\",\"isCustomShardKeyHashed\":false,\"isShardKeyUnique\":false}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/example-global-cluster/globalWrites/customZoneMapping",
+      "body": "{\"customZoneMappings\":[{\"location\":\"US-VA\",\"zone\":\"Zone 1\"},{\"location\":\"DE\",\"zone\":\"Zone 2\"}]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"customZoneMapping\":{\"DE\":\"bf2b9fffc7e20be8dabff6ea\",\"US-VA\":\"9f718f57fa8adfd0b0a50301\"}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/example-global-cluster/globalWrites",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"customZoneMapping\":{\"DE\":\"bf2b9fffc7e20be8dabff6ea\",\"US-VA\":\"9f718f57fa8adfd0b0a50301\"},\"managedNamespaces\":[{\"collection\":\"orders\",\"customShardKey\":\"orderId\",\"db\":\"app\",\"isCustomShardKeyHashed\":false,\"isShardKeyUnique\":false},{\"collection\":\"users\",\"customShardKey\":\"userId\",\"db\":\"app\"}]}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/example-global-cluster/globalWrites/managedNamespaces?collection=users\u0026db=app",
+      "status": 204
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/example-global-cluster/globalWrites/managedNamespaces?collection=orders\u0026db=app",
+      "status": 204
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/example-global-cluster/globalWrites/customZoneMapping",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"customZoneMapping\":{}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/32b6e34b3d91647abb20e7b8/clusters/example-global-cluster/globalWrites",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"customZoneMapping\":{},\"managedNamespaces\":[]}\n"
+    }
+  ]
+}

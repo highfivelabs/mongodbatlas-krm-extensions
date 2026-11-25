@@ -1,0 +1,93 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "apiKey": 280000004,
+    "mcpOrg": "rehearsal-mcpOrg",
+    "mcpProject": "rehearsal-mcpProject",
+    "orgServiceAccount": "rehearsal-orgServiceAccount",
+    "project": 280000001,
+    "projectServiceAccount": "rehearsal-projectServiceAccount"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/example-groupId/clusters/example-clusterName/onlineArchives",
+      "body": "{\"collName\":\"example-collName\",\"criteria\":{},\"dbName\":\"example-dbName\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"clusterName\":\"example-clusterName\",\"collName\":\"example-collName\",\"criteria\":{},\"dataSetName\":\"example-dataSetName\",\"dbName\":\"example-dbName\",\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"id\":270000019,\"state\":\"PENDING\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/clusters/example-clusterName/onlineArchives/270000019",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"clusterName\":\"example-clusterName\",\"collName\":\"example-collName\",\"criteria\":{},\"dataSetName\":\"example-dataSetName\",\"dbName\":\"example-dbName\",\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"id\":270000019,\"state\":\"PENDING\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/clusters/example-clusterName/onlineArchives/270000019",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"clusterName\":\"example-clusterName\",\"collName\":\"example-collName\",\"criteria\":{},\"dataSetName\":\"example-dataSetName\",\"dbName\":\"example-dbName\",\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"id\":270000019,\"state\":\"PENDING\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/example-groupId/clusters/example-clusterName/onlineArchives/270000019",
+      "body": "{\"collName\":\"changed-collName\",\"criteria\":{},\"dbName\":\"example-dbName\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"clusterName\":\"example-clusterName\",\"collName\":\"changed-collName\",\"criteria\":{},\"dataSetName\":\"example-dataSetName\",\"dbName\":\"example-dbName\",\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"id\":270000019,\"state\":\"PENDING\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/clusters/example-clusterName/onlineArchives/270000019",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"clusterName\":\"example-clusterName\",\"collName\":\"changed-collName\",\"criteria\":{},\"dataSetName\":\"example-dataSetName\",\"dbName\":\"example-dbName\",\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"id\":270000019,\"state\":\"PENDING\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/example-groupId/clusters/example-clusterName/onlineArchives/270000019",
+      "body": "{\"collName\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"clusterName\":\"example-clusterName\",\"collName\":\"hfl-live-drift\",\"criteria\":{},\"dataSetName\":\"example-dataSetName\",\"dbName\":\"example-dbName\",\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"id\":270000019,\"state\":\"PENDING\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/clusters/example-clusterName/onlineArchives/270000019",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"clusterName\":\"example-clusterName\",\"collName\":\"hfl-live-drift\",\"criteria\":{},\"dataSetName\":\"example-dataSetName\",\"dbName\":\"example-dbName\",\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"id\":270000019,\"state\":\"PENDING\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/example-groupId/clusters/example-clusterName/onlineArchives/270000019",
+      "body": "{\"collName\":\"changed-collName\",\"criteria\":{},\"dbName\":\"example-dbName\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"clusterName\":\"example-clusterName\",\"collName\":\"changed-collName\",\"criteria\":{},\"dataSetName\":\"example-dataSetName\",\"dbName\":\"example-dbName\",\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"id\":270000019,\"state\":\"PENDING\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/clusters/example-clusterName/onlineArchives/270000019",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"clusterName\":\"example-clusterName\",\"collName\":\"changed-collName\",\"criteria\":{},\"dataSetName\":\"example-dataSetName\",\"dbName\":\"example-dbName\",\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"id\":270000019,\"state\":\"PENDING\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/groups/example-groupId/clusters/example-clusterName/onlineArchives/270000019",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/clusters/example-clusterName/onlineArchives/270000019",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "mcpOrg": "rehearsal-mcpOrg",
+    "mcpProject": "rehearsal-mcpProject",
+    "project": 280000001
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiKeys",
+      "body": "{\"cloud\":\"ANY\",\"geography\":\"ANY\",\"name\":\"{{name}}\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"apiKeyId\":270000011,\"cloud\":\"ANY\",\"createdAt\":\"2026-01-15T16:47:49.855000+00:00\",\"createdBy\":\"John Doe\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"groupId\":\"69681d39c9e8cfd375386316\",\"lastUsedAt\":\"2026-01-15T16:47:49.855000+00:00\",\"maskedSecret\":\"{{redacted}}\",\"name\":\"{{name}}\",\"secret\":\"{{redacted}}\",\"status\":\"ACTIVE\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiKeys/270000011",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"apiKeyId\":270000011,\"cloud\":\"ANY\",\"createdAt\":\"2026-01-15T16:47:49.855000+00:00\",\"createdBy\":\"John Doe\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"groupId\":\"69681d39c9e8cfd375386316\",\"lastUsedAt\":\"2026-01-15T16:47:49.855000+00:00\",\"maskedSecret\":\"{{redacted}}\",\"name\":\"{{name}}\",\"secret\":\"{{redacted}}\",\"status\":\"ACTIVE\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiKeys/270000011",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"apiKeyId\":270000011,\"cloud\":\"ANY\",\"createdAt\":\"2026-01-15T16:47:49.855000+00:00\",\"createdBy\":\"John Doe\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"groupId\":\"69681d39c9e8cfd375386316\",\"lastUsedAt\":\"2026-01-15T16:47:49.855000+00:00\",\"maskedSecret\":\"{{redacted}}\",\"name\":\"{{name}}\",\"secret\":\"{{redacted}}\",\"status\":\"ACTIVE\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiKeys/270000011",
+      "body": "{\"cloud\":\"ANY\",\"geography\":\"ANY\",\"name\":\"{{name}}-2\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"apiKeyId\":270000011,\"cloud\":\"ANY\",\"createdAt\":\"2026-01-15T16:47:49.855000+00:00\",\"createdBy\":\"John Doe\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"groupId\":\"69681d39c9e8cfd375386316\",\"lastUsedAt\":\"2026-01-15T16:47:49.855000+00:00\",\"maskedSecret\":\"{{redacted}}\",\"name\":\"{{name}}-2\",\"secret\":\"{{redacted}}\",\"status\":\"ACTIVE\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiKeys/270000011",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"apiKeyId\":270000011,\"cloud\":\"ANY\",\"createdAt\":\"2026-01-15T16:47:49.855000+00:00\",\"createdBy\":\"John Doe\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"groupId\":\"69681d39c9e8cfd375386316\",\"lastUsedAt\":\"2026-01-15T16:47:49.855000+00:00\",\"maskedSecret\":\"{{redacted}}\",\"name\":\"{{name}}-2\",\"secret\":\"{{redacted}}\",\"status\":\"ACTIVE\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiKeys/270000011",
+      "body": "{\"name\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"apiKeyId\":270000011,\"cloud\":\"ANY\",\"createdAt\":\"2026-01-15T16:47:49.855000+00:00\",\"createdBy\":\"John Doe\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"groupId\":\"69681d39c9e8cfd375386316\",\"lastUsedAt\":\"2026-01-15T16:47:49.855000+00:00\",\"maskedSecret\":\"{{redacted}}\",\"name\":\"hfl-live-drift\",\"secret\":\"{{redacted}}\",\"status\":\"ACTIVE\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiKeys/270000011",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"apiKeyId\":270000011,\"cloud\":\"ANY\",\"createdAt\":\"2026-01-15T16:47:49.855000+00:00\",\"createdBy\":\"John Doe\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"groupId\":\"69681d39c9e8cfd375386316\",\"lastUsedAt\":\"2026-01-15T16:47:49.855000+00:00\",\"maskedSecret\":\"{{redacted}}\",\"name\":\"hfl-live-drift\",\"secret\":\"{{redacted}}\",\"status\":\"ACTIVE\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiKeys/270000011",
+      "body": "{\"cloud\":\"ANY\",\"geography\":\"ANY\",\"name\":\"{{name}}-2\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"apiKeyId\":270000011,\"cloud\":\"ANY\",\"createdAt\":\"2026-01-15T16:47:49.855000+00:00\",\"createdBy\":\"John Doe\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"groupId\":\"69681d39c9e8cfd375386316\",\"lastUsedAt\":\"2026-01-15T16:47:49.855000+00:00\",\"maskedSecret\":\"{{redacted}}\",\"name\":\"{{name}}-2\",\"secret\":\"{{redacted}}\",\"status\":\"ACTIVE\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiKeys/270000011",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"apiKeyId\":270000011,\"cloud\":\"ANY\",\"createdAt\":\"2026-01-15T16:47:49.855000+00:00\",\"createdBy\":\"John Doe\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"groupId\":\"69681d39c9e8cfd375386316\",\"lastUsedAt\":\"2026-01-15T16:47:49.855000+00:00\",\"maskedSecret\":\"{{redacted}}\",\"name\":\"{{name}}-2\",\"secret\":\"{{redacted}}\",\"status\":\"ACTIVE\"}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiKeys/270000011",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/aiModelApiKeys/270000011",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

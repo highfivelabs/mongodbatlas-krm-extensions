@@ -1,0 +1,88 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "project": 280000001
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs",
+      "body": "{\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_READ_ONLY\"]}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"clientId\":\"mdb_sa_id_1234567890abcdef12345678\",\"egressClientId\":\"mdb_sa_id_1234567890abcdef12345678\",\"mcpConfigId\":270000007,\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_READ_ONLY\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/270000007",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"clientId\":\"mdb_sa_id_1234567890abcdef12345678\",\"egressClientId\":\"mdb_sa_id_1234567890abcdef12345678\",\"mcpConfigId\":270000007,\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_READ_ONLY\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/270000007",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"clientId\":\"mdb_sa_id_1234567890abcdef12345678\",\"egressClientId\":\"mdb_sa_id_1234567890abcdef12345678\",\"mcpConfigId\":270000007,\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_READ_ONLY\"]}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/270000007",
+      "body": "{\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_MEMBER\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"clientId\":\"mdb_sa_id_1234567890abcdef12345678\",\"egressClientId\":\"mdb_sa_id_1234567890abcdef12345678\",\"mcpConfigId\":270000007,\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_MEMBER\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/270000007",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"clientId\":\"mdb_sa_id_1234567890abcdef12345678\",\"egressClientId\":\"mdb_sa_id_1234567890abcdef12345678\",\"mcpConfigId\":270000007,\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_MEMBER\"]}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/270000007",
+      "body": "{\"roles\":[\"ORG_BILLING_READ_ONLY\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"clientId\":\"mdb_sa_id_1234567890abcdef12345678\",\"egressClientId\":\"mdb_sa_id_1234567890abcdef12345678\",\"mcpConfigId\":270000007,\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_BILLING_READ_ONLY\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/270000007",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"clientId\":\"mdb_sa_id_1234567890abcdef12345678\",\"egressClientId\":\"mdb_sa_id_1234567890abcdef12345678\",\"mcpConfigId\":270000007,\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_BILLING_READ_ONLY\"]}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/270000007",
+      "body": "{\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_MEMBER\"]}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"clientId\":\"mdb_sa_id_1234567890abcdef12345678\",\"egressClientId\":\"mdb_sa_id_1234567890abcdef12345678\",\"mcpConfigId\":270000007,\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_MEMBER\"]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/270000007",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"clientId\":\"mdb_sa_id_1234567890abcdef12345678\",\"egressClientId\":\"mdb_sa_id_1234567890abcdef12345678\",\"mcpConfigId\":270000007,\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_MEMBER\"]}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/270000007",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/270000007",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "apiKey": 280000004,
+    "mcpOrg": "rehearsal-mcpOrg",
+    "mcpProject": "rehearsal-mcpProject",
+    "orgServiceAccount": "rehearsal-orgServiceAccount",
+    "project": 280000001,
+    "projectServiceAccount": "rehearsal-projectServiceAccount"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/example-groupId/clusters/example-clusterName/backup/exports",
+      "body": "{\"exportBucketId\":\"32b6e34b3d91647abb20e7b8\",\"snapshotId\":\"32b6e34b3d91647abb20e7b8\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"components\":[],\"createdAt\":\"2000-01-01T00:00:00Z\",\"exportBucketId\":\"32b6e34b3d91647abb20e7b8\",\"exportStatus\":{},\"finishedAt\":\"2000-01-01T00:00:00Z\",\"id\":270000026,\"links\":[],\"prefix\":\"example-prefix\",\"snapshotId\":\"32b6e34b3d91647abb20e7b8\",\"state\":\"Cancelled\",\"stateReason\":{}}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/clusters/example-clusterName/backup/exports/270000026",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"components\":[],\"createdAt\":\"2000-01-01T00:00:00Z\",\"exportBucketId\":\"32b6e34b3d91647abb20e7b8\",\"exportStatus\":{},\"finishedAt\":\"2000-01-01T00:00:00Z\",\"id\":270000026,\"links\":[],\"prefix\":\"example-prefix\",\"snapshotId\":\"32b6e34b3d91647abb20e7b8\",\"state\":\"Cancelled\",\"stateReason\":{}}\n"
+    }
+  ]
+}

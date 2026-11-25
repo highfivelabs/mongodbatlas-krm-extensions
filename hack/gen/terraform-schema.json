@@ -1,0 +1,211 @@
+{
+ "provider": "mongodb/mongodbatlas",
+ "resources": {
+  "mongodbatlas_event_trigger": {
+   "attributes": {
+    "app_id": {
+     "required": true,
+     "type": "string"
+    },
+    "config_collection": {
+     "computed": true,
+     "optional": true,
+     "type": "string"
+    },
+    "config_database": {
+     "computed": true,
+     "optional": true,
+     "type": "string"
+    },
+    "config_full_document": {
+     "computed": true,
+     "optional": true,
+     "type": "bool"
+    },
+    "config_full_document_before": {
+     "computed": true,
+     "optional": true,
+     "type": "bool"
+    },
+    "config_match": {
+     "computed": true,
+     "optional": true,
+     "type": "string"
+    },
+    "config_operation_type": {
+     "computed": true,
+     "optional": true,
+     "type": "string"
+    },
+    "config_operation_types": {
+     "computed": true,
+     "optional": true,
+     "type": [
+      "list",
+      "string"
+     ]
+    },
+    "config_project": {
+     "computed": true,
+     "optional": true,
+     "type": "string"
+    },
+    "config_providers": {
+     "computed": true,
+     "optional": true,
+     "type": [
+      "list",
+      "string"
+     ]
+    },
+    "config_schedule": {
+     "computed": true,
+     "optional": true,
+     "type": "string"
+    },
+    "config_schedule_type": {
+     "computed": true
+    },
+    "config_service_id": {
+     "computed": true,
+     "optional": true,
+     "type": "string"
+    },
+    "disabled": {
+     "computed": true,
+     "optional": true,
+     "type": "bool"
+    },
+    "function_id": {
+     "optional": true,
+     "type": "string"
+    },
+    "function_name": {
+     "computed": true
+    },
+    "id": {
+     "computed": true,
+     "optional": true,
+     "type": "string"
+    },
+    "name": {
+     "required": true,
+     "type": "string"
+    },
+    "project_id": {
+     "required": true,
+     "type": "string"
+    },
+    "trigger_id": {
+     "computed": true
+    },
+    "type": {
+     "required": true,
+     "type": "string"
+    },
+    "unordered": {
+     "computed": true,
+     "optional": true,
+     "type": "bool"
+    }
+   },
+   "block_types": {
+    "event_processors": {
+     "block": {
+      "block_types": {
+       "aws_eventbridge": {
+        "block": {
+         "attributes": {
+          "config_account_id": {
+           "optional": true,
+           "type": "string"
+          },
+          "config_region": {
+           "optional": true,
+           "type": "string"
+          }
+         }
+        },
+        "max_items": 1,
+        "nesting_mode": "list"
+       }
+      }
+     },
+     "max_items": 1,
+     "nesting_mode": "list"
+    }
+   }
+  },
+  "mongodbatlas_global_cluster_config": {
+   "attributes": {
+    "cluster_name": {
+     "required": true,
+     "type": "string"
+    },
+    "custom_zone_mapping_zone_id": {
+     "computed": true
+    },
+    "id": {
+     "computed": true,
+     "optional": true,
+     "type": "string"
+    },
+    "project_id": {
+     "required": true,
+     "type": "string"
+    }
+   },
+   "block_types": {
+    "custom_zone_mappings": {
+     "block": {
+      "attributes": {
+       "location": {
+        "computed": true,
+        "optional": true,
+        "type": "string"
+       },
+       "zone": {
+        "computed": true,
+        "optional": true,
+        "type": "string"
+       }
+      }
+     },
+     "nesting_mode": "set"
+    },
+    "managed_namespaces": {
+     "block": {
+      "attributes": {
+       "collection": {
+        "required": true,
+        "type": "string"
+       },
+       "custom_shard_key": {
+        "required": true,
+        "type": "string"
+       },
+       "db": {
+        "required": true,
+        "type": "string"
+       },
+       "is_custom_shard_key_hashed": {
+        "computed": true,
+        "optional": true,
+        "type": "bool"
+       },
+       "is_shard_key_unique": {
+        "computed": true,
+        "optional": true,
+        "type": "bool"
+       }
+      }
+     },
+     "nesting_mode": "set"
+    }
+   }
+  }
+ },
+ "source": "terraform providers schema -json; facts only (no descriptions: the provider is MPL-2.0)",
+ "terraform": "1.17.2",
+ "version": "2.21.0"
+}

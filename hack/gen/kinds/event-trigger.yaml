@@ -1,0 +1,37 @@
+terraform: [mongodbatlas_event_trigger]
+kind: EventTrigger
+shape: crud
+params:
+  groupId: {type: string, description: The project's ID.}
+  appId: {type: string}
+fields:
+  name: {type: string}
+  type: {type: string, enum: [DATABASE, AUTHENTICATION, SCHEDULED], description: What fires it.}
+  function_id: {type: string}
+  disabled: {type: boolean}
+  config:
+    type: object
+    properties:
+      operation_types: {type: array, items: {type: string}}
+      operation_type: {type: string, description: "AUTHENTICATION: LOGIN, CREATE or DELETE."}
+      providers: {type: array, items: {type: string}}
+      database: {type: string, description: "DATABASE: the database watched."}
+      collection: {type: string, description: "DATABASE: the collection watched."}
+      service_id: {type: string}
+      match: {type: object, x-kubernetes-preserve-unknown-fields: true}
+      project: {type: object, x-kubernetes-preserve-unknown-fields: true}
+      full_document: {type: boolean}
+      full_document_before_change: {type: boolean}
+      schedule: {type: string, description: "SCHEDULED: a CRON expression."}
+      unordered: {type: boolean}
+  event_processors:
+    type: object
+    x-kubernetes-preserve-unknown-fields: true
+required: [name, type]
+id: _id
+serverFields: {function_name: example-function, last_modified: 1700000000}
+sample: {groupId: 32b6e34b3d91647abb20e7b8, appId: 5f9a1b2c3d4e5f6a7b8c9d0e, name: example-trigger, type: SCHEDULED, function_id: 5f9a1b2c3d4e5f6a7b8c9d0f, config: {schedule: "*/5 * * * *"}}
+create: {method: POST, path: "/api/admin/v3.0/groups/{groupId}/apps/{appId}/triggers", headers: {Accept: application/json, Content-Type: application/json}}
+read: {method: GET, path: "/api/admin/v3.0/groups/{groupId}/apps/{appId}/triggers/{id}", headers: {Accept: application/json}}
+update: {method: PUT, path: "/api/admin/v3.0/groups/{groupId}/apps/{appId}/triggers/{id}", headers: {Accept: application/json, Content-Type: application/json}}
+delete: {method: DELETE, path: "/api/admin/v3.0/groups/{groupId}/apps/{appId}/triggers/{id}", headers: {Accept: application/json}}

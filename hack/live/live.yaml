@@ -1,0 +1,332 @@
+# Copyright 2026 High Five Labs
+# SPDX-License-Identifier: Apache-2.0
+#
+# Live tests (TestEveryKindLive, krm-rest-runtime's kindtest.Live): these
+# kinds, in this order, against the real API. Kinds not listed are not run
+# live. They skip, naming the secret, until it exists in Secret Manager; then
+#   KRM_LIVE=1 go test -run TestEveryKindLive -v .
+# Everything a run makes is named hfl-live-<stamp>-<hex> (or hfl_live_...),
+# deleted at the end; the sweep deletes older leftovers. How it works and
+# what the {{...}} templates mean: krm-rest-runtime docs/live.md.
+#
+# The credentials are an organization service account (Organization
+# Owner) of a free Atlas organization (no payment method); no cluster is
+# needed for the kinds that run. A run makes one project and deletes it;
+# org-level objects (service accounts, API keys, invitations, policies, MCP
+# configs) are deleted by their kinds and swept by name. A project service
+# account's delete also deletes the org-level account it made (hooks.go).
+secret: krm-live-mongodbatlas   # JSON: {"clientId": "mdb_sa_id_...", "clientSecret": "mdb_sa_sk_...", "orgId": "<24 hex>"}
+target: cloud.mongodb.com
+
+before:
+- method: POST
+  path: /api/atlas/v2/groups
+  headers: {Accept: application/vnd.atlas.2023-01-01+json, Content-Type: application/vnd.atlas.2023-01-01+json}
+  body: {name: "{{run}}", orgId: "{{cred:orgId}}"}
+  save: {project: id}
+after:
+- method: DELETE
+  path: "/api/atlas/v2/groups/{{var:project}}"
+  headers: {Accept: application/vnd.atlas.2023-01-01+json}
+  ok: [404]
+
+sweep:
+# Atlas answers a call with no version of its own (Vendor.Headers) with the
+# latest version on or before 2025-03-12. A project takes its project-level
+# objects (invitations, MCP configs, AI model keys) with it; org-level ones
+# are swept by name.
+- {list: "/api/atlas/v2/orgs/{{cred:orgId}}/groups?itemsPerPage=500", items: results, name: name, id: id, delete: "/api/atlas/v2/groups/{id}"}
+- {list: "/api/atlas/v2/orgs/{{cred:orgId}}/serviceAccounts?itemsPerPage=500", items: results, name: name, id: clientId, delete: "/api/atlas/v2/orgs/{{cred:orgId}}/serviceAccounts/{id}"}
+- {list: "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys?itemsPerPage=500", items: results, name: desc, id: id, delete: "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/{id}"}
+- {list: "/api/atlas/v2/orgs/{{cred:orgId}}/invites", name: username, id: id, delete: "/api/atlas/v2/orgs/{{cred:orgId}}/invites/{id}"}
+- {list: "/api/atlas/v2/orgs/{{cred:orgId}}/resourcePolicies", name: name, id: id, delete: "/api/atlas/v2/orgs/{{cred:orgId}}/resourcePolicies/{id}"}
+- {list: "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs?itemsPerPage=500", items: results, name: mcpConfigName, id: mcpConfigId, delete: "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/{id}"}
+
+kinds:
+- kind: PrivateEndpointRegionalMode
+  replaceSample: true
+  spec: {groupid: "{{var:project}}", enabled: false}
+  change: {enabled: true}
+  drift: false
+
+- kind: ProjectServiceAccount
+  replaceSample: true
+  spec: {groupid: "{{var:project}}", name: "{{name}}", description: first, roles: [GROUP_READ_ONLY], secretExpiresAfterHours: 8}
+  change: {description: second}
+
+- kind: ServiceAccount
+  replaceSample: true
+  spec: {orgid: "{{cred:orgId}}", name: "{{name}}", description: first, roles: [ORG_READ_ONLY], secretExpiresAfterHours: 8}
+  change: {description: second}
+
+- kind: ApiKey
+  replaceSample: true
+  spec: {orgid: "{{cred:orgId}}", desc: "{{name}}", roles: [ORG_READ_ONLY]}
+  change: {desc: "{{name}}-2"}
+
+- kind: OrgInvitation
+  replaceSample: true
+  spec: {orgid: "{{cred:orgId}}", username: "{{name}}@example.com", roles: [ORG_READ_ONLY]}
+  change: {roles: [ORG_BILLING_READ_ONLY]}
+  drift: [ORG_GROUP_CREATOR]
+
+- kind: ProjectInvitation
+  replaceSample: true
+  spec: {groupid: "{{var:project}}", username: "{{name}}@example.com", roles: [GROUP_READ_ONLY]}
+  change: {roles: [GROUP_DATA_ACCESS_READ_ONLY]}
+  drift: [GROUP_CLUSTER_MANAGER]
+
+- kind: ResourcePolicy
+  replaceSample: true
+  spec:
+    orgid: "{{cred:orgId}}"
+    name: "{{name}}"
+    description: first
+    policies:
+    - body: 'forbid (principal, action == cloud::Action::"cluster.createEdit", resource) when { context.cluster.regions.contains(cloud::region::"aws:ap-southeast-2") };'
+  change: {description: second}
+
+- kind: McpConfig
+  replaceSample: true
+  spec: {orgid: "{{cred:orgId}}", mcpConfigName: "{{name}}", roles: [ORG_READ_ONLY]}
+  change: {roles: [ORG_MEMBER]}
+  drift: [ORG_BILLING_READ_ONLY]
+
+- kind: McpConfigSecret
+  replaceSample: true
+  before:
+  - method: POST
+    path: "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs"
+    headers: {Accept: application/vnd.atlas.2025-03-12+json, Content-Type: application/vnd.atlas.2025-03-12+json}
+    body: {mcpConfigName: "{{name}}-parent", roles: [ORG_READ_ONLY]}
+    save: {mcpOrg: mcpConfigId}
+  after:
+  - method: DELETE
+    path: "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/{{var:mcpOrg}}"
+    headers: {Accept: application/vnd.atlas.2025-03-12+json}
+    ok: [404]
+  spec: {orgid: "{{cred:orgId}}", mcpconfigid: "{{var:mcpOrg}}", secretExpiresAfterHours: 8}
+
+- kind: ProjectMcpConfig
+  replaceSample: true
+  spec: {groupid: "{{var:project}}", mcpConfigName: "{{name}}", roles: [GROUP_READ_ONLY]}
+  change: {roles: [GROUP_DATA_ACCESS_READ_ONLY]}
+  drift: [GROUP_CLUSTER_MANAGER]
+
+- kind: ProjectMcpConfigSecret
+  replaceSample: true
+  before:
+  - method: POST
+    path: "/api/atlas/v2/groups/{{var:project}}/mcpConfigs"
+    headers: {Accept: application/vnd.atlas.2025-03-12+json, Content-Type: application/vnd.atlas.2025-03-12+json}
+    body: {mcpConfigName: "{{name}}-parent", roles: [GROUP_READ_ONLY]}
+    save: {mcpProject: mcpConfigId}
+  after:
+  - method: DELETE
+    path: "/api/atlas/v2/groups/{{var:project}}/mcpConfigs/{{var:mcpProject}}"
+    headers: {Accept: application/vnd.atlas.2025-03-12+json}
+    ok: [404]
+  spec: {groupid: "{{var:project}}", mcpconfigid: "{{var:mcpProject}}", secretExpiresAfterHours: 8}
+
+- kind: AiModelApiKey
+  replaceSample: true
+  spec: {groupid: "{{var:project}}", cloud: ANY, geography: ANY, name: "{{name}}"}
+  change: {name: "{{name}}-2"}
+
+- kind: AiModelRateLimit
+  replaceSample: true
+  spec: {groupid: "{{var:project}}", cloud: ANY, geography: ANY, modelgroupname: embed_small, requestsPerMinuteLimit: 2, tokensPerMinuteLimit: 5000}
+  change: {requestsPerMinuteLimit: 1}
+  noDrift: Atlas's PATCH wants both limits and refuses the path's cloud and geography in the body, so the harness's one-field (or whole-object) write is refused
+
+- kind: AccessListApiKey
+  replaceSample: true
+  before:
+  - method: POST
+    path: "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys"
+    headers: {Accept: application/vnd.atlas.2023-01-01+json, Content-Type: application/vnd.atlas.2023-01-01+json}
+    body: {desc: "{{name}}-parent", roles: [ORG_READ_ONLY]}
+    save: {apiKey: id}
+  after:
+  - method: DELETE
+    path: "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/{{var:apiKey}}"
+    headers: {Accept: application/vnd.atlas.2023-01-01+json}
+    ok: [404]
+  spec: {orgid: "{{cred:orgId}}", apiuserid: "{{var:apiKey}}", ipAddress: "192.0.2.1"}
+
+- kind: MetricIntegration
+  replaceSample: true
+  spec:
+    groupid: "{{var:project}}"
+    aggregationTemporality: DELTA
+    authType: HEADER
+    endpoint: https://httpbin.org/status/200
+    headers: [{name: X-Hfl-Live, value: hfl-live-not-a-secret}]
+    integrationType: OTEL
+    metricSelection: [MONGODB_METRICS]
+    providerType: CUSTOM
+  change: {aggregationTemporality: CUMULATIVE}
+  noDrift: Atlas's PUT requires the full object including writeOnly headers and refuses the GET's headersRedacted field, so the harness's one-field (or whole-object GET) write is refused
+
+- kind: LogIntegration
+  replaceSample: true
+  spec:
+    groupid: "{{var:project}}"
+    type: OTEL_LOG_EXPORT
+    logTypes: [MONGOD]
+    otelEndpoint: https://httpbin.org/status/200
+    otelSuppliedHeaders: [{name: X-Hfl-Live, value: hfl-live-not-a-secret}]
+  change: {logTypes: [MONGOD, MONGOS]}
+  noDrift: Atlas's PUT requires the full object including writeOnly otelSuppliedHeaders values
+
+- kind: OrgLogIntegration
+  replaceSample: true
+  spec:
+    orgid: "{{cred:orgId}}"
+    type: OTEL_LOG_EXPORT
+    logTypes: [EVENTS]
+    otelEndpoint: https://httpbin.org/status/200
+    otelSuppliedHeaders: [{name: X-Hfl-Live, value: hfl-live-not-a-secret}]
+  change: {otelEndpoint: https://httpbin.org/status/204}
+  noDrift: Atlas's PUT requires the full object including writeOnly otelSuppliedHeaders values
+
+- kind: ServiceAccountAccessListEntry
+  replaceSample: true
+  before:
+  - method: POST
+    path: "/api/atlas/v2/orgs/{{cred:orgId}}/serviceAccounts"
+    headers: {Accept: application/vnd.atlas.2024-08-05+json, Content-Type: application/vnd.atlas.2024-08-05+json}
+    body: {name: "{{name}}-parent", description: parent, roles: [ORG_READ_ONLY], secretExpiresAfterHours: 8}
+    save: {orgServiceAccount: clientId}
+  after:
+  - method: DELETE
+    path: "/api/atlas/v2/orgs/{{cred:orgId}}/serviceAccounts/{{var:orgServiceAccount}}"
+    headers: {Accept: application/vnd.atlas.2024-08-05+json}
+    ok: [404]
+  spec: {orgid: "{{cred:orgId}}", clientid: "{{var:orgServiceAccount}}", ipAddress: "192.0.2.1"}
+
+- kind: ProjectServiceAccountAccessListEntry
+  replaceSample: true
+  before:
+  - method: POST
+    path: "/api/atlas/v2/groups/{{var:project}}/serviceAccounts"
+    headers: {Accept: application/vnd.atlas.2024-08-05+json, Content-Type: application/vnd.atlas.2024-08-05+json}
+    body: {name: "{{name}}-parent", description: parent, roles: [GROUP_READ_ONLY], secretExpiresAfterHours: 8}
+    save: {projectServiceAccount: clientId}
+  after:
+  # The project-level delete only takes it out of the project; the org-level
+  # one deletes the account.
+  - method: DELETE
+    path: "/api/atlas/v2/groups/{{var:project}}/serviceAccounts/{{var:projectServiceAccount}}"
+    headers: {Accept: application/vnd.atlas.2024-08-05+json}
+    ok: [404]
+  - method: DELETE
+    path: "/api/atlas/v2/orgs/{{cred:orgId}}/serviceAccounts/{{var:projectServiceAccount}}"
+    headers: {Accept: application/vnd.atlas.2024-08-05+json}
+    ok: [404]
+  spec: {groupid: "{{var:project}}", clientid: "{{var:projectServiceAccount}}", ipAddress: "192.0.2.1"}
+
+# Not run: what each lacks in a free organization with no payment method
+# (clusters: the free M0 tier only, and none of these work on it).
+- kind: ClusterAdaptiveSettings
+  skip: tried on a free M0 cluster, which answers HTTP 409 ADAPTIVE_SETTINGS_NOT_SUPPORTED
+- kind: ClusterOverloadSimulation
+  skip: tried on a free M0 cluster, which answers HTTP 400 OVERLOAD_PROTECTION_SIMULATION_UNSUPPORTED_MONGODB_VERSION (M0 runs MongoDB 8.0)
+- kind: CloudBackupSnapshot
+  skip: needs a cluster with Cloud Backup (M10+); the free M0 tier has none
+- kind: CloudBackupSnapshotRestoreJob
+  skip: needs a Cloud Backup snapshot (M10+)
+- kind: CloudBackupSnapshotExportBucket
+  skip: needs a cloud bucket and an IAM role authorized through Atlas cloud provider access
+- kind: OnlineArchive
+  skip: needs an M10+ cluster
+- kind: EncryptionAtRestPrivateEndpoint
+  skip: needs encryption at rest with a customer-managed key (a cloud KMS) on M10+ clusters
+- kind: OrgDelegationSettings
+  skip: organization-wide settings of the shared test organization, which live runs must not change
+- kind: OrgMaintenanceSettings
+  skip: organization-wide settings of the shared test organization, which live runs must not change
+- kind: Organization
+  skip: creates organizations (a paying organization's cross-org billing); live runs must not create or change organizations
+- kind: StreamWorkspace
+  skip: Atlas Stream Processing is billed, and the free organization has no payment method
+- kind: StreamProcessor
+  skip: needs a stream workspace (Atlas Stream Processing is billed)
+- kind: StreamConnectionFailover
+  skip: needs a stream workspace with a Kafka connection; the generated kind has no body fields
+- kind: StreamPrivatelinkEndpoint
+  skip: needs a stream workspace and a cloud private endpoint service (billed)
+- kind: CloudBackupSnapshotExportJob
+  skip: needs a Cloud Backup snapshot (M10+) and an export bucket (a cloud bucket and an IAM role)
+- kind: CloudBackupCollectionRestoreJob
+  skip: needs a Cloud Backup snapshot (M10+)
+- kind: ClusterOutageSimulation
+  skip: needs a multi-region M10+ cluster; the free M0 tier cannot simulate an outage
+- kind: LdapVerify
+  skip: needs an LDAP server reachable from Atlas, and LDAP needs M10+ clusters
+- kind: CloudUserOrgAssignment
+  skip: "not yet tried: the kind's delete is sent as version 2023-01-01, which removes only active users (2025-02-19 removes pending ones too), and a pending hfl-live-...@example.com user is all this account can make without a real person, so the delete would never show gone"
+- kind: CloudUserProjectAssignment
+  skip: "not yet tried: the kind's delete is sent as version 2023-01-01, which removes only active users (2025-02-19 removes pending ones too), and a pending hfl-live-...@example.com user is all this account can make without a real person, so the delete would never show gone"
+- kind: CloudUserTeamAssignment
+  skip: needs an active (invitation accepted) MongoDB Cloud user; the kind's 2023-01-01 add and list calls take and show only active users, and the organization's only active users are real people
+- kind: LdapConfiguration
+  skip: needs an LDAP server reachable from Atlas, and LDAP needs M10+ clusters
+- kind: PrivatelinkEndpointServiceDataFederationOnlineArchive
+  skip: needs an AWS VPC interface endpoint (an outside cloud account) to Atlas's Data Federation endpoint service; Terraform's acceptance tests take a real one (MONGODB_ATLAS_PRIVATE_ENDPOINT_ID)
+
+- kind: FederatedQueryLimit
+  skip: needs a federated database instance (Atlas Data Federation) with a cloud bucket and an IAM role authorized through Atlas cloud provider access
+- kind: PushBasedLogExport
+  skip: needs an S3 bucket and an IAM role authorized through Atlas cloud provider access
+- kind: SearchDeployment
+  skip: needs a dedicated cluster (M10+) for its search nodes; the free M0 tier has none
+- kind: ServiceAccountSecret
+  skip: "not yet written: needs an organization service account made for the run (before calls); the secret is answered once"
+- kind: ProjectServiceAccountSecret
+  skip: "not yet written: needs a project service account made for the run (before calls); the secret is answered once"
+- kind: MongodbEmployeeAccessGrant
+  skip: "not yet tried: needs a cluster in the run's project, which the run does not make (a free M0 takes minutes, and may not take support-access grants)"
+- kind: GlobalClusterConfig
+  skip: needs a global (geo-sharded) dedicated cluster with zones; the free organization (no payment method) can make neither
+
+- kind: ProjectApiKey
+  replaceSample: true
+  spec: {groupId: "{{var:project}}", orgId: "{{cred:orgId}}", desc: "{{name}}", roles: [GROUP_READ_ONLY]}
+  change: {roles: [GROUP_DATA_ACCESS_READ_ONLY]}
+  noDrift: "roles are read back as [{groupId, roleName}] and not compared"
+
+- kind: ApiKeyProjectAssignment
+  replaceSample: true
+  before:
+  - method: POST
+    path: "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys"
+    headers: {Accept: application/vnd.atlas.2023-01-01+json, Content-Type: application/vnd.atlas.2023-01-01+json}
+    body: {desc: "{{name}}-key", roles: [ORG_READ_ONLY]}
+    save: {orgApiKey: id}
+  after:
+  - method: DELETE
+    path: "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/{{var:orgApiKey}}"
+    headers: {Accept: application/vnd.atlas.2023-01-01+json}
+    ok: [404]
+  spec: {groupId: "{{var:project}}", apiUserId: "{{var:orgApiKey}}", roles: [GROUP_READ_ONLY]}
+  change: {roles: [GROUP_DATA_ACCESS_READ_ONLY]}
+  noDrift: "roles are read back as [{groupId, roleName}] and not compared"
+
+- kind: ServiceAccountProjectAssignment
+  replaceSample: true
+  before:
+  - method: POST
+    path: "/api/atlas/v2/orgs/{{cred:orgId}}/serviceAccounts"
+    headers: {Accept: application/vnd.atlas.2024-08-05+json, Content-Type: application/vnd.atlas.2024-08-05+json}
+    body: {name: "{{name}}-org", description: invited, roles: [ORG_READ_ONLY], secretExpiresAfterHours: 8}
+    save: {orgServiceAccount: clientId}
+  after:
+  - method: DELETE
+    path: "/api/atlas/v2/orgs/{{cred:orgId}}/serviceAccounts/{{var:orgServiceAccount}}"
+    headers: {Accept: application/vnd.atlas.2024-08-05+json}
+    ok: [404]
+  spec: {groupId: "{{var:project}}", clientId: "{{var:orgServiceAccount}}", roles: [GROUP_READ_ONLY]}
+  change: {roles: [GROUP_DATA_ACCESS_READ_ONLY]}
+- kind: EventTrigger
+  skip: "the App Services Admin API signs in with a programmatic API key (publicKey, privateKey), on a Connection of its own; the live secret holds a service account only, and the run makes no App Services app (with a function or a linked cluster) for a trigger to belong to"

@@ -1,0 +1,94 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "apiKey": 280000004,
+    "mcpOrg": "rehearsal-mcpOrg",
+    "mcpProject": "rehearsal-mcpProject",
+    "orgApiKey": 280000007,
+    "orgServiceAccount": "rehearsal-orgServiceAccount",
+    "project": 280000001,
+    "projectServiceAccount": "rehearsal-projectServiceAccount"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/admin/v3.0/groups/32b6e34b3d91647abb20e7b8/apps/5f9a1b2c3d4e5f6a7b8c9d0e/triggers",
+      "body": "{\"config\":{\"schedule\":\"*/5 * * * *\"},\"function_id\":\"5f9a1b2c3d4e5f6a7b8c9d0f\",\"name\":\"example-trigger\",\"type\":\"SCHEDULED\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_id\":270000034,\"config\":{\"schedule\":\"*/5 * * * *\"},\"function_id\":\"5f9a1b2c3d4e5f6a7b8c9d0f\",\"function_name\":\"example-function\",\"last_modified\":1700000000,\"name\":\"example-trigger\",\"type\":\"SCHEDULED\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/admin/v3.0/groups/32b6e34b3d91647abb20e7b8/apps/5f9a1b2c3d4e5f6a7b8c9d0e/triggers/270000034",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_id\":270000034,\"config\":{\"schedule\":\"*/5 * * * *\"},\"function_id\":\"5f9a1b2c3d4e5f6a7b8c9d0f\",\"function_name\":\"example-function\",\"last_modified\":1700000000,\"name\":\"example-trigger\",\"type\":\"SCHEDULED\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/admin/v3.0/groups/32b6e34b3d91647abb20e7b8/apps/5f9a1b2c3d4e5f6a7b8c9d0e/triggers/270000034",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_id\":270000034,\"config\":{\"schedule\":\"*/5 * * * *\"},\"function_id\":\"5f9a1b2c3d4e5f6a7b8c9d0f\",\"function_name\":\"example-function\",\"last_modified\":1700000000,\"name\":\"example-trigger\",\"type\":\"SCHEDULED\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/admin/v3.0/groups/32b6e34b3d91647abb20e7b8/apps/5f9a1b2c3d4e5f6a7b8c9d0e/triggers/270000034",
+      "body": "{\"config\":{\"schedule\":\"*/5 * * * *\"},\"function_id\":\"5f9a1b2c3d4e5f6a7b8c9d0f\",\"name\":\"changed-name\",\"type\":\"SCHEDULED\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_id\":270000034,\"config\":{\"schedule\":\"*/5 * * * *\"},\"function_id\":\"5f9a1b2c3d4e5f6a7b8c9d0f\",\"function_name\":\"example-function\",\"last_modified\":1700000000,\"name\":\"changed-name\",\"type\":\"SCHEDULED\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/admin/v3.0/groups/32b6e34b3d91647abb20e7b8/apps/5f9a1b2c3d4e5f6a7b8c9d0e/triggers/270000034",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_id\":270000034,\"config\":{\"schedule\":\"*/5 * * * *\"},\"function_id\":\"5f9a1b2c3d4e5f6a7b8c9d0f\",\"function_name\":\"example-function\",\"last_modified\":1700000000,\"name\":\"changed-name\",\"type\":\"SCHEDULED\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/admin/v3.0/groups/32b6e34b3d91647abb20e7b8/apps/5f9a1b2c3d4e5f6a7b8c9d0e/triggers/270000034",
+      "body": "{\"name\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_id\":270000034,\"config\":{\"schedule\":\"*/5 * * * *\"},\"function_id\":\"5f9a1b2c3d4e5f6a7b8c9d0f\",\"function_name\":\"example-function\",\"last_modified\":1700000000,\"name\":\"hfl-live-drift\",\"type\":\"SCHEDULED\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/admin/v3.0/groups/32b6e34b3d91647abb20e7b8/apps/5f9a1b2c3d4e5f6a7b8c9d0e/triggers/270000034",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_id\":270000034,\"config\":{\"schedule\":\"*/5 * * * *\"},\"function_id\":\"5f9a1b2c3d4e5f6a7b8c9d0f\",\"function_name\":\"example-function\",\"last_modified\":1700000000,\"name\":\"hfl-live-drift\",\"type\":\"SCHEDULED\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/admin/v3.0/groups/32b6e34b3d91647abb20e7b8/apps/5f9a1b2c3d4e5f6a7b8c9d0e/triggers/270000034",
+      "body": "{\"config\":{\"schedule\":\"*/5 * * * *\"},\"function_id\":\"5f9a1b2c3d4e5f6a7b8c9d0f\",\"name\":\"changed-name\",\"type\":\"SCHEDULED\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_id\":270000034,\"config\":{\"schedule\":\"*/5 * * * *\"},\"function_id\":\"5f9a1b2c3d4e5f6a7b8c9d0f\",\"function_name\":\"example-function\",\"last_modified\":1700000000,\"name\":\"changed-name\",\"type\":\"SCHEDULED\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/admin/v3.0/groups/32b6e34b3d91647abb20e7b8/apps/5f9a1b2c3d4e5f6a7b8c9d0e/triggers/270000034",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"_id\":270000034,\"config\":{\"schedule\":\"*/5 * * * *\"},\"function_id\":\"5f9a1b2c3d4e5f6a7b8c9d0f\",\"function_name\":\"example-function\",\"last_modified\":1700000000,\"name\":\"changed-name\",\"type\":\"SCHEDULED\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/admin/v3.0/groups/32b6e34b3d91647abb20e7b8/apps/5f9a1b2c3d4e5f6a7b8c9d0e/triggers/270000034",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/api/admin/v3.0/groups/32b6e34b3d91647abb20e7b8/apps/5f9a1b2c3d4e5f6a7b8c9d0e/triggers/270000034",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}

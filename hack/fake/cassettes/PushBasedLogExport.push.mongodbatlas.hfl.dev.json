@@ -1,0 +1,100 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "apiKey": 280000004,
+    "mcpOrg": "rehearsal-mcpOrg",
+    "mcpProject": "rehearsal-mcpProject",
+    "orgServiceAccount": "rehearsal-orgServiceAccount",
+    "project": 280000001,
+    "projectServiceAccount": "rehearsal-projectServiceAccount"
+  },
+  "interactions": [
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/pushBasedLogExport",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"state\":\"UNCONFIGURED\"}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/example-groupId/pushBasedLogExport",
+      "body": "{\"bucketName\":\"example-bucketName\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"prefixPath\":\"example-prefixPath\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"bucketName\":\"example-bucketName\",\"createDate\":\"2000-01-01T00:00:00Z\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"prefixPath\":\"example-prefixPath\",\"state\":\"INITIATING\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/pushBasedLogExport",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"bucketName\":\"example-bucketName\",\"createDate\":\"2000-01-01T00:00:00Z\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"prefixPath\":\"example-prefixPath\",\"state\":\"INITIATING\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/pushBasedLogExport",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"bucketName\":\"example-bucketName\",\"createDate\":\"2000-01-01T00:00:00Z\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"prefixPath\":\"example-prefixPath\",\"state\":\"INITIATING\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/example-groupId/pushBasedLogExport",
+      "body": "{\"bucketName\":\"changed-bucketName\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"prefixPath\":\"example-prefixPath\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"bucketName\":\"changed-bucketName\",\"createDate\":\"2000-01-01T00:00:00Z\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"prefixPath\":\"example-prefixPath\",\"state\":\"INITIATING\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/pushBasedLogExport",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"bucketName\":\"changed-bucketName\",\"createDate\":\"2000-01-01T00:00:00Z\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"prefixPath\":\"example-prefixPath\",\"state\":\"INITIATING\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/example-groupId/pushBasedLogExport",
+      "body": "{\"bucketName\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"bucketName\":\"hfl-live-drift\",\"createDate\":\"2000-01-01T00:00:00Z\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"prefixPath\":\"example-prefixPath\",\"state\":\"INITIATING\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/pushBasedLogExport",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"bucketName\":\"hfl-live-drift\",\"createDate\":\"2000-01-01T00:00:00Z\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"prefixPath\":\"example-prefixPath\",\"state\":\"INITIATING\"}\n"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/example-groupId/pushBasedLogExport",
+      "body": "{\"bucketName\":\"changed-bucketName\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"prefixPath\":\"example-prefixPath\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"bucketName\":\"changed-bucketName\",\"createDate\":\"2000-01-01T00:00:00Z\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"prefixPath\":\"example-prefixPath\",\"state\":\"INITIATING\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/pushBasedLogExport",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"bucketName\":\"changed-bucketName\",\"createDate\":\"2000-01-01T00:00:00Z\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"prefixPath\":\"example-prefixPath\",\"state\":\"INITIATING\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/groups/example-groupId/pushBasedLogExport",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/example-groupId/pushBasedLogExport",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"state\":\"UNCONFIGURED\"}\n"
+    }
+  ]
+}

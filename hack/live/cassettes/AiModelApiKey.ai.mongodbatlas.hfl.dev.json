@@ -1,0 +1,91 @@
+{
+  "recorded": "2026-11-20T23:57:04Z",
+  "target": "cloud.mongodb.com",
+  "vars": {
+    "mcpOrg": "6dbd4ec4-67c2-4a64-8757-8bd1886b9aa1",
+    "mcpProject": "1493dfed-0de2-4c7a-ab33-2949b842f69f",
+    "project": "6b00de33e60d493199392da9"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiKeys",
+      "body": "{\"cloud\":\"ANY\",\"geography\":\"ANY\",\"name\":\"{{name}}\"}",
+      "status": 201,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"apiKeyId\":\"peugjb3mrfuczls30bq0fk2t\",\"cloud\":\"ANY\",\"createdAt\":\"2026-11-20T23:57:00.999000+00:00\",\"createdBy\":\"{{cred:clientId}}\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"groupId\":\"6b00de33e60d493199392da9\",\"maskedSecret\":\"{{redacted}}\",\"name\":\"{{name}}\",\"secret\":\"{{redacted}}\",\"status\":\"ACTIVE\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiKeys/peugjb3mrfuczls30bq0fk2t",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"apiKeyId\":\"peugjb3mrfuczls30bq0fk2t\",\"cloud\":\"ANY\",\"createdAt\":\"2026-11-20T23:57:00.999000+00:00\",\"createdBy\":\"{{cred:clientId}}\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"groupId\":\"6b00de33e60d493199392da9\",\"maskedSecret\":\"{{redacted}}\",\"name\":\"{{name}}\",\"status\":\"ACTIVE\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiKeys/peugjb3mrfuczls30bq0fk2t",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"apiKeyId\":\"peugjb3mrfuczls30bq0fk2t\",\"cloud\":\"ANY\",\"createdAt\":\"2026-11-20T23:57:00.999000+00:00\",\"createdBy\":\"{{cred:clientId}}\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"groupId\":\"6b00de33e60d493199392da9\",\"maskedSecret\":\"{{redacted}}\",\"name\":\"{{name}}\",\"status\":\"ACTIVE\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiKeys/peugjb3mrfuczls30bq0fk2t",
+      "body": "{\"name\":\"{{name}}-2\"}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"apiKeyId\":\"peugjb3mrfuczls30bq0fk2t\",\"cloud\":\"ANY\",\"createdAt\":\"2026-11-20T23:57:00.999000+00:00\",\"createdBy\":\"{{cred:clientId}}\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"groupId\":\"6b00de33e60d493199392da9\",\"maskedSecret\":\"{{redacted}}\",\"name\":\"{{name}}-2\",\"status\":\"ACTIVE\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiKeys/peugjb3mrfuczls30bq0fk2t",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"apiKeyId\":\"peugjb3mrfuczls30bq0fk2t\",\"cloud\":\"ANY\",\"createdAt\":\"2026-11-20T23:57:00.999000+00:00\",\"createdBy\":\"{{cred:clientId}}\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"groupId\":\"6b00de33e60d493199392da9\",\"maskedSecret\":\"{{redacted}}\",\"name\":\"{{name}}-2\",\"status\":\"ACTIVE\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiKeys/peugjb3mrfuczls30bq0fk2t",
+      "body": "{\"name\":\"hfl-live-drift\"}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"apiKeyId\":\"peugjb3mrfuczls30bq0fk2t\",\"cloud\":\"ANY\",\"createdAt\":\"2026-11-20T23:57:00.999000+00:00\",\"createdBy\":\"{{cred:clientId}}\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"groupId\":\"6b00de33e60d493199392da9\",\"maskedSecret\":\"{{redacted}}\",\"name\":\"hfl-live-drift\",\"status\":\"ACTIVE\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiKeys/peugjb3mrfuczls30bq0fk2t",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"apiKeyId\":\"peugjb3mrfuczls30bq0fk2t\",\"cloud\":\"ANY\",\"createdAt\":\"2026-11-20T23:57:00.999000+00:00\",\"createdBy\":\"{{cred:clientId}}\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"groupId\":\"6b00de33e60d493199392da9\",\"maskedSecret\":\"{{redacted}}\",\"name\":\"hfl-live-drift\",\"status\":\"ACTIVE\"}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiKeys/peugjb3mrfuczls30bq0fk2t",
+      "body": "{\"name\":\"{{name}}-2\"}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"apiKeyId\":\"peugjb3mrfuczls30bq0fk2t\",\"cloud\":\"ANY\",\"createdAt\":\"2026-11-20T23:57:00.999000+00:00\",\"createdBy\":\"{{cred:clientId}}\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"groupId\":\"6b00de33e60d493199392da9\",\"maskedSecret\":\"{{redacted}}\",\"name\":\"{{name}}-2\",\"status\":\"ACTIVE\"}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiKeys/peugjb3mrfuczls30bq0fk2t",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"apiKeyId\":\"peugjb3mrfuczls30bq0fk2t\",\"cloud\":\"ANY\",\"createdAt\":\"2026-11-20T23:57:00.999000+00:00\",\"createdBy\":\"{{cred:clientId}}\",\"endpoint\":\"ai.mongodb.com\",\"geography\":\"ANY\",\"groupId\":\"6b00de33e60d493199392da9\",\"maskedSecret\":\"{{redacted}}\",\"name\":\"{{name}}-2\",\"status\":\"ACTIVE\"}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiKeys/peugjb3mrfuczls30bq0fk2t",
+      "status": 204,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/6b00de33e60d493199392da9/aiModelApiKeys/peugjb3mrfuczls30bq0fk2t",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"detail\":\"Cannot find resource API key peugjb3mrfuczls30bq0fk2t.\",\"error\":404,\"errorCode\":\"RESOURCE_NOT_FOUND\",\"parameters\":[\"API key peugjb3mrfuczls30bq0fk2t\"],\"reason\":\"Not Found\"}"
+    }
+  ]
+}

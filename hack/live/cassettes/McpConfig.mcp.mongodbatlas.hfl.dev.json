@@ -1,0 +1,89 @@
+{
+  "recorded": "2026-11-20T23:56:52Z",
+  "target": "cloud.mongodb.com",
+  "vars": {
+    "project": "6b00de33e60d493199392da9"
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs",
+      "body": "{\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_READ_ONLY\"]}",
+      "status": 201,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"clientId\":\"mdb_sa_id_6b00de41deff662545e130e1\",\"egressClientId\":\"mdb_sa_id_6b00de41686b954a7c304dab\",\"mcpConfigId\":\"db80e737-f9ec-4df8-b3b3-76f0dc9f3c49\",\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_READ_ONLY\"]}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/db80e737-f9ec-4df8-b3b3-76f0dc9f3c49",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"clientId\":\"mdb_sa_id_6b00de41deff662545e130e1\",\"egressClientId\":\"mdb_sa_id_6b00de41686b954a7c304dab\",\"ipAccessList\":[],\"mcpConfigId\":\"db80e737-f9ec-4df8-b3b3-76f0dc9f3c49\",\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_READ_ONLY\"]}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/db80e737-f9ec-4df8-b3b3-76f0dc9f3c49",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"clientId\":\"mdb_sa_id_6b00de41deff662545e130e1\",\"egressClientId\":\"mdb_sa_id_6b00de41686b954a7c304dab\",\"ipAccessList\":[],\"mcpConfigId\":\"db80e737-f9ec-4df8-b3b3-76f0dc9f3c49\",\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_READ_ONLY\"]}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/db80e737-f9ec-4df8-b3b3-76f0dc9f3c49",
+      "body": "{\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_MEMBER\"]}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"clientId\":\"mdb_sa_id_6b00de41deff662545e130e1\",\"egressClientId\":\"mdb_sa_id_6b00de41686b954a7c304dab\",\"ipAccessList\":[],\"mcpConfigId\":\"db80e737-f9ec-4df8-b3b3-76f0dc9f3c49\",\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_MEMBER\"]}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/db80e737-f9ec-4df8-b3b3-76f0dc9f3c49",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"clientId\":\"mdb_sa_id_6b00de41deff662545e130e1\",\"egressClientId\":\"mdb_sa_id_6b00de41686b954a7c304dab\",\"ipAccessList\":[],\"mcpConfigId\":\"db80e737-f9ec-4df8-b3b3-76f0dc9f3c49\",\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_MEMBER\"]}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/db80e737-f9ec-4df8-b3b3-76f0dc9f3c49",
+      "body": "{\"roles\":[\"ORG_BILLING_READ_ONLY\"]}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"clientId\":\"mdb_sa_id_6b00de41deff662545e130e1\",\"egressClientId\":\"mdb_sa_id_6b00de41686b954a7c304dab\",\"ipAccessList\":[],\"mcpConfigId\":\"db80e737-f9ec-4df8-b3b3-76f0dc9f3c49\",\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_BILLING_READ_ONLY\"]}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/db80e737-f9ec-4df8-b3b3-76f0dc9f3c49",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"clientId\":\"mdb_sa_id_6b00de41deff662545e130e1\",\"egressClientId\":\"mdb_sa_id_6b00de41686b954a7c304dab\",\"ipAccessList\":[],\"mcpConfigId\":\"db80e737-f9ec-4df8-b3b3-76f0dc9f3c49\",\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_BILLING_READ_ONLY\"]}"
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/db80e737-f9ec-4df8-b3b3-76f0dc9f3c49",
+      "body": "{\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_MEMBER\"]}",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"clientId\":\"mdb_sa_id_6b00de41deff662545e130e1\",\"egressClientId\":\"mdb_sa_id_6b00de41686b954a7c304dab\",\"ipAccessList\":[],\"mcpConfigId\":\"db80e737-f9ec-4df8-b3b3-76f0dc9f3c49\",\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_MEMBER\"]}"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/db80e737-f9ec-4df8-b3b3-76f0dc9f3c49",
+      "status": 200,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8",
+      "response": "{\"clientId\":\"mdb_sa_id_6b00de41deff662545e130e1\",\"egressClientId\":\"mdb_sa_id_6b00de41686b954a7c304dab\",\"ipAccessList\":[],\"mcpConfigId\":\"db80e737-f9ec-4df8-b3b3-76f0dc9f3c49\",\"mcpConfigName\":\"{{name}}\",\"roles\":[\"ORG_MEMBER\"]}"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/db80e737-f9ec-4df8-b3b3-76f0dc9f3c49",
+      "status": 204,
+      "contentType": "application/vnd.atlas.2025-03-12+json;charset=utf-8"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/mcpConfigs/db80e737-f9ec-4df8-b3b3-76f0dc9f3c49",
+      "status": 404,
+      "contentType": "application/json",
+      "response": "{\"detail\":\"No MCP configuration with ID db80e737-f9ec-4df8-b3b3-76f0dc9f3c49 exists.\",\"error\":404,\"errorCode\":\"MCP_CONFIG_NOT_FOUND\",\"parameters\":[\"db80e737-f9ec-4df8-b3b3-76f0dc9f3c49\"],\"reason\":\"Not Found\"}"
+    }
+  ]
+}

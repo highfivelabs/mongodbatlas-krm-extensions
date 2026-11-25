@@ -1,0 +1,52 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "apiKey": 280000004,
+    "mcpOrg": "rehearsal-mcpOrg",
+    "mcpProject": "rehearsal-mcpProject",
+    "project": 280000001
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys",
+      "body": "{\"desc\":\"{{name}}-parent\",\"roles\":[\"ORG_READ_ONLY\"]}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"_stub\":\"rehearsal stand-in: the fake API has no such resource\",\"desc\":\"{{name}}-parent\",\"id\":280000004,\"roles\":[\"ORG_READ_ONLY\"]}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/280000004/accessList",
+      "body": "[{\"ipAddress\":\"192.0.2.1\"}]",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"count\":1,\"created\":\"2000-01-01T00:00:00Z\",\"ipAddress\":\"192.0.2.1\",\"lastUsed\":\"2000-01-01T00:00:00Z\",\"lastUsedAddress\":\"203.0.113.10\",\"links\":[]}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/280000004/accessList/192.0.2.1",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"count\":1,\"created\":\"2000-01-01T00:00:00Z\",\"ipAddress\":\"192.0.2.1\",\"lastUsed\":\"2000-01-01T00:00:00Z\",\"lastUsedAddress\":\"203.0.113.10\",\"links\":[]}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/280000004/accessList/192.0.2.1",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/280000004/accessList/192.0.2.1",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/orgs/{{cred:orgId}}/apiKeys/280000004",
+      "status": 204
+    }
+  ]
+}

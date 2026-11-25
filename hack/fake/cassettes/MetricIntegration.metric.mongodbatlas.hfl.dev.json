@@ -1,0 +1,61 @@
+{
+  "recorded": "2000-01-01T00:00:00Z",
+  "target": "krm-rest-runtime fake API (built from types.yaml; not the vendor's API)",
+  "vars": {
+    "apiKey": 280000004,
+    "mcpOrg": "rehearsal-mcpOrg",
+    "mcpProject": "rehearsal-mcpProject",
+    "project": 280000001
+  },
+  "interactions": [
+    {
+      "method": "POST",
+      "path": "/api/atlas/v2/groups/280000001/metricIntegrations",
+      "body": "{\"aggregationTemporality\":\"DELTA\",\"authType\":\"HEADER\",\"endpoint\":\"https://httpbin.org/status/200\",\"headers\":[{\"name\":\"X-Hfl-Live\",\"value\":\"hfl-live-not-a-secret\"}],\"integrationType\":\"OTEL\",\"metricSelection\":[\"MONGODB_METRICS\"],\"providerType\":\"CUSTOM\"}",
+      "status": 201,
+      "contentType": "application/json",
+      "response": "{\"aggregationTemporality\":\"DELTA\",\"authType\":\"HEADER\",\"endpoint\":\"https://httpbin.org/status/200\",\"headersRedacted\":[],\"integrationType\":\"OTEL\",\"metricIntegrationId\":270000012,\"metricSelection\":[\"MONGODB_METRICS\"],\"providerType\":\"CUSTOM\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/metricIntegrations/270000012",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"aggregationTemporality\":\"DELTA\",\"authType\":\"HEADER\",\"endpoint\":\"https://httpbin.org/status/200\",\"headersRedacted\":[],\"integrationType\":\"OTEL\",\"metricIntegrationId\":270000012,\"metricSelection\":[\"MONGODB_METRICS\"],\"providerType\":\"CUSTOM\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/metricIntegrations/270000012",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"aggregationTemporality\":\"DELTA\",\"authType\":\"HEADER\",\"endpoint\":\"https://httpbin.org/status/200\",\"headersRedacted\":[],\"integrationType\":\"OTEL\",\"metricIntegrationId\":270000012,\"metricSelection\":[\"MONGODB_METRICS\"],\"providerType\":\"CUSTOM\"}\n"
+    },
+    {
+      "method": "PUT",
+      "path": "/api/atlas/v2/groups/280000001/metricIntegrations/270000012",
+      "body": "{\"aggregationTemporality\":\"CUMULATIVE\",\"authType\":\"HEADER\",\"endpoint\":\"https://httpbin.org/status/200\",\"headers\":[{\"name\":\"X-Hfl-Live\",\"value\":\"hfl-live-not-a-secret\"}],\"integrationType\":\"OTEL\",\"metricSelection\":[\"MONGODB_METRICS\"],\"providerType\":\"CUSTOM\"}",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"aggregationTemporality\":\"CUMULATIVE\",\"authType\":\"HEADER\",\"endpoint\":\"https://httpbin.org/status/200\",\"headersRedacted\":[],\"integrationType\":\"OTEL\",\"metricIntegrationId\":270000012,\"metricSelection\":[\"MONGODB_METRICS\"],\"providerType\":\"CUSTOM\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/metricIntegrations/270000012",
+      "status": 200,
+      "contentType": "application/json",
+      "response": "{\"aggregationTemporality\":\"CUMULATIVE\",\"authType\":\"HEADER\",\"endpoint\":\"https://httpbin.org/status/200\",\"headersRedacted\":[],\"integrationType\":\"OTEL\",\"metricIntegrationId\":270000012,\"metricSelection\":[\"MONGODB_METRICS\"],\"providerType\":\"CUSTOM\"}\n"
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/atlas/v2/groups/280000001/metricIntegrations/270000012",
+      "status": 204
+    },
+    {
+      "method": "GET",
+      "path": "/api/atlas/v2/groups/280000001/metricIntegrations/270000012",
+      "status": 404,
+      "contentType": "text/plain; charset=utf-8",
+      "response": "{\"message\":\"Not Found\"}\n"
+    }
+  ]
+}
