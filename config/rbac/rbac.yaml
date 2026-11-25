@@ -1,0 +1,193 @@
+# Copyright 2026 High Five Labs
+# SPDX-License-Identifier: Apache-2.0
+# The manager reads Connections and their Secrets in every namespace it
+# reconciles; narrow the binding per namespace if that is too broad.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: manager
+  namespace: mongodbatlas-krm-extensions-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: mongodbatlas-krm-extensions-manager
+rules:
+- apiGroups: &id001
+  - access.mongodbatlas.hfl.dev
+  - ai.mongodbatlas.hfl.dev
+  - api.mongodbatlas.hfl.dev
+  - cloud.mongodbatlas.hfl.dev
+  - cluster.mongodbatlas.hfl.dev
+  - encryption.mongodbatlas.hfl.dev
+  - log.mongodbatlas.hfl.dev
+  - mcp.mongodbatlas.hfl.dev
+  - metric.mongodbatlas.hfl.dev
+  - online.mongodbatlas.hfl.dev
+  - org.mongodbatlas.hfl.dev
+  - organization.mongodbatlas.hfl.dev
+  - private.mongodbatlas.hfl.dev
+  - project.mongodbatlas.hfl.dev
+  - resource.mongodbatlas.hfl.dev
+  - service.mongodbatlas.hfl.dev
+  - stream.mongodbatlas.hfl.dev
+  resources:
+  - accesslistapikeys
+  - aimodelapikeys
+  - aimodelratelimits
+  - apikeys
+  - cloudbackupsnapshotexportbuckets
+  - cloudbackupsnapshotrestorejobs
+  - cloudbackupsnapshots
+  - clusteradaptivesettingses
+  - clusteroverloadsimulations
+  - encryptionatrestprivateendpoints
+  - logintegrations
+  - mcpconfigs
+  - mcpconfigsecrets
+  - metricintegrations
+  - onlinearchives
+  - organizations
+  - orgdelegationsettingses
+  - orginvitations
+  - orglogintegrations
+  - orgmaintenancesettingses
+  - privateendpointregionalmodes
+  - projectinvitations
+  - projectmcpconfigs
+  - projectmcpconfigsecrets
+  - projectserviceaccounts
+  - resourcepolicies
+  - serviceaccounts
+  - streamconnectionfailovers
+  - streamprivatelinkendpoints
+  - streamprocessors
+  - streamworkspaces
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+  - patch
+- apiGroups: *id001
+  resources:
+  - accesslistapikeys/status
+  - aimodelapikeys/status
+  - aimodelratelimits/status
+  - apikeys/status
+  - cloudbackupsnapshotexportbuckets/status
+  - cloudbackupsnapshotrestorejobs/status
+  - cloudbackupsnapshots/status
+  - clusteradaptivesettingses/status
+  - clusteroverloadsimulations/status
+  - encryptionatrestprivateendpoints/status
+  - logintegrations/status
+  - mcpconfigs/status
+  - mcpconfigsecrets/status
+  - metricintegrations/status
+  - onlinearchives/status
+  - organizations/status
+  - orgdelegationsettingses/status
+  - orginvitations/status
+  - orglogintegrations/status
+  - orgmaintenancesettingses/status
+  - privateendpointregionalmodes/status
+  - projectinvitations/status
+  - projectmcpconfigs/status
+  - projectmcpconfigsecrets/status
+  - projectserviceaccounts/status
+  - resourcepolicies/status
+  - serviceaccounts/status
+  - streamconnectionfailovers/status
+  - streamprivatelinkendpoints/status
+  - streamprocessors/status
+  - streamworkspaces/status
+  verbs:
+  - get
+  - update
+  - patch
+- apiGroups: *id001
+  resources:
+  - accesslistapikeys/finalizers
+  - aimodelapikeys/finalizers
+  - aimodelratelimits/finalizers
+  - apikeys/finalizers
+  - cloudbackupsnapshotexportbuckets/finalizers
+  - cloudbackupsnapshotrestorejobs/finalizers
+  - cloudbackupsnapshots/finalizers
+  - clusteradaptivesettingses/finalizers
+  - clusteroverloadsimulations/finalizers
+  - encryptionatrestprivateendpoints/finalizers
+  - logintegrations/finalizers
+  - mcpconfigs/finalizers
+  - mcpconfigsecrets/finalizers
+  - metricintegrations/finalizers
+  - onlinearchives/finalizers
+  - organizations/finalizers
+  - orgdelegationsettingses/finalizers
+  - orginvitations/finalizers
+  - orglogintegrations/finalizers
+  - orgmaintenancesettingses/finalizers
+  - privateendpointregionalmodes/finalizers
+  - projectinvitations/finalizers
+  - projectmcpconfigs/finalizers
+  - projectmcpconfigsecrets/finalizers
+  - projectserviceaccounts/finalizers
+  - resourcepolicies/finalizers
+  - serviceaccounts/finalizers
+  - streamconnectionfailovers/finalizers
+  - streamprivatelinkendpoints/finalizers
+  - streamprocessors/finalizers
+  - streamworkspaces/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - core.mongodbatlas.hfl.dev
+  resources:
+  - connections
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ''
+  resources:
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+- apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - ''
+  resources:
+  - events
+  verbs:
+  - create
+  - patch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: mongodbatlas-krm-extensions-manager
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: mongodbatlas-krm-extensions-manager
+subjects:
+- kind: ServiceAccount
+  name: manager
+  namespace: mongodbatlas-krm-extensions-system
