@@ -113,6 +113,14 @@ overrides:
     /api/atlas/v2/groups/{groupId}/streams/{tenantName}: name
     /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}: name
     /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}: _id
+    # An export bucket and an online archive answer _id
+    # (DiskBackupSnapshotExportBucketResponse, BackupOnlineArchive).
+    /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId}: _id
+    /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}: _id
+    # A new organization is answered inside CreateOrganizationResponse's
+    # organization, beside its first API key or service account; its own
+    # read (AtlasOrganization) is not wrapped.
+    /api/atlas/v2/orgs/{orgId}: organization/id
   excludePaths:
   - /api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints/{endpointId}
   wordSynonyms:

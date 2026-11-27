@@ -16,21 +16,21 @@
       "body": "{\"bucketName\":\"export-bucket\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\"}",
       "status": 201,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"bucketName\":\"export-bucket\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"id\":270000018,\"links\":[],\"region\":\"us-east-1\"}\n"
+      "response": "{\"_id\":270000018,\"bucketName\":\"export-bucket\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"region\":\"us-east-1\"}\n"
     },
     {
       "method": "GET",
       "path": "/api/atlas/v2/groups/example-groupId/backup/exportBuckets/270000018",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"bucketName\":\"export-bucket\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"id\":270000018,\"links\":[],\"region\":\"us-east-1\"}\n"
+      "response": "{\"_id\":270000018,\"bucketName\":\"export-bucket\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"region\":\"us-east-1\"}\n"
     },
     {
       "method": "GET",
       "path": "/api/atlas/v2/groups/example-groupId/backup/exportBuckets/270000018",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"bucketName\":\"export-bucket\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"id\":270000018,\"links\":[],\"region\":\"us-east-1\"}\n"
+      "response": "{\"_id\":270000018,\"bucketName\":\"export-bucket\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"region\":\"us-east-1\"}\n"
     },
     {
       "method": "PATCH",
@@ -38,14 +38,14 @@
       "body": "{\"bucketName\":\"changed-bucketName\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\"}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"bucketName\":\"changed-bucketName\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"id\":270000018,\"links\":[],\"region\":\"us-east-1\"}\n"
+      "response": "{\"_id\":270000018,\"bucketName\":\"changed-bucketName\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"region\":\"us-east-1\"}\n"
     },
     {
       "method": "GET",
       "path": "/api/atlas/v2/groups/example-groupId/backup/exportBuckets/270000018",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"bucketName\":\"changed-bucketName\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"id\":270000018,\"links\":[],\"region\":\"us-east-1\"}\n"
+      "response": "{\"_id\":270000018,\"bucketName\":\"changed-bucketName\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"region\":\"us-east-1\"}\n"
     },
     {
       "method": "PATCH",
@@ -53,14 +53,14 @@
       "body": "{\"bucketName\":\"hfl-live-drift\"}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"bucketName\":\"hfl-live-drift\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"id\":270000018,\"links\":[],\"region\":\"us-east-1\"}\n"
+      "response": "{\"_id\":270000018,\"bucketName\":\"hfl-live-drift\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"region\":\"us-east-1\"}\n"
     },
     {
       "method": "GET",
       "path": "/api/atlas/v2/groups/example-groupId/backup/exportBuckets/270000018",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"bucketName\":\"hfl-live-drift\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"id\":270000018,\"links\":[],\"region\":\"us-east-1\"}\n"
+      "response": "{\"_id\":270000018,\"bucketName\":\"hfl-live-drift\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"region\":\"us-east-1\"}\n"
     },
     {
       "method": "PATCH",
@@ -68,14 +68,14 @@
       "body": "{\"bucketName\":\"changed-bucketName\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\"}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"bucketName\":\"changed-bucketName\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"id\":270000018,\"links\":[],\"region\":\"us-east-1\"}\n"
+      "response": "{\"_id\":270000018,\"bucketName\":\"changed-bucketName\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"region\":\"us-east-1\"}\n"
     },
     {
       "method": "GET",
       "path": "/api/atlas/v2/groups/example-groupId/backup/exportBuckets/270000018",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"bucketName\":\"changed-bucketName\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"id\":270000018,\"links\":[],\"region\":\"us-east-1\"}\n"
+      "response": "{\"_id\":270000018,\"bucketName\":\"changed-bucketName\",\"cloudProvider\":\"AWS\",\"iamRoleId\":\"32b6e34b3d91647abb20e7b8\",\"links\":[],\"region\":\"us-east-1\"}\n"
     },
     {
       "method": "DELETE",

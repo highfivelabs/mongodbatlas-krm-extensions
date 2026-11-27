@@ -18,15 +18,29 @@ import (
 // (hack/ci.sh fetches it before the tests).
 const atlasSpec = "hack/gen/specs/mongodbatlas.yaml"
 
-// streamsPath is where Atlas Stream Processing's calls are.
-const streamsPath = "/api/atlas/v2/groups/{groupId}/streams"
+// namedBySent are the kinds whose create answers a page of the list it
+// adds to (links, results, totalCount), not the new entry: each is named in
+// its path by a field its create sends (an access list entry by its
+// ipAddress, a team member by the user's id, a private endpoint by its
+// endpointId), so its ID is that field of the request body, which the test
+// checks instead.
+var namedBySent = map[string]string{
+	"AccessListApiKey":                                      "the create answers the API key's access list; an entry is named by its ipAddress",
+	"ServiceAccountAccessListEntry":                         "the create answers the service account's access list; an entry is named by its ipAddress",
+	"ProjectServiceAccountAccessListEntry":                  "the create answers the service account's access list; an entry is named by its ipAddress",
+	"CloudUserTeamAssignment":                               "the create answers the team's members; a member is named by the user's id it sends",
+	"PrivatelinkEndpointServiceDataFederationOnlineArchive": "the create answers the project's private endpoints; one is named by the endpointId it sends",
+}
 
-// Every Atlas Stream Processing kind takes its ID from a field its create's
-// answer has. The fake API answers whatever field a descriptor names, so only
-// the spec can show a wrong one: StreamWorkspace and StreamProcessor took
-// status.id from "id", but Atlas answers _id and name and names them in its
-// paths by name; StreamPrivatelinkEndpoint is named by its _id (HFL-699).
-func TestStreamIDsAreFieldsOfTheCreateAnswer(t *testing.T) {
+// Every kind made by a call of the pinned Atlas spec takes its ID from a
+// field that call's answer has (a slash path for one inside it). The fake
+// API answers whatever field a descriptor names, so only the spec can show
+// a wrong one (HFL-699): StreamWorkspace and StreamProcessor took status.id
+// from "id", but Atlas answers _id and name and names them in its paths by
+// name; a stream Private Link connection, an export bucket and an online
+// archive answer _id; a new organization is answered inside
+// {"organization": ...}.
+func TestIDsAreFieldsOfTheCreateAnswer(t *testing.T) {
 	data, err := os.ReadFile(atlasSpec)
 	if os.IsNotExist(err) && os.Getenv("CI") == "" {
 		t.Skipf("%s not fetched: run hack/gen/fetch-specs.sh", atlasSpec)
@@ -45,41 +59,94 @@ func TestStreamIDsAreFieldsOfTheCreateAnswer(t *testing.T) {
 	checked := map[string]bool{}
 	for i := range f.Kinds {
 		k := &f.Kinds[i]
-		if k.Create == nil || k.ID == nil || k.ID.IsTemplate() || !strings.HasPrefix(k.Create.Path, streamsPath) {
+		if k.Create == nil || k.ID == nil || k.ID.IsTemplate() {
 			continue
 		}
 		op, _ := dig(spec, "paths", k.Create.Path, strings.ToLower(k.Create.Method)).(map[string]any)
 		if op == nil {
-			t.Errorf("%s: %s %s is not in %s", k.Kind, k.Create.Method, k.Create.Path, atlasSpec)
-			continue
+			continue // a call of another API (App Services) or a path the spec lacks
 		}
 		props := createAnswer(spec, op)
 		if props == nil {
-			t.Errorf("%s: %s %s answers no fields in %s", k.Kind, k.Create.Method, k.Create.Path, atlasSpec)
-			continue
+			continue // the spec gives the answer no fields
 		}
 		checked[k.Kind] = true
-		from := strings.Split(k.ID.From, "/")[0]
-		if _, ok := props[from]; !ok {
-			names := make([]string, 0, len(props))
-			for n := range props {
-				names = append(names, n)
+		if why, ok := namedBySent[k.Kind]; ok {
+			if _, page := props["results"]; !page {
+				t.Errorf("%s: allowed because %s, but %s %s's answer is no page", k.Kind, why, k.Create.Method, k.Create.Path)
 			}
-			sort.Strings(names)
+			if _, ok := fieldAt(spec, requestBody(spec, op), k.ID.From); !ok {
+				t.Errorf("%s: allowed because %s, but id.from %q is not a field of %s %s's body", k.Kind, why, k.ID.From, k.Create.Method, k.Create.Path)
+			}
+			continue
+		}
+		if names, ok := fieldAt(spec, props, k.ID.From); !ok {
 			t.Errorf("%s: id.from %q is not a field of %s %s's answer (%s): set overrides.idFrom in hack/gen/vendor.yaml",
 				k.Kind, k.ID.From, k.Create.Method, k.Create.Path, strings.Join(names, ", "))
 		}
-		if strings.HasSuffix(k.ID.Param, "Name") && from != "name" {
+		if strings.HasPrefix(k.Create.Path, streamsPath) && strings.HasSuffix(k.ID.Param, "Name") && k.ID.From != "name" {
 			// {tenantName}, {processorName}: the path names it by its name,
 			// not by the _id the answer has too.
 			t.Errorf("%s: the path names it by {%s}, but id.from is %q, not name", k.Kind, k.ID.Param, k.ID.From)
 		}
 	}
-	for _, want := range []string{"StreamWorkspace", "StreamProcessor", "StreamPrivatelinkEndpoint", "StreamConnectionFailover"} {
+	for kind := range namedBySent {
+		if !checked[kind] {
+			t.Errorf("namedBySent: %s is not made by a call of %s; remove it", kind, atlasSpec)
+		}
+	}
+	for _, want := range []string{"StreamWorkspace", "StreamProcessor", "StreamPrivatelinkEndpoint", "StreamConnectionFailover",
+		"CloudBackupSnapshotExportBucket", "OnlineArchive", "Organization"} {
 		if !checked[want] {
 			t.Errorf("%s was not checked against %s", want, atlasSpec)
 		}
 	}
+}
+
+// streamsPath is where Atlas Stream Processing's calls are.
+const streamsPath = "/api/atlas/v2/groups/{groupId}/streams"
+
+// fieldAt reports whether the slash path at is a field of props, following
+// nested objects; where it is not, it gives the fields at the level it
+// failed.
+func fieldAt(spec map[string]any, props map[string]any, at string) ([]string, bool) {
+	segs := strings.Split(at, "/")
+	for i, seg := range segs {
+		v, ok := props[seg]
+		if !ok {
+			names := make([]string, 0, len(props))
+			for n := range props {
+				names = append(names, n)
+			}
+			sort.Strings(names)
+			return names, false
+		}
+		if i < len(segs)-1 {
+			props = schemaProps(spec, v)
+		}
+	}
+	return nil, true
+}
+
+// requestBody is the fields of a call's JSON body, or of one element where
+// the body is an array.
+func requestBody(spec, op map[string]any) map[string]any {
+	content, _ := dig(deref(spec, op["requestBody"]), "content").(map[string]any)
+	types := make([]string, 0, len(content))
+	for ct := range content {
+		if strings.HasSuffix(ct, "json") {
+			types = append(types, ct)
+		}
+	}
+	sort.Strings(types)
+	for _, ct := range types {
+		s, _ := deref(spec, dig(content, ct, "schema")).(map[string]any)
+		if s["type"] == "array" {
+			return schemaProps(spec, s["items"])
+		}
+		return schemaProps(spec, s)
+	}
+	return nil
 }
 
 // createAnswer is the fields of a call's first 2xx JSON answer (Atlas's

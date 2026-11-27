@@ -321,7 +321,7 @@ kinds:
     field: groupid
   id:
     param: exportBucketId
-    from: id
+    from: _id
   terraform:
   - mongodbatlas_cloud_backup_snapshot_export_bucket
   sample:
@@ -330,7 +330,6 @@ kinds:
     cloudProvider: AWS
     iamRoleId: 32b6e34b3d91647abb20e7b8
   serverFields:
-    _id: 32b6e34b3d91647abb20e7b8
     links: []
     region: us-east-1
   readiness: fake
@@ -1053,7 +1052,7 @@ kinds:
     field: clustername
   id:
     param: archiveId
-    from: id
+    from: _id
   terraform:
   - mongodbatlas_online_archive
   sample:
@@ -1063,7 +1062,6 @@ kinds:
     criteria: {}
     dbName: example-dbName
   serverFields:
-    _id: 32b6e34b3d91647abb20e7b8
     clusterName: example-clusterName
     dataSetName: example-dataSetName
     groupId: 32b6e34b3d91647abb20e7b8
@@ -1238,7 +1236,7 @@ kinds:
       Accept: application/vnd.atlas.2023-01-01+json
   id:
     param: orgId
-    from: id
+    from: organization/id
   writeOnly:
   - apiKey
   - federationSettingsId
