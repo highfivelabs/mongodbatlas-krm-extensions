@@ -1249,6 +1249,9 @@ kinds:
   serverFields:
     isDeleted: true
     links: []
+  secretOutputs:
+  - apiKey.privateKey
+  - serviceAccount.secrets
   readiness: fake
 - kind: PrivateEndpointRegionalMode
   group: private.mongodbatlas.hfl.dev
@@ -1490,6 +1493,8 @@ kinds:
     createdAt: '2000-01-01T00:00:00Z'
     secrets: []
     systemManaged: true
+  secretOutputs:
+  - secrets
   readiness: live
 - kind: ProjectServiceAccountAccessListEntry
   group: project.mongodbatlas.hfl.dev
@@ -1776,6 +1781,8 @@ kinds:
     createdAt: '2000-01-01T00:00:00Z'
     secrets: []
     systemManaged: true
+  secretOutputs:
+  - secrets
   readiness: live
 - kind: ServiceAccountAccessListEntry
   group: service.mongodbatlas.hfl.dev
@@ -2003,6 +2010,8 @@ kinds:
   id:
     param: processorName
     from: name
+  createOnly:
+  - name
   terraform:
   - mongodbatlas_stream_processor
   sample:
@@ -2051,6 +2060,8 @@ kinds:
   id:
     param: tenantName
     from: name
+  createOnly:
+  - name
   terraform:
   - mongodbatlas_stream_workspace
   sample:
@@ -2373,4 +2384,6 @@ kinds:
     clientId: mdb_sa_id_1234567890abcdef12345678
     roles:
     - GROUP_READ_ONLY
+  secretOutputs:
+  - secrets
   readiness: fake

@@ -250,8 +250,12 @@ kinds:
   skip: creates organizations (a paying organization's cross-org billing); live runs must not create or change organizations
 - kind: StreamWorkspace
   skip: Atlas Stream Processing is billed, and the free organization has no payment method
+  change: {streamConfig: {tier: SP30}}  # name is its ID (createOnly)
+  drift: {tier: SP10}
 - kind: StreamProcessor
   skip: needs a stream workspace (Atlas Stream Processing is billed)
+  change: {tier: SP30}  # name is its ID (createOnly)
+  drift: SP10
 - kind: StreamConnectionFailover
   skip: needs a stream workspace with a Kafka connection; the generated kind has no body fields
 - kind: StreamPrivatelinkEndpoint

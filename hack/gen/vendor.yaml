@@ -121,6 +121,20 @@ overrides:
     # organization, beside its first API key or service account; its own
     # read (AtlasOrganization) is not wrapped.
     /api/atlas/v2/orgs/{orgId}: organization/id
+  # That answer holds the new API key's privateKey (ApiKeyUserDetails) and
+  # the new service account's secrets (OrgServiceAccount): never in the
+  # status, only in spec.writeSecretRef's Secret.
+  secretOutputs:
+    /api/atlas/v2/orgs/{orgId}: [apiKey.privateKey, serviceAccount.secrets]
+    # A new service account answers its first secret in secrets
+    # (OrgServiceAccount, GroupServiceAccount).
+    /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}: [secrets]
+    /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}: [secrets]
+  # A workspace and a processor are named in their paths by name, their
+  # ID: a new name is a new object, never a PATCH to the old one's path.
+  createOnly:
+    /api/atlas/v2/groups/{groupId}/streams/{tenantName}: [name]
+    /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}: [name]
   excludePaths:
   - /api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints/{endpointId}
   wordSynonyms:

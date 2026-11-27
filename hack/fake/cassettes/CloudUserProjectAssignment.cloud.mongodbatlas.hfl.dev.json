@@ -16,23 +16,23 @@
       "body": "{\"roles\":[],\"username\":\"example-username\"}",
       "status": 201,
       "contentType": "application/json",
-      "response": "{\"country\":\"US\",\"createdAt\":\"2000-01-01T00:00:00Z\",\"firstName\":\"John\",\"id\":270000030,\"invitationCreatedAt\":\"2000-01-01T00:00:00Z\",\"invitationExpiresAt\":\"2000-01-01T00:00:00Z\",\"inviterUsername\":\"user@example.com\",\"lastAuth\":\"2000-01-01T00:00:00Z\",\"lastName\":\"Doe\",\"mobileNumber\":\"example-mobileNumber\",\"orgMembershipStatus\":\"PENDING\",\"roles\":[],\"username\":\"example-username\"}\n"
+      "response": "{\"country\":\"US\",\"createdAt\":\"2000-01-01T00:00:00Z\",\"firstName\":\"John\",\"id\":270000028,\"invitationCreatedAt\":\"2000-01-01T00:00:00Z\",\"invitationExpiresAt\":\"2000-01-01T00:00:00Z\",\"inviterUsername\":\"user@example.com\",\"lastAuth\":\"2000-01-01T00:00:00Z\",\"lastName\":\"Doe\",\"mobileNumber\":\"example-mobileNumber\",\"orgMembershipStatus\":\"PENDING\",\"roles\":[],\"username\":\"example-username\"}\n"
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/users/270000030",
+      "path": "/api/atlas/v2/groups/example-groupId/users/270000028",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"country\":\"US\",\"createdAt\":\"2000-01-01T00:00:00Z\",\"firstName\":\"John\",\"id\":270000030,\"invitationCreatedAt\":\"2000-01-01T00:00:00Z\",\"invitationExpiresAt\":\"2000-01-01T00:00:00Z\",\"inviterUsername\":\"user@example.com\",\"lastAuth\":\"2000-01-01T00:00:00Z\",\"lastName\":\"Doe\",\"mobileNumber\":\"example-mobileNumber\",\"orgMembershipStatus\":\"PENDING\",\"roles\":[],\"username\":\"example-username\"}\n"
+      "response": "{\"country\":\"US\",\"createdAt\":\"2000-01-01T00:00:00Z\",\"firstName\":\"John\",\"id\":270000028,\"invitationCreatedAt\":\"2000-01-01T00:00:00Z\",\"invitationExpiresAt\":\"2000-01-01T00:00:00Z\",\"inviterUsername\":\"user@example.com\",\"lastAuth\":\"2000-01-01T00:00:00Z\",\"lastName\":\"Doe\",\"mobileNumber\":\"example-mobileNumber\",\"orgMembershipStatus\":\"PENDING\",\"roles\":[],\"username\":\"example-username\"}\n"
     },
     {
       "method": "DELETE",
-      "path": "/api/atlas/v2/groups/example-groupId/users/270000030",
+      "path": "/api/atlas/v2/groups/example-groupId/users/270000028",
       "status": 204
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/users/270000030",
+      "path": "/api/atlas/v2/groups/example-groupId/users/270000028",
       "status": 404,
       "contentType": "text/plain; charset=utf-8",
       "response": "{\"message\":\"Not Found\"}\n"

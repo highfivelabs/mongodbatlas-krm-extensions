@@ -35,47 +35,47 @@
     {
       "method": "PATCH",
       "path": "/api/atlas/v2/groups/example-groupId/streams/example-name",
-      "body": "{\"name\":\"changed-name\"}",
+      "body": "{\"streamConfig\":{\"tier\":\"SP30\"}}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"changed-name\"}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"example-name\",\"streamConfig\":{\"tier\":\"SP30\"}}\n"
     },
     {
       "method": "GET",
       "path": "/api/atlas/v2/groups/example-groupId/streams/example-name",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"changed-name\"}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"example-name\",\"streamConfig\":{\"tier\":\"SP30\"}}\n"
     },
     {
       "method": "PATCH",
       "path": "/api/atlas/v2/groups/example-groupId/streams/example-name",
-      "body": "{\"name\":\"hfl-live-drift\"}",
+      "body": "{\"streamConfig\":{\"tier\":\"SP10\"}}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"hfl-live-drift\"}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"example-name\",\"streamConfig\":{\"tier\":\"SP10\"}}\n"
     },
     {
       "method": "GET",
       "path": "/api/atlas/v2/groups/example-groupId/streams/example-name",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"hfl-live-drift\"}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"example-name\",\"streamConfig\":{\"tier\":\"SP10\"}}\n"
     },
     {
       "method": "PATCH",
       "path": "/api/atlas/v2/groups/example-groupId/streams/example-name",
-      "body": "{\"name\":\"changed-name\"}",
+      "body": "{\"streamConfig\":{\"tier\":\"SP30\"}}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"changed-name\"}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"example-name\",\"streamConfig\":{\"tier\":\"SP30\"}}\n"
     },
     {
       "method": "GET",
       "path": "/api/atlas/v2/groups/example-groupId/streams/example-name",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"changed-name\"}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"example-name\",\"streamConfig\":{\"tier\":\"SP30\"}}\n"
     },
     {
       "method": "DELETE",

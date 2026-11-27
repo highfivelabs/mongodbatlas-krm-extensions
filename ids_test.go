@@ -234,3 +234,89 @@ func dig(v any, keys ...string) any {
 	}
 	return v
 }
+
+// secretNames are the answer fields that hold a secret Atlas makes: an API
+// key's privateKey, a service account's secrets and their secret.
+var secretNames = map[string]bool{"privateKey": true, "secret": true, "secrets": true}
+
+// A secret in a create's answer, at its top or one object down, is a
+// secret output of the kind, so it is never kept in status.atProvider. The
+// generator only finds top-level ones; Organization's create answers
+// {"apiKey": {"privateKey": ...}, "serviceAccount": {"secrets": [...]},
+// "organization": {...}}, and since its ID is organization/id that answer is
+// what the status is written from.
+func TestCreateAnswerSecretsAreSecretOutputs(t *testing.T) {
+	data, err := os.ReadFile(atlasSpec)
+	if os.IsNotExist(err) && os.Getenv("CI") == "" {
+		t.Skipf("%s not fetched: run hack/gen/fetch-specs.sh", atlasSpec)
+	}
+	if err != nil {
+		t.Fatal(err)
+	}
+	var spec map[string]any
+	if err := yaml.Unmarshal(data, &spec); err != nil {
+		t.Fatal(err)
+	}
+	f, err := descriptor.Parse(Types)
+	if err != nil {
+		t.Fatal(err)
+	}
+	covered := func(k *descriptor.Kind, path string) bool {
+		for _, s := range k.SecretOutputs {
+			if s == path || strings.HasPrefix(path, s+".") {
+				return true
+			}
+		}
+		return false
+	}
+	org := false
+	for i := range f.Kinds {
+		k := &f.Kinds[i]
+		if k.Create == nil {
+			continue
+		}
+		op, _ := dig(spec, "paths", k.Create.Path, strings.ToLower(k.Create.Method)).(map[string]any)
+		if op == nil {
+			continue
+		}
+		props := createAnswer(spec, op)
+		if k.Envelope != "" {
+			continue // the status holds only the envelope's object
+		}
+		for n, v := range props {
+			paths := []string{}
+			if secretNames[n] {
+				paths = append(paths, n)
+			}
+			for m := range schemaProps(spec, v) {
+				if secretNames[m] {
+					paths = append(paths, n+"."+m)
+				}
+			}
+			for _, p := range paths {
+				if !covered(k, p) {
+					t.Errorf("%s: %s %s answers %s, which is not a secret output: add it to overrides.secretOutputs in hack/gen/vendor.yaml",
+						k.Kind, k.Create.Method, k.Create.Path, p)
+				}
+			}
+		}
+		if k.Kind == "Organization" {
+			org = true
+			answer := map[string]any{
+				"apiKey":         map[string]any{"publicKey": "pub", "privateKey": "private"},
+				"serviceAccount": map[string]any{"clientId": "c", "secrets": []any{map[string]any{"secret": "s"}}},
+				"organization":   map[string]any{"id": "o"},
+			}
+			status := descriptor.WithoutFields(answer, k.SecretOutputs)
+			if dig(status, "apiKey", "privateKey") != nil || dig(status, "serviceAccount", "secrets") != nil {
+				t.Errorf("Organization: the create answer's secrets stay in the status: %v", status)
+			}
+			if dig(status, "apiKey", "publicKey") != "pub" || dig(status, "organization", "id") != "o" {
+				t.Errorf("Organization: more than the secrets left the status: %v", status)
+			}
+		}
+	}
+	if !org {
+		t.Error("Organization was not checked")
+	}
+}

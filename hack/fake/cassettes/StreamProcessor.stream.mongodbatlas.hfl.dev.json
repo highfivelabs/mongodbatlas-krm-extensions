@@ -35,47 +35,47 @@
     {
       "method": "PATCH",
       "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/example-name",
-      "body": "{\"name\":\"changed-name\",\"pipeline\":[]}",
+      "body": "{\"pipeline\":[],\"tier\":\"SP30\"}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"changed-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"example-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{},\"tier\":\"SP30\"}\n"
     },
     {
       "method": "GET",
       "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/example-name",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"changed-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"example-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{},\"tier\":\"SP30\"}\n"
     },
     {
       "method": "PATCH",
       "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/example-name",
-      "body": "{\"name\":\"hfl-live-drift\"}",
+      "body": "{\"tier\":\"SP10\"}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"hfl-live-drift\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"example-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{},\"tier\":\"SP10\"}\n"
     },
     {
       "method": "GET",
       "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/example-name",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"hfl-live-drift\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"example-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{},\"tier\":\"SP10\"}\n"
     },
     {
       "method": "PATCH",
       "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/example-name",
-      "body": "{\"name\":\"changed-name\",\"pipeline\":[]}",
+      "body": "{\"pipeline\":[],\"tier\":\"SP30\"}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"changed-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"example-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{},\"tier\":\"SP30\"}\n"
     },
     {
       "method": "GET",
       "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/example-name",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"changed-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"example-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{},\"tier\":\"SP30\"}\n"
     },
     {
       "method": "DELETE",
