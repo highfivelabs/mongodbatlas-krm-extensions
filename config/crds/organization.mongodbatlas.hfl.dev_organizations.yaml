@@ -158,6 +158,14 @@ spec:
                     fieldPath:
                       type: string
                       description: Default status.id.
+              writeSecretRef:
+                type: object
+                description: "A Secret in this namespace to write what the API answers in apiKey.privateKey, serviceAccount.secrets, serviceAccount.secrets.0.secret to, one key each; this object owns it. The API may answer them only when it creates the resource: without this they are lost. They are never in the status."
+                properties:
+                  name:
+                    type: string
+                required:
+                - name
             x-kubernetes-validations:
             - rule: has(self.name) || (has(self.fieldRefs) && 'name' in self.fieldRefs) || (has(self.secretRefs) && 'name' in self.secretRefs)
               message: spec.name is required (or set it from spec.fieldRefs.name or spec.secretRefs.name)

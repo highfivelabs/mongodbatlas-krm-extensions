@@ -105,6 +105,40 @@ overrides:
   - /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress}
   - /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress}
   - /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId}
+  # Atlas Stream Processing answers a workspace and a processor with _id
+  # and name, and names them in its paths by name (StreamsTenant,
+  # StreamsProcessor); a Private Link connection is named by its _id
+  # (StreamsPrivateLinkConnection). None of them answers an id.
+  idFrom:
+    /api/atlas/v2/groups/{groupId}/streams/{tenantName}: name
+    /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}: name
+    /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}: _id
+    # An export bucket and an online archive answer _id
+    # (DiskBackupSnapshotExportBucketResponse, BackupOnlineArchive).
+    /api/atlas/v2/groups/{groupId}/backup/exportBuckets/{exportBucketId}: _id
+    /api/atlas/v2/groups/{groupId}/clusters/{clusterName}/onlineArchives/{archiveId}: _id
+    # A new organization is answered inside CreateOrganizationResponse's
+    # organization, beside its first API key or service account; its own
+    # read (AtlasOrganization) is not wrapped.
+    /api/atlas/v2/orgs/{orgId}: organization/id
+  # That answer holds the new API key's privateKey (ApiKeyUserDetails) and
+  # the new service account's secrets (OrgServiceAccount): never in the
+  # status, only in spec.writeSecretRef's Secret. A service account's
+  # secrets are answered by every read too, but the secret itself only on
+  # create: secrets keeps the list out of the status, and secrets.0.secret
+  # is the plaintext, which a later read (no secret there) leaves in the
+  # Secret.
+  secretOutputs:
+    /api/atlas/v2/orgs/{orgId}: [apiKey.privateKey, serviceAccount.secrets, serviceAccount.secrets.0.secret]
+    # A new service account answers its first secret in secrets
+    # (OrgServiceAccount, GroupServiceAccount).
+    /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}: [secrets, secrets.0.secret]
+    /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}: [secrets, secrets.0.secret]
+  # A workspace and a processor are named in their paths by name, their
+  # ID: a new name is a new object, never a PATCH to the old one's path.
+  createOnly:
+    /api/atlas/v2/groups/{groupId}/streams/{tenantName}: [name]
+    /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}: [name]
   excludePaths:
   - /api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints/{endpointId}
   wordSynonyms:

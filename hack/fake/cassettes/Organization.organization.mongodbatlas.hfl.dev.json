@@ -16,21 +16,21 @@
       "body": "{\"name\":\"example-name\"}",
       "status": 201,
       "contentType": "application/json",
-      "response": "{\"id\":270000021,\"isDeleted\":true,\"links\":[],\"name\":\"example-name\"}\n"
+      "response": "{\"isDeleted\":true,\"links\":[],\"name\":\"example-name\",\"organization\":{\"id\":270000021}}\n"
     },
     {
       "method": "GET",
       "path": "/api/atlas/v2/orgs/270000021",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"id\":270000021,\"isDeleted\":true,\"links\":[],\"name\":\"example-name\"}\n"
+      "response": "{\"isDeleted\":true,\"links\":[],\"name\":\"example-name\",\"organization\":{\"id\":270000021}}\n"
     },
     {
       "method": "GET",
       "path": "/api/atlas/v2/orgs/270000021",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"id\":270000021,\"isDeleted\":true,\"links\":[],\"name\":\"example-name\"}\n"
+      "response": "{\"isDeleted\":true,\"links\":[],\"name\":\"example-name\",\"organization\":{\"id\":270000021}}\n"
     },
     {
       "method": "PATCH",
@@ -38,14 +38,14 @@
       "body": "{\"name\":\"changed-name\"}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"id\":270000021,\"isDeleted\":true,\"links\":[],\"name\":\"changed-name\"}\n"
+      "response": "{\"isDeleted\":true,\"links\":[],\"name\":\"changed-name\",\"organization\":{\"id\":270000021}}\n"
     },
     {
       "method": "GET",
       "path": "/api/atlas/v2/orgs/270000021",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"id\":270000021,\"isDeleted\":true,\"links\":[],\"name\":\"changed-name\"}\n"
+      "response": "{\"isDeleted\":true,\"links\":[],\"name\":\"changed-name\",\"organization\":{\"id\":270000021}}\n"
     },
     {
       "method": "PATCH",
@@ -53,14 +53,14 @@
       "body": "{\"name\":\"hfl-live-drift\"}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"id\":270000021,\"isDeleted\":true,\"links\":[],\"name\":\"hfl-live-drift\"}\n"
+      "response": "{\"isDeleted\":true,\"links\":[],\"name\":\"hfl-live-drift\",\"organization\":{\"id\":270000021}}\n"
     },
     {
       "method": "GET",
       "path": "/api/atlas/v2/orgs/270000021",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"id\":270000021,\"isDeleted\":true,\"links\":[],\"name\":\"hfl-live-drift\"}\n"
+      "response": "{\"isDeleted\":true,\"links\":[],\"name\":\"hfl-live-drift\",\"organization\":{\"id\":270000021}}\n"
     },
     {
       "method": "PATCH",
@@ -68,14 +68,14 @@
       "body": "{\"name\":\"changed-name\"}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"id\":270000021,\"isDeleted\":true,\"links\":[],\"name\":\"changed-name\"}\n"
+      "response": "{\"isDeleted\":true,\"links\":[],\"name\":\"changed-name\",\"organization\":{\"id\":270000021}}\n"
     },
     {
       "method": "GET",
       "path": "/api/atlas/v2/orgs/270000021",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"id\":270000021,\"isDeleted\":true,\"links\":[],\"name\":\"changed-name\"}\n"
+      "response": "{\"isDeleted\":true,\"links\":[],\"name\":\"changed-name\",\"organization\":{\"id\":270000021}}\n"
     },
     {
       "method": "DELETE",

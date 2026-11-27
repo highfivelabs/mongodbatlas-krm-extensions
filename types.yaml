@@ -321,7 +321,7 @@ kinds:
     field: groupid
   id:
     param: exportBucketId
-    from: id
+    from: _id
   terraform:
   - mongodbatlas_cloud_backup_snapshot_export_bucket
   sample:
@@ -330,7 +330,6 @@ kinds:
     cloudProvider: AWS
     iamRoleId: 32b6e34b3d91647abb20e7b8
   serverFields:
-    _id: 32b6e34b3d91647abb20e7b8
     links: []
     region: us-east-1
   readiness: fake
@@ -1053,7 +1052,7 @@ kinds:
     field: clustername
   id:
     param: archiveId
-    from: id
+    from: _id
   terraform:
   - mongodbatlas_online_archive
   sample:
@@ -1063,7 +1062,6 @@ kinds:
     criteria: {}
     dbName: example-dbName
   serverFields:
-    _id: 32b6e34b3d91647abb20e7b8
     clusterName: example-clusterName
     dataSetName: example-dataSetName
     groupId: 32b6e34b3d91647abb20e7b8
@@ -1238,7 +1236,7 @@ kinds:
       Accept: application/vnd.atlas.2023-01-01+json
   id:
     param: orgId
-    from: id
+    from: organization/id
   writeOnly:
   - apiKey
   - federationSettingsId
@@ -1251,6 +1249,10 @@ kinds:
   serverFields:
     isDeleted: true
     links: []
+  secretOutputs:
+  - apiKey.privateKey
+  - serviceAccount.secrets
+  - serviceAccount.secrets.0.secret
   readiness: fake
 - kind: PrivateEndpointRegionalMode
   group: private.mongodbatlas.hfl.dev
@@ -1492,6 +1494,9 @@ kinds:
     createdAt: '2000-01-01T00:00:00Z'
     secrets: []
     systemManaged: true
+  secretOutputs:
+  - secrets
+  - secrets.0.secret
   readiness: live
 - kind: ProjectServiceAccountAccessListEntry
   group: project.mongodbatlas.hfl.dev
@@ -1778,6 +1783,9 @@ kinds:
     createdAt: '2000-01-01T00:00:00Z'
     secrets: []
     systemManaged: true
+  secretOutputs:
+  - secrets
+  - secrets.0.secret
   readiness: live
 - kind: ServiceAccountAccessListEntry
   group: service.mongodbatlas.hfl.dev
@@ -1956,14 +1964,13 @@ kinds:
     field: groupid
   id:
     param: connectionId
-    from: id
+    from: _id
   terraform:
   - mongodbatlas_stream_privatelink_endpoint
   sample:
     groupid: example-groupId
     provider: example-provider
   serverFields:
-    _id: 32b6e34b3d91647abb20e7b8
     errorMessage: example-errorMessage
     interfaceEndpointId: example-interfaceEndpointId
     interfaceEndpointName: example-interfaceEndpointName
@@ -2005,7 +2012,9 @@ kinds:
     field: tenantname
   id:
     param: processorName
-    from: id
+    from: name
+  createOnly:
+  - name
   terraform:
   - mongodbatlas_stream_processor
   sample:
@@ -2053,7 +2062,9 @@ kinds:
     field: groupid
   id:
     param: tenantName
-    from: id
+    from: name
+  createOnly:
+  - name
   terraform:
   - mongodbatlas_stream_workspace
   sample:
@@ -2376,4 +2387,7 @@ kinds:
     clientId: mdb_sa_id_1234567890abcdef12345678
     roles:
     - GROUP_READ_ONLY
+  secretOutputs:
+  - secrets
+  - secrets.0.secret
   readiness: fake

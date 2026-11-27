@@ -1,0 +1,4330 @@
+{
+ "formatVersion": 1,
+ "generatedBy": "factory upjet sync (upjet/README.md in highfivelabs/factory)",
+ "provider": {
+  "repo": "crossplane-contrib/provider-mongodbatlas",
+  "tag": "v1.7.0",
+  "commit": "de3fa26c4601980ec2c28bb47fa7f38e0f2f4bf9",
+  "commitDate": "2026-11-20T17:37:20Z",
+  "licence": "Apache-2.0"
+ },
+ "join": "types.yaml terraform",
+ "counts": {
+  "ours": 53,
+  "matched": 53,
+  "references": 94,
+  "referencesOur": 30,
+  "handExamples": 53,
+  "notTested": 0
+ },
+ "entries": [
+  {
+   "ours": {
+    "kind": "AccessListApiKey",
+    "group": "access.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_access_list_api_key",
+    "group": "mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "AccessListAPIKey",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "accessListImportJoinedID([]string{refs.OrgID, refs.APIKeyID})",
+     "at": "config/resources/mongodbatlas.go:516"
+    },
+    "references": [
+     {
+      "field": "api_key_id",
+      "target": "mongodbatlas_api_key",
+      "targetKind": "mongodbatlas.crossplane.io/APIKey",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_accesslistapikey_types.go:71"
+     },
+     {
+      "field": "org_id",
+      "target": "mongodbatlas_organization",
+      "targetKind": "mongodbatlas.crossplane.io/Organization",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_accesslistapikey_types.go:92"
+     }
+    ],
+    "lateInitIgnored": [
+     {
+      "field": "ip_address",
+      "at": "config/resources/mongodbatlas.go:517"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mongodbatlas/v1alpha1/accesslistapikey",
+      "at": "examples-generated/cluster/mongodbatlas/v1alpha1/accesslistapikey.yaml",
+      "origin": "generated",
+      "fields": [
+       "cidr_block"
+      ],
+      "refFields": [
+       "api_key_id",
+       "org_id"
+      ]
+     },
+     {
+      "id": "mongodbatlas/v1alpha1/accesslistapikey",
+      "at": "examples/cluster/mongodbatlas/v1alpha1/accesslistapikey.yaml",
+      "origin": "hand",
+      "with": [
+       "mongodbatlas_api_key"
+      ],
+      "fields": [
+       "cidr_block",
+       "org_id"
+      ],
+      "refFields": [
+       "api_key_id"
+      ],
+      "values": {
+       "cidr_block": "1.2.3.4/32",
+       "org_id": "${data.mongodbatlas.org_id}"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "AccessListAPIKey",
+     "at": "config/resources/mongodbatlas.go:514"
+    }
+   },
+   "targetsOurs": {
+    "mongodbatlas_api_key": [
+     "api.mongodbatlas.hfl.dev/ApiKey"
+    ],
+    "mongodbatlas_organization": [
+     "organization.mongodbatlas.hfl.dev/Organization"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "AiModelApiKey",
+    "group": "ai.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_ai_model_api_key",
+    "group": "ai.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "ModelAPIKey",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "computedKeyID(\"api_key_id\")",
+     "at": "config/resources/ai.go:14"
+    },
+    "references": [
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/ai/v1alpha1/zz_modelapikey_types.go:95"
+     }
+    ],
+    "examples": [
+     {
+      "id": "ai/v1alpha1/modelapikey",
+      "at": "examples-generated/cluster/ai/v1alpha1/modelapikey.yaml",
+      "origin": "generated",
+      "fields": [
+       "cloud",
+       "geography",
+       "name"
+      ],
+      "refFields": [
+       "project_id"
+      ]
+     },
+     {
+      "id": "ai/v1alpha1/modelapikey",
+      "at": "examples/cluster/ai/v1alpha1/modelapikey.yaml",
+      "origin": "hand",
+      "fields": [
+       "cloud",
+       "geography",
+       "name",
+       "project_id"
+      ],
+      "values": {
+       "cloud": "ANY",
+       "geography": "ANY",
+       "name": "example-ai-model-key",
+       "project_id": "${data.mongodbatlas.project_id}"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "AiModelRateLimit",
+    "group": "ai.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_ai_model_rate_limit",
+    "group": "ai.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "ModelRateLimit",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "importJoinedID([]string{refs.ProjectID, \"cloud\", \"geography\", \"model_group_name\"}, \"model_group_name\")",
+     "at": "config/resources/ai.go:25"
+    },
+    "references": [
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/ai/v1alpha1/zz_modelratelimit_types.go:92"
+     }
+    ],
+    "examples": [
+     {
+      "id": "ai/v1alpha1/modelratelimit",
+      "at": "examples-generated/cluster/ai/v1alpha1/modelratelimit.yaml",
+      "origin": "generated",
+      "fields": [
+       "cloud",
+       "geography",
+       "model_group_name",
+       "requests_per_minute_limit",
+       "tokens_per_minute_limit"
+      ],
+      "refFields": [
+       "project_id"
+      ]
+     },
+     {
+      "id": "ai/v1alpha1/modelratelimit",
+      "at": "examples/cluster/ai/v1alpha1/modelratelimit.yaml",
+      "origin": "hand",
+      "fields": [
+       "cloud",
+       "geography",
+       "model_group_name",
+       "project_id",
+       "requests_per_minute_limit",
+       "tokens_per_minute_limit"
+      ],
+      "values": {
+       "cloud": "ANY",
+       "geography": "ANY",
+       "model_group_name": "embed_large",
+       "project_id": "${data.mongodbatlas.project_id}",
+       "requests_per_minute_limit": 100,
+       "tokens_per_minute_limit": 10000
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ApiKey",
+    "group": "api.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_api_key",
+    "group": "mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "APIKey",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "importJoinedIDAssigned([]string{refs.OrgID, refs.APIKeyID}, refs.APIKeyID)",
+     "at": "config/resources/mongodbatlas.go:166"
+    },
+    "references": [
+     {
+      "field": "org_id",
+      "target": "mongodbatlas_organization",
+      "targetKind": "mongodbatlas.crossplane.io/Organization",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_apikey_types.go:69"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mongodbatlas/v1alpha1/apikey",
+      "at": "examples-generated/cluster/mongodbatlas/v1alpha1/apikey.yaml",
+      "origin": "generated",
+      "fields": [
+       "description",
+       "role_names"
+      ],
+      "refFields": [
+       "org_id"
+      ]
+     },
+     {
+      "id": "mongodbatlas/v1alpha1/apikey",
+      "at": "examples/cluster/mongodbatlas/v1alpha1/apikey.yaml",
+      "origin": "hand",
+      "fields": [
+       "description",
+       "org_id",
+       "role_names"
+      ],
+      "values": {
+       "description": "key-name",
+       "org_id": "${data.mongodbatlas.org_id}",
+       "role_names": [
+        "ORG_READ_ONLY"
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "APIKey",
+     "at": "config/resources/mongodbatlas.go:164"
+    }
+   },
+   "targetsOurs": {
+    "mongodbatlas_organization": [
+     "organization.mongodbatlas.hfl.dev/Organization"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ApiKeyProjectAssignment",
+    "group": "api.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_api_key_project_assignment",
+    "group": "mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "APIKeyProjectAssignment",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "templated(\"{{ .parameters.project_id }}/{{ .parameters.api_key_id }}\")",
+     "at": "config/resources/mongodbatlas.go:177"
+    },
+    "references": [
+     {
+      "field": "api_key_id",
+      "target": "mongodbatlas_api_key",
+      "targetKind": "mongodbatlas.crossplane.io/APIKey",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_apikeyprojectassignment_types.go:67"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_apikeyprojectassignment_types.go:80"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mongodbatlas/v1alpha1/apikeyprojectassignment",
+      "at": "examples-generated/cluster/mongodbatlas/v1alpha1/apikeyprojectassignment.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_access_list_api_key",
+       "mongodbatlas_api_key",
+       "mongodbatlas_project"
+      ],
+      "fields": [
+       "roles"
+      ],
+      "refFields": [
+       "api_key_id",
+       "project_id"
+      ]
+     },
+     {
+      "id": "mongodbatlas/v1alpha1/apikeyprojectassignment",
+      "at": "examples/cluster/mongodbatlas/v1alpha1/apikeyprojectassignment.yaml",
+      "origin": "hand",
+      "with": [
+       "mongodbatlas_access_list_api_key",
+       "mongodbatlas_api_key",
+       "mongodbatlas_project"
+      ],
+      "fields": [
+       "roles"
+      ],
+      "refFields": [
+       "api_key_id",
+       "project_id"
+      ],
+      "values": {
+       "roles": [
+        "GROUP_OWNER"
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "APIKeyProjectAssignment",
+     "at": "config/resources/mongodbatlas.go:175"
+    }
+   },
+   "targetsOurs": {
+    "mongodbatlas_api_key": [
+     "api.mongodbatlas.hfl.dev/ApiKey"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "CloudBackupCollectionRestoreJob",
+    "group": "cloud.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_cloud_backup_collection_restore_job",
+    "group": "cloud.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "BackupCollectionRestoreJob",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "computedKeyID(\"job_id\")",
+     "at": "config/resources/cloud.go:151"
+    },
+    "references": [
+     {
+      "field": "cluster_name",
+      "target": "mongodbatlas_advanced_cluster",
+      "targetKind": "mongodbatlas.crossplane.io/AdvancedCluster",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"name\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/cloud/v1alpha1/zz_backupcollectionrestorejob_types.go:191"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/cloud/v1alpha1/zz_backupcollectionrestorejob_types.go:236"
+     },
+     {
+      "field": "snapshot_id",
+      "target": "mongodbatlas_cloud_backup_snapshot",
+      "targetKind": "cloud.mongodbatlas.crossplane.io/BackupSnapshot",
+      "source": "inferred",
+      "at": "apis/cluster/cloud/v1alpha1/zz_backupcollectionrestorejob_types.go:249"
+     },
+     {
+      "field": "target_cluster_name",
+      "target": "mongodbatlas_advanced_cluster",
+      "targetKind": "mongodbatlas.crossplane.io/AdvancedCluster",
+      "extractor": "refs.ExtractParamPath(\"name\", false)",
+      "source": "both",
+      "at": "config/resources/cloud.go:153"
+     },
+     {
+      "field": "target_project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "both",
+      "at": "config/resources/cloud.go:153"
+     }
+    ],
+    "examples": [
+     {
+      "id": "cloud/v1alpha1/backupcollectionrestorejob",
+      "at": "examples-generated/cluster/cloud/v1alpha1/backupcollectionrestorejob.yaml",
+      "origin": "generated",
+      "fields": [
+       "collection_suffix",
+       "collections",
+       "database_suffix",
+       "databases",
+       "index_strategy",
+       "timeouts",
+       "timeouts.create",
+       "write_strategy"
+      ],
+      "refFields": [
+       "cluster_name",
+       "project_id",
+       "snapshot_id",
+       "target_cluster_name",
+       "target_project_id"
+      ]
+     },
+     {
+      "id": "cloud/v1alpha1/backupcollectionrestorejob",
+      "at": "examples/cluster/cloud/v1alpha1/backupcollectionrestorejob.yaml",
+      "origin": "hand",
+      "manualIntervention": "The source cluster must hold the restored collections (sample_mflix) in a completed snapshot, which this provider cannot load.",
+      "with": [
+       "mongodbatlas_advanced_cluster",
+       "mongodbatlas_cloud_backup_snapshot"
+      ],
+      "fields": [
+       "collections",
+       "collections.source_namespace",
+       "collections.target_namespace",
+       "index_strategy",
+       "project_id",
+       "target_project_id",
+       "write_strategy"
+      ],
+      "refFields": [
+       "cluster_name",
+       "snapshot_id",
+       "target_cluster_name"
+      ],
+      "values": {
+       "collections": [
+        {
+         "source_namespace": "sample_mflix.movies",
+         "target_namespace": "sample_mflix.movies_restored"
+        }
+       ],
+       "index_strategy": "ALL",
+       "project_id": "${data.mongodbatlas.project_id}",
+       "target_project_id": "${data.mongodbatlas.project_id}",
+       "write_strategy": "CREATE_NEW"
+      }
+     }
+    ]
+   },
+   "targetsOurs": {
+    "mongodbatlas_cloud_backup_snapshot": [
+     "cloud.mongodbatlas.hfl.dev/CloudBackupSnapshot"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "CloudBackupSnapshot",
+    "group": "cloud.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_cloud_backup_snapshot",
+    "group": "cloud.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "BackupSnapshot",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "importJoinedIDAssigned([]string{refs.ProjectID, refs.ClusterName, \"snapshot_id\"}, \"snapshot_id\")",
+     "at": "config/resources/cloud.go:80"
+    },
+    "references": [
+     {
+      "field": "cluster_name",
+      "target": "mongodbatlas_advanced_cluster",
+      "targetKind": "mongodbatlas.crossplane.io/AdvancedCluster",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"name\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/cloud/v1alpha1/zz_backupsnapshot_types.go:120"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/cloud/v1alpha1/zz_backupsnapshot_types.go:142"
+     }
+    ],
+    "examples": [
+     {
+      "id": "cloud/v1alpha1/backupsnapshot",
+      "at": "examples-generated/cluster/cloud/v1alpha1/backupsnapshot.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_advanced_cluster",
+       "mongodbatlas_cloud_backup_snapshot_restore_job"
+      ],
+      "fields": [
+       "?timeouts",
+       "?timeouts.create",
+       "description",
+       "retention_in_days"
+      ],
+      "refFields": [
+       "cluster_name",
+       "project_id"
+      ]
+     },
+     {
+      "id": "cloud/v1alpha1/backupsnapshot",
+      "at": "examples/cluster/cloud/v1alpha1/backupsnapshot.yaml",
+      "origin": "hand",
+      "annotations": {
+       "uptest.upbound.io/timeout": "5400"
+      },
+      "with": [
+       "mongodbatlas_advanced_cluster"
+      ],
+      "fields": [
+       "description",
+       "project_id",
+       "retention_in_days"
+      ],
+      "refFields": [
+       "cluster_name"
+      ],
+      "values": {
+       "description": "myDescription",
+       "project_id": "${data.mongodbatlas.project_id}",
+       "retention_in_days": 1
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "CloudBackupSnapshotExportBucket",
+    "group": "cloud.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_cloud_backup_snapshot_export_bucket",
+    "group": "cloud.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "BackupSnapshotExportBucket",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "importJoinedIDAssigned([]string{refs.ProjectID, \"id\"}, \"id\")",
+     "at": "config/resources/cloud.go:94"
+    },
+    "references": [
+     {
+      "field": "iam_role_id",
+      "target": "mongodbatlas_cloud_provider_access_authorization",
+      "targetKind": "cloud.mongodbatlas.crossplane.io/ProviderAccessAuthorization",
+      "source": "inferred",
+      "at": "apis/cluster/cloud/v1alpha1/zz_backupsnapshotexportbucket_types.go:100"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/cloud/v1alpha1/zz_backupsnapshotexportbucket_types.go:113"
+     }
+    ],
+    "examples": [
+     {
+      "id": "cloud/v1alpha1/backupsnapshotexportbucket",
+      "at": "examples-generated/cluster/cloud/v1alpha1/backupsnapshotexportbucket.yaml",
+      "origin": "generated",
+      "fields": [
+       "bucket_name",
+       "cloud_provider"
+      ],
+      "refFields": [
+       "iam_role_id",
+       "project_id"
+      ]
+     },
+     {
+      "id": "cloud/v1alpha1/backupsnapshotexportbucket",
+      "at": "examples/cluster/cloud/v1alpha1/backupsnapshotexportbucket.yaml",
+      "origin": "hand",
+      "manualIntervention": "Needs an existing S3 bucket and an AWS IAM role that trusts the Atlas AWS account.",
+      "with": [
+       "mongodbatlas_cloud_provider_access_authorization",
+       "mongodbatlas_cloud_provider_access_setup"
+      ],
+      "fields": [
+       "bucket_name",
+       "cloud_provider",
+       "project_id"
+      ],
+      "refFields": [
+       "iam_role_id"
+      ],
+      "values": {
+       "bucket_name": "example-bucket",
+       "cloud_provider": "AWS",
+       "project_id": "${data.mongodbatlas.project_id}"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "CloudBackupSnapshotExportJob",
+    "group": "cloud.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_cloud_backup_snapshot_export_job",
+    "group": "cloud.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "BackupSnapshotExportJob",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "importJoinedIDAssigned([]string{refs.ProjectID, refs.ClusterName, \"export_job_id\"}, \"export_job_id\")",
+     "at": "config/resources/cloud.go:131"
+    },
+    "references": [
+     {
+      "field": "cluster_name",
+      "target": "mongodbatlas_advanced_cluster",
+      "targetKind": "mongodbatlas.crossplane.io/AdvancedCluster",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"name\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/cloud/v1alpha1/zz_backupsnapshotexportjob_types.go:121"
+     },
+     {
+      "field": "export_bucket_id",
+      "target": "mongodbatlas_cloud_backup_snapshot_export_bucket",
+      "targetKind": "cloud.mongodbatlas.crossplane.io/BackupSnapshotExportBucket",
+      "source": "both",
+      "at": "config/resources/cloud.go:132"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/cloud/v1alpha1/zz_backupsnapshotexportjob_types.go:151"
+     },
+     {
+      "field": "snapshot_id",
+      "target": "mongodbatlas_cloud_backup_snapshot",
+      "targetKind": "cloud.mongodbatlas.crossplane.io/BackupSnapshot",
+      "source": "both",
+      "at": "config/resources/cloud.go:132"
+     }
+    ],
+    "examples": [
+     {
+      "id": "cloud/v1alpha1/backupsnapshotexportjob",
+      "at": "examples-generated/cluster/cloud/v1alpha1/backupsnapshotexportjob.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_cloud_backup_snapshot_export_bucket"
+      ],
+      "fields": [
+       "custom_data",
+       "custom_data.key",
+       "custom_data.value"
+      ],
+      "refFields": [
+       "cluster_name",
+       "export_bucket_id",
+       "project_id",
+       "snapshot_id"
+      ]
+     },
+     {
+      "id": "cloud/v1alpha1/backupsnapshotexportjob",
+      "at": "examples/cluster/cloud/v1alpha1/backupsnapshotexportjob.yaml",
+      "origin": "hand",
+      "manualIntervention": "Needs an existing S3 bucket and an AWS IAM role that trusts the Atlas AWS account.",
+      "with": [
+       "mongodbatlas_advanced_cluster",
+       "mongodbatlas_cloud_backup_snapshot",
+       "mongodbatlas_cloud_backup_snapshot_export_bucket",
+       "mongodbatlas_cloud_provider_access_authorization",
+       "mongodbatlas_cloud_provider_access_setup"
+      ],
+      "fields": [
+       "custom_data",
+       "custom_data.key",
+       "custom_data.value",
+       "project_id"
+      ],
+      "refFields": [
+       "cluster_name",
+       "export_bucket_id",
+       "snapshot_id"
+      ],
+      "values": {
+       "custom_data": [
+        {
+         "key": "exported by",
+         "value": "myName"
+        }
+       ],
+       "project_id": "${data.mongodbatlas.project_id}"
+      }
+     }
+    ]
+   },
+   "targetsOurs": {
+    "mongodbatlas_cloud_backup_snapshot": [
+     "cloud.mongodbatlas.hfl.dev/CloudBackupSnapshot"
+    ],
+    "mongodbatlas_cloud_backup_snapshot_export_bucket": [
+     "cloud.mongodbatlas.hfl.dev/CloudBackupSnapshotExportBucket"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "CloudBackupSnapshotRestoreJob",
+    "group": "cloud.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_cloud_backup_snapshot_restore_job",
+    "group": "cloud.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "BackupSnapshotRestoreJob",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "importJoinedIDAssigned([]string{refs.ProjectID, refs.ClusterName, \"snapshot_restore_job_id\"}, \"snapshot_restore_job_id\")",
+     "at": "config/resources/cloud.go:107"
+    },
+    "references": [
+     {
+      "field": "cluster_name",
+      "target": "mongodbatlas_advanced_cluster",
+      "targetKind": "mongodbatlas.crossplane.io/AdvancedCluster",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"name\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/cloud/v1alpha1/zz_backupsnapshotrestorejob_types.go:106"
+     },
+     {
+      "field": "delivery_type_config.target_cluster_name",
+      "target": "mongodbatlas_advanced_cluster",
+      "targetKind": "mongodbatlas.crossplane.io/AdvancedCluster",
+      "extractor": "refs.ExtractParamPath(\"name\", false)",
+      "source": "both",
+      "at": "config/resources/cloud.go:108"
+     },
+     {
+      "field": "delivery_type_config.target_project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "both",
+      "at": "config/resources/cloud.go:108"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/cloud/v1alpha1/zz_backupsnapshotrestorejob_types.go:123"
+     },
+     {
+      "field": "snapshot_id",
+      "target": "mongodbatlas_cloud_backup_snapshot",
+      "targetKind": "cloud.mongodbatlas.crossplane.io/BackupSnapshot",
+      "source": "both",
+      "at": "config/resources/cloud.go:108"
+     }
+    ],
+    "examples": [
+     {
+      "id": "cloud/v1alpha1/backupsnapshotrestorejob",
+      "at": "examples-generated/cluster/cloud/v1alpha1/backupsnapshotrestorejob.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_advanced_cluster",
+       "mongodbatlas_cloud_backup_snapshot"
+      ],
+      "fields": [
+       "delivery_type_config",
+       "delivery_type_config.automated"
+      ],
+      "refFields": [
+       "cluster_name",
+       "delivery_type_config.target_cluster_name",
+       "delivery_type_config.target_project_id",
+       "project_id",
+       "snapshot_id"
+      ]
+     },
+     {
+      "id": "cloud/v1alpha1/backupsnapshotrestorejob",
+      "at": "examples/cluster/cloud/v1alpha1/backupsnapshotrestorejob.yaml",
+      "origin": "hand",
+      "annotations": {
+       "uptest.upbound.io/timeout": "5400"
+      },
+      "with": [
+       "mongodbatlas_advanced_cluster",
+       "mongodbatlas_cloud_backup_snapshot"
+      ],
+      "fields": [
+       "delivery_type_config",
+       "delivery_type_config.download",
+       "project_id"
+      ],
+      "refFields": [
+       "cluster_name",
+       "snapshot_id"
+      ],
+      "values": {
+       "delivery_type_config": [
+        {
+         "download": true
+        }
+       ],
+       "project_id": "${data.mongodbatlas.project_id}"
+      }
+     }
+    ]
+   },
+   "targetsOurs": {
+    "mongodbatlas_cloud_backup_snapshot": [
+     "cloud.mongodbatlas.hfl.dev/CloudBackupSnapshot"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "CloudUserOrgAssignment",
+    "group": "cloud.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_cloud_user_org_assignment",
+    "group": "cloud.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "UserOrgAssignment",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "templated(\"{{ .parameters.org_id }}/{{ .parameters.username }}\")",
+     "at": "config/resources/cloud.go:205"
+    },
+    "references": [
+     {
+      "field": "org_id",
+      "target": "mongodbatlas_organization",
+      "targetKind": "mongodbatlas.crossplane.io/Organization",
+      "source": "inferred",
+      "at": "apis/cluster/cloud/v1alpha1/zz_userorgassignment_types.go:134"
+     }
+    ],
+    "examples": [
+     {
+      "id": "cloud/v1alpha1/userorgassignment",
+      "at": "examples-generated/cluster/cloud/v1alpha1/userorgassignment.yaml",
+      "origin": "generated",
+      "fields": [
+       "roles",
+       "roles.org_roles",
+       "username"
+      ],
+      "refFields": [
+       "org_id"
+      ]
+     },
+     {
+      "id": "cloud/v1alpha1/userorgassignment",
+      "at": "examples/cluster/cloud/v1alpha1/userorgassignment.yaml",
+      "origin": "hand",
+      "fields": [
+       "org_id",
+       "roles",
+       "roles.org_roles",
+       "username"
+      ],
+      "values": {
+       "org_id": "${data.mongodbatlas.org_id}",
+       "roles": {
+        "org_roles": [
+         "ORG_MEMBER"
+        ]
+       },
+       "username": "${Rand.RFC1123Subdomain}@example.com"
+      }
+     }
+    ]
+   },
+   "targetsOurs": {
+    "mongodbatlas_organization": [
+     "organization.mongodbatlas.hfl.dev/Organization"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "CloudUserProjectAssignment",
+    "group": "cloud.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_cloud_user_project_assignment",
+    "group": "cloud.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "UserProjectAssignment",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "templated(\"{{ .parameters.project_id }}/{{ .parameters.username }}\")",
+     "at": "config/resources/cloud.go:215"
+    },
+    "references": [
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/cloud/v1alpha1/zz_userprojectassignment_types.go:91"
+     }
+    ],
+    "examples": [
+     {
+      "id": "cloud/v1alpha1/userprojectassignment",
+      "at": "examples-generated/cluster/cloud/v1alpha1/userprojectassignment.yaml",
+      "origin": "generated",
+      "fields": [
+       "roles",
+       "username"
+      ],
+      "refFields": [
+       "project_id"
+      ]
+     },
+     {
+      "id": "cloud/v1alpha1/userprojectassignment",
+      "at": "examples/cluster/cloud/v1alpha1/userprojectassignment.yaml",
+      "origin": "hand",
+      "fields": [
+       "project_id",
+       "roles",
+       "username"
+      ],
+      "values": {
+       "project_id": "${data.mongodbatlas.project_id}",
+       "roles": [
+        "GROUP_OWNER",
+        "GROUP_DATA_ACCESS_ADMIN"
+       ],
+       "username": "${Rand.RFC1123Subdomain}@example.com"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "CloudUserTeamAssignment",
+    "group": "cloud.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_cloud_user_team_assignment",
+    "group": "cloud.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "UserTeamAssignment",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "templated(\"{{ .parameters.org_id }}/{{ .parameters.team_id }}/{{ .parameters.user_id }}\")",
+     "at": "config/resources/cloud.go:225"
+    },
+    "references": [
+     {
+      "field": "org_id",
+      "target": "mongodbatlas_organization",
+      "targetKind": "mongodbatlas.crossplane.io/Organization",
+      "source": "inferred",
+      "at": "apis/cluster/cloud/v1alpha1/zz_userteamassignment_types.go:131"
+     },
+     {
+      "field": "team_id",
+      "target": "mongodbatlas_team",
+      "targetKind": "mongodbatlas.crossplane.io/Team",
+      "source": "both",
+      "at": "config/resources/cloud.go:226"
+     },
+     {
+      "field": "user_id",
+      "target": "mongodbatlas_cloud_user_org_assignment",
+      "targetKind": "cloud.mongodbatlas.crossplane.io/UserOrgAssignment",
+      "extractor": "refs.ExtractParamPath(\"user_id\", true)",
+      "source": "both",
+      "at": "config/resources/cloud.go:226"
+     }
+    ],
+    "examples": [
+     {
+      "id": "cloud/v1alpha1/userteamassignment",
+      "at": "examples-generated/cluster/cloud/v1alpha1/userteamassignment.yaml",
+      "origin": "generated",
+      "refFields": [
+       "org_id",
+       "team_id",
+       "user_id"
+      ]
+     },
+     {
+      "id": "cloud/v1alpha1/userteamassignment",
+      "at": "examples/cluster/cloud/v1alpha1/userteamassignment.yaml",
+      "origin": "hand",
+      "with": [
+       "mongodbatlas_team"
+      ],
+      "fields": [
+       "org_id",
+       "user_id"
+      ],
+      "refFields": [
+       "team_id"
+      ],
+      "values": {
+       "org_id": "${data.mongodbatlas.org_id}",
+       "user_id": "${data.mongodbatlas.user_id}"
+      }
+     }
+    ]
+   },
+   "targetsOurs": {
+    "mongodbatlas_cloud_user_org_assignment": [
+     "cloud.mongodbatlas.hfl.dev/CloudUserOrgAssignment"
+    ],
+    "mongodbatlas_organization": [
+     "organization.mongodbatlas.hfl.dev/Organization"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ClusterAdaptiveSettings",
+    "group": "cluster.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_cluster_adaptive_settings",
+    "group": "cluster.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "AdaptiveSettings",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "templated(\"{{ .parameters.project_id }}/{{ .parameters.cluster_name }}\")",
+     "at": "config/resources/mongodbatlas.go:104"
+    },
+    "references": [
+     {
+      "field": "cluster_name",
+      "target": "mongodbatlas_advanced_cluster",
+      "targetKind": "mongodbatlas.crossplane.io/AdvancedCluster",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"name\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/cluster/v1alpha1/zz_adaptivesettings_types.go:74"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/cluster/v1alpha1/zz_adaptivesettings_types.go:87"
+     }
+    ],
+    "examples": [
+     {
+      "id": "cluster/v1alpha1/adaptivesettings",
+      "at": "examples-generated/cluster/cluster/v1alpha1/adaptivesettings.yaml",
+      "origin": "generated",
+      "fields": [
+       "adaptive_settings_overrides"
+      ],
+      "refFields": [
+       "cluster_name",
+       "project_id"
+      ]
+     },
+     {
+      "id": "cluster/v1alpha1/adaptivesettings",
+      "at": "examples/cluster/cluster/v1alpha1/adaptivesettings.yaml",
+      "origin": "hand",
+      "annotations": {
+       "uptest.upbound.io/timeout": "3600"
+      },
+      "with": [
+       "mongodbatlas_advanced_cluster"
+      ],
+      "fields": [
+       "adaptive_settings_overrides",
+       "project_id"
+      ],
+      "refFields": [
+       "cluster_name"
+      ],
+      "values": {
+       "adaptive_settings_overrides": "{\"LOAD_SHEDDING\":true,\"SEARCH_LOAD_SHEDDING\":true}",
+       "project_id": "${data.mongodbatlas.project_id}"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "AdaptiveSettings",
+     "shortGroup": "cluster",
+     "at": "config/resources/mongodbatlas.go:102"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "ClusterOutageSimulation",
+    "group": "cluster.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_cluster_outage_simulation",
+    "group": "cluster.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "OutageSimulation",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "importJoinedID([]string{refs.ProjectID, refs.ClusterName}, refs.ClusterName)",
+     "at": "config/resources/mongodbatlas.go:67"
+    },
+    "references": [
+     {
+      "field": "cluster_name",
+      "target": "mongodbatlas_advanced_cluster",
+      "targetKind": "mongodbatlas.crossplane.io/AdvancedCluster",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"name\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/cluster/v1alpha1/zz_outagesimulation_types.go:116"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/cluster/v1alpha1/zz_outagesimulation_types.go:138"
+     }
+    ],
+    "examples": [
+     {
+      "id": "cluster/v1alpha1/outagesimulation",
+      "at": "examples-generated/cluster/cluster/v1alpha1/outagesimulation.yaml",
+      "origin": "generated",
+      "fields": [
+       "outage_filters",
+       "outage_filters.cloud_provider",
+       "outage_filters.region_name"
+      ],
+      "refFields": [
+       "cluster_name",
+       "project_id"
+      ]
+     },
+     {
+      "id": "cluster/v1alpha1/outagesimulation",
+      "at": "examples/cluster/cluster/v1alpha1/outagesimulation.yaml",
+      "origin": "hand",
+      "annotations": {
+       "uptest.upbound.io/timeout": "3600"
+      },
+      "with": [
+       "mongodbatlas_advanced_cluster"
+      ],
+      "fields": [
+       "outage_filters",
+       "outage_filters.cloud_provider",
+       "outage_filters.region_name",
+       "project_id"
+      ],
+      "refFields": [
+       "cluster_name"
+      ],
+      "values": {
+       "outage_filters": [
+        {
+         "cloud_provider": "AWS",
+         "region_name": "US_EAST_2"
+        }
+       ],
+       "project_id": "${data.mongodbatlas.project_id}"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OutageSimulation",
+     "shortGroup": "cluster",
+     "at": "config/resources/mongodbatlas.go:65"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "ClusterOverloadSimulation",
+    "group": "cluster.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_cluster_overload_simulation",
+    "group": "cluster.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "OverloadSimulation",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "computedKeyID(\"simulation_id\")",
+     "at": "config/resources/mongodbatlas.go:87"
+    },
+    "references": [
+     {
+      "field": "cluster_name",
+      "target": "mongodbatlas_advanced_cluster",
+      "targetKind": "mongodbatlas.crossplane.io/AdvancedCluster",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"name\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/cluster/v1alpha1/zz_overloadsimulation_types.go:94"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/cluster/v1alpha1/zz_overloadsimulation_types.go:115"
+     }
+    ],
+    "examples": [
+     {
+      "id": "cluster/v1alpha1/overloadsimulation",
+      "at": "examples-generated/cluster/cluster/v1alpha1/overloadsimulation.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_advanced_cluster"
+      ],
+      "fields": [
+       "duration_seconds"
+      ],
+      "refFields": [
+       "cluster_name",
+       "project_id"
+      ]
+     },
+     {
+      "id": "cluster/v1alpha1/overloadsimulation",
+      "at": "examples/cluster/cluster/v1alpha1/overloadsimulation.yaml",
+      "origin": "hand",
+      "annotations": {
+       "uptest.upbound.io/timeout": "3600"
+      },
+      "with": [
+       "mongodbatlas_advanced_cluster"
+      ],
+      "fields": [
+       "duration_seconds",
+       "project_id"
+      ],
+      "refFields": [
+       "cluster_name"
+      ],
+      "values": {
+       "duration_seconds": 900,
+       "project_id": "${data.mongodbatlas.project_id}"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OverloadSimulation",
+     "shortGroup": "cluster",
+     "at": "config/resources/mongodbatlas.go:83"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "EncryptionAtRestPrivateEndpoint",
+    "group": "encryption.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_encryption_at_rest_private_endpoint",
+    "group": "encryptionatrest.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "PrivateEndpoint",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "providerAssignedID()",
+     "at": "config/resources/mongodbatlas.go:214"
+    },
+    "references": [
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/encryptionatrest/v1alpha1/zz_privateendpoint_types.go:86"
+     }
+    ],
+    "examples": [
+     {
+      "id": "encryptionatrest/v1alpha1/privateendpoint",
+      "at": "examples-generated/cluster/encryptionatrest/v1alpha1/privateendpoint.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_encryption_at_rest"
+      ],
+      "fields": [
+       "cloud_provider",
+       "region_name"
+      ],
+      "refFields": [
+       "project_id"
+      ]
+     },
+     {
+      "id": "encryptionatrest/v1alpha1/privateendpoint",
+      "at": "examples/cluster/encryptionatrest/v1alpha1/privateendpoint.yaml",
+      "origin": "hand",
+      "manualIntervention": "Needs an Azure Key Vault with a key and an Azure service principal in the referenced Secrets.",
+      "with": [
+       "mongodbatlas_encryption_at_rest"
+      ],
+      "fields": [
+       "cloud_provider",
+       "project_id",
+       "region_name"
+      ],
+      "values": {
+       "cloud_provider": "AZURE",
+       "project_id": "${data.mongodbatlas.project_id}",
+       "region_name": "US_EAST_2"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "PrivateEndpoint",
+     "shortGroup": "encryptionatrest",
+     "at": "config/resources/mongodbatlas.go:212"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "EventTrigger",
+    "group": "event.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_event_trigger",
+    "group": "mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "EventTrigger",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "importJoinedIDAssigned([]string{refs.ProjectID, \"app_id\", \"trigger_id\"}, \"trigger_id\")",
+     "at": "config/resources/mongodbatlas.go:225"
+    },
+    "references": [
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_eventtrigger_types.go:268"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mongodbatlas/v1alpha1/eventtrigger",
+      "at": "examples-generated/cluster/mongodbatlas/v1alpha1/eventtrigger.yaml",
+      "origin": "generated",
+      "fields": [
+       "app_id",
+       "config_collection",
+       "config_database",
+       "config_full_document",
+       "config_full_document_before",
+       "config_match",
+       "config_operation_types",
+       "config_project",
+       "config_service_id",
+       "disabled",
+       "event_processors",
+       "event_processors.aws_eventbridge",
+       "event_processors.aws_eventbridge.config_account_id",
+       "event_processors.aws_eventbridge.config_region",
+       "function_id",
+       "name",
+       "type"
+      ],
+      "refFields": [
+       "project_id"
+      ]
+     },
+     {
+      "id": "mongodbatlas/v1alpha1/eventtrigger",
+      "at": "examples/cluster/mongodbatlas/v1alpha1/eventtrigger.yaml",
+      "origin": "hand",
+      "manualIntervention": "Needs an App Services app, function and linked data source.",
+      "fields": [
+       "app_id",
+       "config_collection",
+       "config_database",
+       "config_full_document",
+       "config_full_document_before",
+       "config_match",
+       "config_operation_types",
+       "config_project",
+       "config_service_id",
+       "disabled",
+       "event_processors",
+       "event_processors.aws_eventbridge",
+       "event_processors.aws_eventbridge.config_account_id",
+       "event_processors.aws_eventbridge.config_region",
+       "function_id",
+       "name",
+       "project_id",
+       "type"
+      ],
+      "values": {
+       "app_id": "\u003capp-services-app-id\u003e",
+       "config_collection": "example_collection",
+       "config_database": "example_db",
+       "config_full_document": false,
+       "config_full_document_before": false,
+       "config_match": "{\n  \"updateDescription.updatedFields\": {\n    \"status\": \"blocked\"\n  }\n}\n",
+       "config_operation_types": [
+        "INSERT",
+        "UPDATE"
+       ],
+       "config_project": "{\"updateDescription.updatedFields\":{\"status\":\"blocked\"}}",
+       "config_service_id": "\u003capp-services-data-source-id\u003e",
+       "disabled": false,
+       "event_processors": [
+        {
+         "aws_eventbridge": [
+          {
+           "config_account_id": "123456789012",
+           "config_region": "US_EAST_1"
+          }
+         ]
+        }
+       ],
+       "function_id": "\u003capp-services-function-id\u003e",
+       "name": "example-trigger",
+       "project_id": "${data.mongodbatlas.project_id}",
+       "type": "DATABASE"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "EventTrigger",
+     "at": "config/resources/mongodbatlas.go:223"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "FederatedQueryLimit",
+    "group": "federated.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_federated_query_limit",
+    "group": "federated.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "QueryLimit",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "importJoinedID([]string{refs.ProjectID, \"tenant_name\", \"limit_name\"}, \"limit_name\")",
+     "at": "config/resources/federated.go:48"
+    },
+    "references": [
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/federated/v1alpha1/zz_querylimit_types.go:112"
+     },
+     {
+      "field": "tenant_name",
+      "target": "mongodbatlas_federated_database_instance",
+      "targetKind": "federated.mongodbatlas.crossplane.io/DatabaseInstance",
+      "extractor": "refs.ExtractParamPath(refs.Name, false)",
+      "source": "both",
+      "at": "config/resources/federated.go:49"
+     }
+    ],
+    "examples": [
+     {
+      "id": "federated/v1alpha1/querylimit",
+      "at": "examples-generated/cluster/federated/v1alpha1/querylimit.yaml",
+      "origin": "generated",
+      "fields": [
+       "limit_name",
+       "overrun_policy",
+       "value"
+      ],
+      "refFields": [
+       "project_id",
+       "tenant_name"
+      ]
+     },
+     {
+      "id": "federated/v1alpha1/querylimit",
+      "at": "examples/cluster/federated/v1alpha1/querylimit.yaml",
+      "origin": "hand",
+      "with": [
+       "mongodbatlas_federated_database_instance"
+      ],
+      "fields": [
+       "limit_name",
+       "overrun_policy",
+       "project_id",
+       "value"
+      ],
+      "refFields": [
+       "tenant_name"
+      ],
+      "values": {
+       "limit_name": "bytesProcessed.weekly",
+       "overrun_policy": "BLOCK",
+       "project_id": "${data.mongodbatlas.project_id}",
+       "value": 5147483648
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "QueryLimit",
+     "at": "config/resources/federated.go:47"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "GlobalClusterConfig",
+    "group": "global.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_global_cluster_config",
+    "group": "mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "GlobalClusterConfig",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "importJoinedID([]string{refs.ProjectID, refs.ClusterName}, refs.ClusterName)",
+     "at": "config/resources/mongodbatlas.go:236"
+    },
+    "references": [
+     {
+      "field": "cluster_name",
+      "target": "mongodbatlas_advanced_cluster",
+      "targetKind": "mongodbatlas.crossplane.io/AdvancedCluster",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"name\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_globalclusterconfig_types.go:105"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_globalclusterconfig_types.go:126"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mongodbatlas/v1alpha1/globalclusterconfig",
+      "at": "examples-generated/cluster/mongodbatlas/v1alpha1/globalclusterconfig.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_advanced_cluster"
+      ],
+      "fields": [
+       "custom_zone_mappings",
+       "custom_zone_mappings.location",
+       "custom_zone_mappings.zone",
+       "managed_namespaces",
+       "managed_namespaces.collection",
+       "managed_namespaces.custom_shard_key",
+       "managed_namespaces.db",
+       "managed_namespaces.is_custom_shard_key_hashed",
+       "managed_namespaces.is_shard_key_unique"
+      ],
+      "refFields": [
+       "cluster_name",
+       "project_id"
+      ]
+     },
+     {
+      "id": "mongodbatlas/v1alpha1/globalclusterconfig",
+      "at": "examples/cluster/mongodbatlas/v1alpha1/globalclusterconfig.yaml",
+      "origin": "hand",
+      "annotations": {
+       "uptest.upbound.io/timeout": "3600"
+      },
+      "with": [
+       "mongodbatlas_advanced_cluster"
+      ],
+      "fields": [
+       "custom_zone_mappings",
+       "custom_zone_mappings.location",
+       "custom_zone_mappings.zone",
+       "managed_namespaces",
+       "managed_namespaces.collection",
+       "managed_namespaces.custom_shard_key",
+       "managed_namespaces.db",
+       "managed_namespaces.is_custom_shard_key_hashed",
+       "managed_namespaces.is_shard_key_unique",
+       "project_id"
+      ],
+      "refFields": [
+       "cluster_name"
+      ],
+      "values": {
+       "custom_zone_mappings": [
+        {
+         "location": "CA",
+         "zone": "Zone 1"
+        }
+       ],
+       "managed_namespaces": [
+        {
+         "collection": "publishers",
+         "custom_shard_key": "city",
+         "db": "mydata",
+         "is_custom_shard_key_hashed": false,
+         "is_shard_key_unique": false
+        }
+       ],
+       "project_id": "${data.mongodbatlas.project_id}"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "GlobalClusterConfig",
+     "at": "config/resources/mongodbatlas.go:234"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "LdapConfiguration",
+    "group": "ldap.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_ldap_configuration",
+    "group": "ldap.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "Configuration",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "templated(\"{{ .parameters.project_id }}\")",
+     "at": "config/resources/ldap.go:15"
+    },
+    "references": [
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/ldap/v1alpha1/zz_configuration_types.go:137"
+     }
+    ],
+    "schemaOverrides": [
+     {
+      "field": "bind_password",
+      "property": "Description",
+      "value": "\"Password to authenticate the bind user.\" + \" If you set autoGenerateBindPassword to true, the Secret referenced here will be\" + \" created or updated with the generated password if it does not already contain one.\"",
+      "at": "config/resources/ldap.go:39"
+     }
+    ],
+    "listMapKeys": [
+     {
+      "field": "user_to_dn_mapping",
+      "keys": null,
+      "at": "config/resources/ldap.go:21"
+     }
+    ],
+    "customCode": [
+     {
+      "what": "initializers",
+      "expr": "append(r.InitializerFns, pwGen( \"spec.forProvider.bindPasswordSecretRef\", \"spec.forProvider.autoGenerateBindPassword\", ))",
+      "at": "config/resources/ldap.go:34"
+     }
+    ],
+    "examples": [
+     {
+      "id": "ldap/v1alpha1/configuration",
+      "at": "examples-generated/cluster/ldap/v1alpha1/configuration.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_project"
+      ],
+      "fields": [
+       "authentication_enabled",
+       "bind_username",
+       "hostname",
+       "port"
+      ],
+      "refFields": [
+       "project_id"
+      ]
+     },
+     {
+      "id": "ldap/v1alpha1/configuration",
+      "at": "examples/cluster/ldap/v1alpha1/configuration.yaml",
+      "origin": "hand",
+      "manualIntervention": "Needs a reachable LDAP server and bind credentials in the referenced Secret.",
+      "fields": [
+       "authentication_enabled",
+       "bind_username",
+       "hostname",
+       "port",
+       "project_id"
+      ],
+      "values": {
+       "authentication_enabled": true,
+       "bind_username": "CN=atlas,OU=users,DC=example,DC=com",
+       "hostname": "ldap.example.com",
+       "port": 636,
+       "project_id": "${data.mongodbatlas.project_id}"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "Configuration",
+     "shortGroup": "ldap",
+     "at": "config/resources/ldap.go:13"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "LdapVerify",
+    "group": "ldap.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_ldap_verify",
+    "group": "ldap.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "Verify",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "importJoinedIDAssigned([]string{refs.ProjectID, \"request_id\"}, \"request_id\")",
+     "at": "config/resources/ldap.go:47"
+    },
+    "references": [
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/ldap/v1alpha1/zz_verify_types.go:139"
+     }
+    ],
+    "examples": [
+     {
+      "id": "ldap/v1alpha1/verify",
+      "at": "examples-generated/cluster/ldap/v1alpha1/verify.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_advanced_cluster",
+       "mongodbatlas_project"
+      ],
+      "fields": [
+       "bind_username",
+       "hostname",
+       "port"
+      ],
+      "refFields": [
+       "project_id"
+      ]
+     },
+     {
+      "id": "ldap/v1alpha1/verify",
+      "at": "examples/cluster/ldap/v1alpha1/verify.yaml",
+      "origin": "hand",
+      "manualIntervention": "Needs a reachable LDAP server and bind credentials in the referenced Secret.",
+      "with": [
+       "mongodbatlas_advanced_cluster"
+      ],
+      "fields": [
+       "bind_username",
+       "hostname",
+       "port",
+       "project_id"
+      ],
+      "values": {
+       "bind_username": "CN=atlas,OU=users,DC=example,DC=com",
+       "hostname": "ldap.example.com",
+       "port": 636,
+       "project_id": "${data.mongodbatlas.project_id}"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "Verify",
+     "shortGroup": "ldap",
+     "at": "config/resources/ldap.go:45"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "LogIntegration",
+    "group": "log.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_log_integration",
+    "group": "mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "LogIntegration",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "computedKeyID(\"integration_id\")",
+     "at": "config/resources/mongodbatlas.go:269"
+    },
+    "references": [
+     {
+      "field": "iam_role_id",
+      "target": "mongodbatlas_cloud_provider_access_authorization",
+      "targetKind": "cloud.mongodbatlas.crossplane.io/ProviderAccessAuthorization",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_logintegration_types.go:173"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_logintegration_types.go:207"
+     },
+     {
+      "field": "role_id",
+      "target": "mongodbatlas_cloud_provider_access_authorization",
+      "targetKind": "cloud.mongodbatlas.crossplane.io/ProviderAccessAuthorization",
+      "source": "both",
+      "at": "config/resources/mongodbatlas.go:251"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mongodbatlas/v1alpha1/logintegration",
+      "at": "examples-generated/cluster/mongodbatlas/v1alpha1/logintegration.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_cloud_provider_access_authorization",
+       "mongodbatlas_cloud_provider_access_setup"
+      ],
+      "fields": [
+       "bucket_name",
+       "log_types",
+       "prefix_path",
+       "type",
+       "use_legacy_path_structure"
+      ],
+      "refFields": [
+       "iam_role_id",
+       "project_id"
+      ]
+     },
+     {
+      "id": "mongodbatlas/v1alpha1/logintegration",
+      "at": "examples/cluster/mongodbatlas/v1alpha1/logintegration.yaml",
+      "origin": "hand",
+      "manualIntervention": "Needs an existing S3 bucket and an AWS IAM role that trusts the Atlas AWS account.",
+      "with": [
+       "mongodbatlas_cloud_provider_access_authorization",
+       "mongodbatlas_cloud_provider_access_setup"
+      ],
+      "fields": [
+       "bucket_name",
+       "log_types",
+       "prefix_path",
+       "project_id",
+       "type",
+       "use_legacy_path_structure"
+      ],
+      "refFields": [
+       "iam_role_id"
+      ],
+      "values": {
+       "bucket_name": "example-atlas-logs",
+       "log_types": [
+        "MONGOD_AUDIT"
+       ],
+       "prefix_path": "atlas-logs",
+       "project_id": "${data.mongodbatlas.project_id}",
+       "type": "S3_LOG_EXPORT",
+       "use_legacy_path_structure": false
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "LogIntegration",
+     "at": "config/resources/mongodbatlas.go:249"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "McpConfig",
+    "group": "mcp.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_mcp_config",
+    "group": "mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "MCPConfig",
+    "tested": true,
+    "generated": true,
+    "references": [
+     {
+      "field": "org_id",
+      "target": "mongodbatlas_organization",
+      "targetKind": "mongodbatlas.crossplane.io/Organization",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_mcpconfig_types.go:110"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mongodbatlas/v1alpha1/mcpconfig",
+      "at": "examples-generated/cluster/mongodbatlas/v1alpha1/mcpconfig.yaml",
+      "origin": "generated",
+      "fields": [
+       "ip_access_list",
+       "ip_access_list.cidr_block",
+       "mcp_config_name",
+       "roles"
+      ],
+      "refFields": [
+       "org_id"
+      ]
+     },
+     {
+      "id": "mongodbatlas/v1alpha1/mcpconfig",
+      "at": "examples/cluster/mongodbatlas/v1alpha1/mcpconfig.yaml",
+      "origin": "hand",
+      "fields": [
+       "ip_access_list",
+       "ip_access_list.cidr_block",
+       "mcp_config_name",
+       "org_id",
+       "roles"
+      ],
+      "values": {
+       "ip_access_list": [
+        {
+         "cidr_block": "203.0.113.0/24"
+        }
+       ],
+       "mcp_config_name": "mcpconfig-example",
+       "org_id": "${data.mongodbatlas.org_id}",
+       "roles": [
+        "ORG_READ_ONLY"
+       ]
+      }
+     }
+    ]
+   },
+   "targetsOurs": {
+    "mongodbatlas_organization": [
+     "organization.mongodbatlas.hfl.dev/Organization"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "McpConfigSecret",
+    "group": "mcp.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_mcp_config_secret",
+    "group": "mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "MCPConfigSecret",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "computedKeyID(\"secret_id\")",
+     "at": "config/resources/mongodbatlas.go:450"
+    },
+    "references": [
+     {
+      "field": "mcp_config_id",
+      "target": "mongodbatlas_mcp_config",
+      "targetKind": "mongodbatlas.crossplane.io/MCPConfig",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"mcp_config_id\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_mcpconfigsecret_types.go:82"
+     },
+     {
+      "field": "org_id",
+      "target": "mongodbatlas_organization",
+      "targetKind": "mongodbatlas.crossplane.io/Organization",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_mcpconfigsecret_types.go:95"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mongodbatlas/v1alpha1/mcpconfigsecret",
+      "at": "examples-generated/cluster/mongodbatlas/v1alpha1/mcpconfigsecret.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_mcp_config"
+      ],
+      "fields": [
+       "secret_expires_after_hours"
+      ],
+      "refFields": [
+       "mcp_config_id",
+       "org_id"
+      ]
+     },
+     {
+      "id": "mongodbatlas/v1alpha1/mcpconfigsecret",
+      "at": "examples/cluster/mongodbatlas/v1alpha1/mcpconfigsecret.yaml",
+      "origin": "hand",
+      "with": [
+       "mongodbatlas_mcp_config"
+      ],
+      "fields": [
+       "org_id",
+       "secret_expires_after_hours"
+      ],
+      "refFields": [
+       "mcp_config_id"
+      ],
+      "values": {
+       "org_id": "${data.mongodbatlas.org_id}",
+       "secret_expires_after_hours": 720
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "MCPConfigSecret",
+     "at": "config/resources/mongodbatlas.go:448"
+    }
+   },
+   "targetsOurs": {
+    "mongodbatlas_mcp_config": [
+     "mcp.mongodbatlas.hfl.dev/McpConfig"
+    ],
+    "mongodbatlas_organization": [
+     "organization.mongodbatlas.hfl.dev/Organization"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "MetricIntegration",
+    "group": "metric.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_metric_integration",
+    "group": "mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "MetricIntegration",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "computedKeyID(\"metric_integration_id\")",
+     "at": "config/resources/mongodbatlas.go:276"
+    },
+    "references": [
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_metricintegration_types.go:170"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mongodbatlas/v1alpha1/metricintegration",
+      "at": "examples-generated/cluster/mongodbatlas/v1alpha1/metricintegration.yaml",
+      "origin": "generated",
+      "fields": [
+       "aggregation_temporality",
+       "auth_type",
+       "endpoint",
+       "headers",
+       "headers.name",
+       "integration_type",
+       "metric_selection",
+       "provider_type"
+      ],
+      "refFields": [
+       "project_id"
+      ]
+     },
+     {
+      "id": "mongodbatlas/v1alpha1/metricintegration",
+      "at": "examples/cluster/mongodbatlas/v1alpha1/metricintegration.yaml",
+      "origin": "hand",
+      "fields": [
+       "aggregation_temporality",
+       "auth_type",
+       "endpoint",
+       "headers",
+       "headers.name",
+       "integration_type",
+       "metric_selection",
+       "project_id",
+       "provider_type"
+      ],
+      "values": {
+       "aggregation_temporality": "DELTA",
+       "auth_type": "HEADER",
+       "endpoint": "${data.datadog.otlp_metrics_endpoint}",
+       "headers": [
+        {
+         "name": "dd-api-key"
+        }
+       ],
+       "integration_type": "OTEL",
+       "metric_selection": [
+        "ATLAS_STREAM_PROCESSING"
+       ],
+       "project_id": "${data.mongodbatlas.project_id}",
+       "provider_type": "CUSTOM"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "MetricIntegration",
+     "at": "config/resources/mongodbatlas.go:274"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "MongodbEmployeeAccessGrant",
+    "group": "mongodb.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_mongodb_employee_access_grant",
+    "group": "mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "EmployeeAccessGrant",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "templated(\"{{ .parameters.project_id }}/{{ .parameters.cluster_name }}\")",
+     "at": "config/resources/mongodbatlas.go:119"
+    },
+    "references": [
+     {
+      "field": "cluster_name",
+      "target": "mongodbatlas_advanced_cluster",
+      "targetKind": "mongodbatlas.crossplane.io/AdvancedCluster",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"name\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_employeeaccessgrant_types.go:73"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_employeeaccessgrant_types.go:94"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mongodbatlas/v1alpha1/employeeaccessgrant",
+      "at": "examples-generated/cluster/mongodbatlas/v1alpha1/employeeaccessgrant.yaml",
+      "origin": "generated",
+      "fields": [
+       "expiration_time",
+       "grant_type"
+      ],
+      "refFields": [
+       "cluster_name",
+       "project_id"
+      ]
+     },
+     {
+      "id": "mongodbatlas/v1alpha1/employeeaccessgrant",
+      "at": "examples/cluster/mongodbatlas/v1alpha1/employeeaccessgrant.yaml",
+      "origin": "hand",
+      "annotations": {
+       "uptest.upbound.io/timeout": "3600"
+      },
+      "with": [
+       "mongodbatlas_advanced_cluster"
+      ],
+      "fields": [
+       "expiration_time",
+       "grant_type",
+       "project_id"
+      ],
+      "refFields": [
+       "cluster_name"
+      ],
+      "values": {
+       "expiration_time": "2030-01-01T00:00:00Z",
+       "grant_type": "CLUSTER_INFRASTRUCTURE_AND_APP_SERVICES_SYNC_DATA",
+       "project_id": "${data.mongodbatlas.project_id}"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "EmployeeAccessGrant",
+     "at": "config/resources/mongodbatlas.go:117"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "OnlineArchive",
+    "group": "online.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_online_archive",
+    "group": "mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "OnlineArchive",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "importJoinedIDAssigned([]string{refs.ProjectID, refs.ClusterName, \"archive_id\"}, \"archive_id\")",
+     "at": "config/resources/mongodbatlas.go:492"
+    },
+    "references": [
+     {
+      "field": "cluster_name",
+      "target": "mongodbatlas_advanced_cluster",
+      "targetKind": "mongodbatlas.crossplane.io/AdvancedCluster",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"name\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_onlinearchive_types.go:242"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_onlinearchive_types.go:292"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mongodbatlas/v1alpha1/onlinearchive",
+      "at": "examples-generated/cluster/mongodbatlas/v1alpha1/onlinearchive.yaml",
+      "origin": "generated",
+      "fields": [
+       "coll_name",
+       "criteria",
+       "criteria.date_field",
+       "criteria.expire_after_days",
+       "criteria.type",
+       "db_name",
+       "partition_fields",
+       "partition_fields.field_name",
+       "partition_fields.order",
+       "schedule",
+       "schedule.end_hour",
+       "schedule.end_minute",
+       "schedule.start_hour",
+       "schedule.start_minute",
+       "schedule.type"
+      ],
+      "refFields": [
+       "cluster_name",
+       "project_id"
+      ]
+     },
+     {
+      "id": "mongodbatlas/v1alpha1/onlinearchive",
+      "at": "examples/cluster/mongodbatlas/v1alpha1/onlinearchive.yaml",
+      "origin": "hand",
+      "annotations": {
+       "uptest.upbound.io/pre-assert-hook": "../../../testhooks/load-sample-data.sh",
+       "uptest.upbound.io/timeout": "3600"
+      },
+      "with": [
+       "mongodbatlas_advanced_cluster"
+      ],
+      "fields": [
+       "coll_name",
+       "criteria",
+       "criteria.date_field",
+       "criteria.date_format",
+       "criteria.expire_after_days",
+       "criteria.type",
+       "db_name",
+       "partition_fields",
+       "partition_fields.field_name",
+       "partition_fields.order",
+       "project_id",
+       "schedule",
+       "schedule.end_hour",
+       "schedule.end_minute",
+       "schedule.start_hour",
+       "schedule.start_minute",
+       "schedule.type"
+      ],
+      "refFields": [
+       "cluster_name"
+      ],
+      "values": {
+       "coll_name": "listingsAndReviews",
+       "criteria": [
+        {
+         "date_field": "last_review",
+         "date_format": "ISODATE",
+         "expire_after_days": 2,
+         "type": "DATE"
+        }
+       ],
+       "db_name": "sample_airbnb",
+       "partition_fields": [
+        {
+         "field_name": "last_review",
+         "order": 0
+        },
+        {
+         "field_name": "maximum_nights",
+         "order": 1
+        },
+        {
+         "field_name": "name",
+         "order": 2
+        }
+       ],
+       "project_id": "${data.mongodbatlas.project_id}",
+       "schedule": [
+        {
+         "end_hour": 1,
+         "end_minute": 1,
+         "start_hour": 1,
+         "start_minute": 1,
+         "type": "DAILY"
+        }
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "OnlineArchive",
+     "at": "config/resources/mongodbatlas.go:490"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "OrgDelegationSettings",
+    "group": "org.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_org_delegation_settings",
+    "group": "org.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "DelegationSettings",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "templated(\"{{ .parameters.org_id }}\")",
+     "at": "config/resources/mongodbatlas.go:308"
+    },
+    "references": [
+     {
+      "field": "org_id",
+      "target": "mongodbatlas_organization",
+      "targetKind": "mongodbatlas.crossplane.io/Organization",
+      "source": "inferred",
+      "at": "apis/cluster/org/v1alpha1/zz_delegationsettings_types.go:84"
+     }
+    ],
+    "examples": [
+     {
+      "id": "org/v1alpha1/delegationsettings",
+      "at": "examples-generated/cluster/org/v1alpha1/delegationsettings.yaml",
+      "origin": "generated",
+      "fields": [
+       "delegated_mcp_access",
+       "delegated_partner_access",
+       "idle_refresh_token_lifetime",
+       "maximum_refresh_token_lifetime"
+      ],
+      "refFields": [
+       "org_id"
+      ]
+     },
+     {
+      "id": "org/v1alpha1/delegationsettings",
+      "at": "examples/cluster/org/v1alpha1/delegationsettings.yaml",
+      "origin": "hand",
+      "manualIntervention": "Cannot be cleaned up: Delete is a no-op in Atlas, so the organization keeps these delegation settings.",
+      "fields": [
+       "delegated_mcp_access",
+       "delegated_partner_access",
+       "idle_refresh_token_lifetime",
+       "maximum_refresh_token_lifetime",
+       "org_id"
+      ],
+      "values": {
+       "delegated_mcp_access": "READ_ONLY",
+       "delegated_partner_access": "DISALLOWED",
+       "idle_refresh_token_lifetime": 3600,
+       "maximum_refresh_token_lifetime": 86400,
+       "org_id": "${data.mongodbatlas.org_id}"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "DelegationSettings",
+     "shortGroup": "org",
+     "at": "config/resources/mongodbatlas.go:306"
+    }
+   },
+   "targetsOurs": {
+    "mongodbatlas_organization": [
+     "organization.mongodbatlas.hfl.dev/Organization"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "OrgInvitation",
+    "group": "org.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_org_invitation",
+    "group": "org.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "Invitation",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "importJoinedIDAssigned([]string{refs.OrgID, \"username\"}, \"invitation_id\")",
+     "at": "config/resources/mongodbatlas.go:293"
+    },
+    "references": [
+     {
+      "field": "org_id",
+      "target": "mongodbatlas_organization",
+      "targetKind": "mongodbatlas.crossplane.io/Organization",
+      "source": "inferred",
+      "at": "apis/cluster/org/v1alpha1/zz_invitation_types.go:88"
+     },
+     {
+      "field": "teams_ids",
+      "target": "mongodbatlas_team",
+      "targetKind": "mongodbatlas.crossplane.io/Team",
+      "source": "both",
+      "at": "config/resources/mongodbatlas.go:295"
+     }
+    ],
+    "examples": [
+     {
+      "id": "org/v1alpha1/invitation",
+      "at": "examples-generated/cluster/org/v1alpha1/invitation.yaml",
+      "origin": "generated",
+      "fields": [
+       "roles",
+       "username"
+      ],
+      "refFields": [
+       "org_id"
+      ]
+     },
+     {
+      "id": "org/v1alpha1/invitation",
+      "at": "examples/cluster/org/v1alpha1/invitation.yaml",
+      "origin": "hand",
+      "fields": [
+       "org_id",
+       "roles",
+       "username"
+      ],
+      "values": {
+       "org_id": "${data.mongodbatlas.org_id}",
+       "roles": [
+        "ORG_OWNER"
+       ],
+       "username": "${Rand.RFC1123Subdomain}@example.com"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "Invitation",
+     "shortGroup": "org",
+     "at": "config/resources/mongodbatlas.go:291"
+    }
+   },
+   "targetsOurs": {
+    "mongodbatlas_organization": [
+     "organization.mongodbatlas.hfl.dev/Organization"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "OrgLogIntegration",
+    "group": "org.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_org_log_integration",
+    "group": "org.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "LogIntegration",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "computedKeyID(\"integration_id\")",
+     "at": "config/resources/mongodbatlas.go:340"
+    },
+    "references": [
+     {
+      "field": "org_id",
+      "target": "mongodbatlas_organization",
+      "targetKind": "mongodbatlas.crossplane.io/Organization",
+      "source": "inferred",
+      "at": "apis/cluster/org/v1alpha1/zz_logintegration_types.go:77"
+     }
+    ],
+    "examples": [
+     {
+      "id": "org/v1alpha1/logintegration",
+      "at": "examples-generated/cluster/org/v1alpha1/logintegration.yaml",
+      "origin": "generated",
+      "fields": [
+       "log_types",
+       "otel_endpoint",
+       "otel_supplied_headers",
+       "type"
+      ],
+      "refFields": [
+       "org_id"
+      ]
+     },
+     {
+      "id": "org/v1alpha1/logintegration",
+      "at": "examples/cluster/org/v1alpha1/logintegration.yaml",
+      "origin": "hand",
+      "fields": [
+       "log_types",
+       "org_id",
+       "otel_endpoint",
+       "otel_supplied_headers",
+       "otel_supplied_headers.name",
+       "type"
+      ],
+      "values": {
+       "log_types": [
+        "EVENTS"
+       ],
+       "org_id": "${data.mongodbatlas.org_id}",
+       "otel_endpoint": "https://192.0.2.1/v1/logs",
+       "otel_supplied_headers": [
+        {
+         "name": "authorization"
+        }
+       ],
+       "type": "OTEL_LOG_EXPORT"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "LogIntegration",
+     "shortGroup": "org",
+     "at": "config/resources/mongodbatlas.go:328"
+    }
+   },
+   "targetsOurs": {
+    "mongodbatlas_organization": [
+     "organization.mongodbatlas.hfl.dev/Organization"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "OrgMaintenanceSettings",
+    "group": "org.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_org_maintenance_settings",
+    "group": "org.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "MaintenanceSettings",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "templated(\"{{ .parameters.org_id }}\")",
+     "at": "config/resources/mongodbatlas.go:319"
+    },
+    "references": [
+     {
+      "field": "org_id",
+      "target": "mongodbatlas_organization",
+      "targetKind": "mongodbatlas.crossplane.io/Organization",
+      "source": "inferred",
+      "at": "apis/cluster/org/v1alpha1/zz_maintenancesettings_types.go:54"
+     }
+    ],
+    "examples": [
+     {
+      "id": "org/v1alpha1/maintenancesettings",
+      "at": "examples-generated/cluster/org/v1alpha1/maintenancesettings.yaml",
+      "origin": "generated",
+      "fields": [
+       "wave_assignment_mode"
+      ],
+      "refFields": [
+       "org_id"
+      ]
+     },
+     {
+      "id": "org/v1alpha1/maintenancesettings",
+      "at": "examples/cluster/org/v1alpha1/maintenancesettings.yaml",
+      "origin": "hand",
+      "fields": [
+       "org_id",
+       "wave_assignment_mode"
+      ],
+      "values": {
+       "org_id": "${data.mongodbatlas.org_id}",
+       "wave_assignment_mode": "MANUAL"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "MaintenanceSettings",
+     "shortGroup": "org",
+     "at": "config/resources/mongodbatlas.go:317"
+    }
+   },
+   "targetsOurs": {
+    "mongodbatlas_organization": [
+     "organization.mongodbatlas.hfl.dev/Organization"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "Organization",
+    "group": "organization.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_organization",
+    "group": "mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "Organization",
+    "tested": true,
+    "generated": true,
+    "examples": [
+     {
+      "id": "mongodbatlas/v1alpha1/organization",
+      "at": "examples-generated/cluster/mongodbatlas/v1alpha1/organization.yaml",
+      "origin": "generated",
+      "fields": [
+       "description",
+       "name",
+       "org_owner_id",
+       "role_names"
+      ]
+     },
+     {
+      "id": "mongodbatlas/v1alpha1/organization",
+      "at": "examples/cluster/mongodbatlas/v1alpha1/organization.yaml",
+      "origin": "hand",
+      "manualIntervention": "Creating organizations needs a paying organization with cross-organization billing and an API key allowed to create organizations.",
+      "fields": [
+       "description",
+       "name",
+       "org_owner_id",
+       "role_names"
+      ],
+      "values": {
+       "description": "test API key from Org Creation",
+       "name": "${Rand.RFC1123Subdomain}",
+       "org_owner_id": "${data.mongodbatlas.user_id}",
+       "role_names": [
+        "ORG_OWNER"
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "PrivateEndpointRegionalMode",
+    "group": "private.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_private_endpoint_regional_mode",
+    "group": "privateendpoint.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "RegionalMode",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "templated(\"{{ .parameters.project_id }}\")",
+     "at": "config/resources/privateendpoint.go:13"
+    },
+    "references": [
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/privateendpoint/v1alpha1/zz_regionalmode_types.go:54"
+     }
+    ],
+    "examples": [
+     {
+      "id": "privateendpoint/v1alpha1/regionalmode",
+      "at": "examples-generated/cluster/privateendpoint/v1alpha1/regionalmode.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_advanced_cluster",
+       "mongodbatlas_privatelink_endpoint",
+       "mongodbatlas_privatelink_endpoint_service"
+      ],
+      "fields": [
+       "enabled"
+      ],
+      "refFields": [
+       "project_id"
+      ]
+     },
+     {
+      "id": "privateendpoint/v1alpha1/regionalmode",
+      "at": "examples/cluster/privateendpoint/v1alpha1/regionalmode.yaml",
+      "origin": "hand",
+      "manualIntervention": "Needs an AWS interface VPC endpoint created against the Atlas endpoint service.",
+      "with": [
+       "mongodbatlas_advanced_cluster",
+       "mongodbatlas_privatelink_endpoint",
+       "mongodbatlas_privatelink_endpoint_service"
+      ],
+      "fields": [
+       "enabled",
+       "project_id"
+      ],
+      "values": {
+       "enabled": true,
+       "project_id": "${data.mongodbatlas.project_id}"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "RegionalMode",
+     "shortGroup": "privateendpoint",
+     "at": "config/resources/privateendpoint.go:11"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "PrivatelinkEndpointServiceDataFederationOnlineArchive",
+    "group": "privatelink.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_privatelink_endpoint_service_data_federation_online_archive",
+    "group": "federated.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "PrivateLinkEndpointService",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "importJoinedID([]string{refs.ProjectID, \"endpoint_id\"}, \"endpoint_id\")",
+     "at": "config/resources/federated.go:63"
+    },
+    "references": [
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/federated/v1alpha1/zz_privatelinkendpointservice_types.go:116"
+     }
+    ],
+    "examples": [
+     {
+      "id": "federated/v1alpha1/privatelinkendpointservice",
+      "at": "examples-generated/cluster/federated/v1alpha1/privatelinkendpointservice.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_project"
+      ],
+      "fields": [
+       "comment",
+       "customer_endpoint_dns_name",
+       "endpoint_id",
+       "provider_name",
+       "region"
+      ],
+      "refFields": [
+       "project_id"
+      ]
+     },
+     {
+      "id": "federated/v1alpha1/privatelinkendpointservice",
+      "at": "examples/cluster/federated/v1alpha1/privatelinkendpointservice.yaml",
+      "origin": "hand",
+      "manualIntervention": "Needs an AWS interface VPC endpoint created against the Atlas endpoint service.",
+      "fields": [
+       "comment",
+       "customer_endpoint_dns_name",
+       "endpoint_id",
+       "project_id",
+       "provider_name",
+       "region"
+      ],
+      "values": {
+       "comment": "Test",
+       "customer_endpoint_dns_name": "vpce-0123456789abcdef0-abcdefgh.vpce-svc-0123456789abcdef0.us-east-1.vpce.amazonaws.com",
+       "endpoint_id": "vpce-0123456789abcdef0",
+       "project_id": "${data.mongodbatlas.project_id}",
+       "provider_name": "AWS",
+       "region": "US_EAST_1"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "PrivateLinkEndpointService",
+     "at": "config/resources/federated.go:62"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "ProjectApiKey",
+    "group": "project.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_project_api_key",
+    "group": "project.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "APIKey",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "importJoinedIDAssigned([]string{refs.APIKeyID}, refs.APIKeyID)",
+     "at": "config/resources/mongodbatlas.go:505"
+    },
+    "references": [
+     {
+      "field": "project_assignment.project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "both",
+      "at": "config/resources/mongodbatlas.go:506"
+     }
+    ],
+    "examples": [
+     {
+      "id": "project/v1alpha1/apikey",
+      "at": "examples-generated/cluster/project/v1alpha1/apikey.yaml",
+      "origin": "generated",
+      "fields": [
+       "description",
+       "project_assignment",
+       "project_assignment.role_names"
+      ],
+      "refFields": [
+       "project_assignment.project_id"
+      ]
+     },
+     {
+      "id": "project/v1alpha1/apikey",
+      "at": "examples/cluster/project/v1alpha1/apikey.yaml",
+      "origin": "hand",
+      "fields": [
+       "description",
+       "project_assignment",
+       "project_assignment.project_id",
+       "project_assignment.role_names"
+      ],
+      "values": {
+       "description": "Description of your API key",
+       "project_assignment": [
+        {
+         "project_id": "${data.mongodbatlas.project_id}",
+         "role_names": [
+          "GROUP_OWNER"
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ProjectInvitation",
+    "group": "project.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_project_invitation",
+    "group": "project.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "Invitation",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "importJoinedIDAssigned([]string{refs.ProjectID, \"username\"}, \"invitation_id\")",
+     "at": "config/resources/project.go:34"
+    },
+    "references": [
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/project/v1alpha1/zz_invitation_types.go:71"
+     }
+    ],
+    "lateInitIgnored": [
+     {
+      "field": "ip_address",
+      "at": "config/resources/project.go:36"
+     }
+    ],
+    "examples": [
+     {
+      "id": "project/v1alpha1/invitation",
+      "at": "examples-generated/cluster/project/v1alpha1/invitation.yaml",
+      "origin": "generated",
+      "fields": [
+       "roles",
+       "username"
+      ],
+      "refFields": [
+       "project_id"
+      ]
+     },
+     {
+      "id": "project/v1alpha1/invitation",
+      "at": "examples/cluster/project/v1alpha1/invitation.yaml",
+      "origin": "hand",
+      "fields": [
+       "project_id",
+       "roles",
+       "username"
+      ],
+      "values": {
+       "project_id": "${data.mongodbatlas.project_id}",
+       "roles": [
+        "GROUP_DATA_ACCESS_READ_WRITE"
+       ],
+       "username": "${Rand.RFC1123Subdomain}@example.com"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ProjectMcpConfig",
+    "group": "project.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_project_mcp_config",
+    "group": "project.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "MCPConfig",
+    "tested": true,
+    "generated": true,
+    "references": [
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/project/v1alpha1/zz_mcpconfig_types.go:110"
+     }
+    ],
+    "examples": [
+     {
+      "id": "project/v1alpha1/mcpconfig",
+      "at": "examples-generated/cluster/project/v1alpha1/mcpconfig.yaml",
+      "origin": "generated",
+      "fields": [
+       "ip_access_list",
+       "ip_access_list.cidr_block",
+       "mcp_config_name",
+       "roles"
+      ],
+      "refFields": [
+       "project_id"
+      ]
+     },
+     {
+      "id": "project/v1alpha1/mcpconfig",
+      "at": "examples/cluster/project/v1alpha1/mcpconfig.yaml",
+      "origin": "hand",
+      "fields": [
+       "ip_access_list",
+       "ip_access_list.cidr_block",
+       "mcp_config_name",
+       "project_id",
+       "roles"
+      ],
+      "values": {
+       "ip_access_list": [
+        {
+         "cidr_block": "203.0.113.0/24"
+        }
+       ],
+       "mcp_config_name": "project-mcpconfig-example",
+       "project_id": "${data.mongodbatlas.project_id}",
+       "roles": [
+        "GROUP_READ_ONLY"
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ProjectMcpConfigSecret",
+    "group": "project.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_project_mcp_config_secret",
+    "group": "project.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "MCPConfigSecret",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "computedKeyID(\"secret_id\")",
+     "at": "config/resources/project.go:110"
+    },
+    "references": [
+     {
+      "field": "mcp_config_id",
+      "target": "mongodbatlas_project_mcp_config",
+      "targetKind": "project.mongodbatlas.crossplane.io/MCPConfig",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"mcp_config_id\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/project/v1alpha1/zz_mcpconfigsecret_types.go:82"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/project/v1alpha1/zz_mcpconfigsecret_types.go:95"
+     }
+    ],
+    "examples": [
+     {
+      "id": "project/v1alpha1/mcpconfigsecret",
+      "at": "examples-generated/cluster/project/v1alpha1/mcpconfigsecret.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_project_mcp_config"
+      ],
+      "fields": [
+       "secret_expires_after_hours"
+      ],
+      "refFields": [
+       "mcp_config_id",
+       "project_id"
+      ]
+     },
+     {
+      "id": "project/v1alpha1/mcpconfigsecret",
+      "at": "examples/cluster/project/v1alpha1/mcpconfigsecret.yaml",
+      "origin": "hand",
+      "with": [
+       "mongodbatlas_project_mcp_config"
+      ],
+      "fields": [
+       "project_id",
+       "secret_expires_after_hours"
+      ],
+      "refFields": [
+       "mcp_config_id"
+      ],
+      "values": {
+       "project_id": "${data.mongodbatlas.project_id}",
+       "secret_expires_after_hours": 720
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "MCPConfigSecret",
+     "at": "config/resources/project.go:109"
+    }
+   },
+   "targetsOurs": {
+    "mongodbatlas_project_mcp_config": [
+     "project.mongodbatlas.hfl.dev/ProjectMcpConfig"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ProjectServiceAccount",
+    "group": "project.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_project_service_account",
+    "group": "project.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "ServiceAccount",
+    "tested": true,
+    "generated": true,
+    "references": [
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/project/v1alpha1/zz_serviceaccount_types.go:120"
+     }
+    ],
+    "examples": [
+     {
+      "id": "project/v1alpha1/serviceaccount",
+      "at": "examples-generated/cluster/project/v1alpha1/serviceaccount.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_project_service_account_secret"
+      ],
+      "fields": [
+       "description",
+       "name",
+       "roles",
+       "without_initial_secret"
+      ],
+      "refFields": [
+       "project_id"
+      ]
+     },
+     {
+      "id": "project/v1alpha1/serviceaccount",
+      "at": "examples/cluster/project/v1alpha1/serviceaccount.yaml",
+      "origin": "hand",
+      "fields": [
+       "description",
+       "name",
+       "project_id",
+       "roles",
+       "secret_expires_after_hours"
+      ],
+      "values": {
+       "description": "Example Project Service Account",
+       "name": "example-project-service-account",
+       "project_id": "${data.mongodbatlas.project_id}",
+       "roles": [
+        "GROUP_READ_ONLY"
+       ],
+       "secret_expires_after_hours": 2160
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "ServiceAccount",
+     "at": "config/resources/project.go:125"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "ProjectServiceAccountAccessListEntry",
+    "group": "project.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_project_service_account_access_list_entry",
+    "group": "project.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "ServiceAccountAccessListEntry",
+    "tested": true,
+    "generated": true,
+    "references": [
+     {
+      "field": "client_id",
+      "target": "mongodbatlas_project_service_account",
+      "targetKind": "project.mongodbatlas.crossplane.io/ServiceAccount",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"client_id\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/project/v1alpha1/zz_serviceaccountaccesslistentry_types.go:89"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/project/v1alpha1/zz_serviceaccountaccesslistentry_types.go:106"
+     }
+    ],
+    "examples": [
+     {
+      "id": "project/v1alpha1/serviceaccountaccesslistentry",
+      "at": "examples-generated/cluster/project/v1alpha1/serviceaccountaccesslistentry.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_project_service_account"
+      ],
+      "fields": [
+       "cidr_block"
+      ],
+      "refFields": [
+       "client_id",
+       "project_id"
+      ]
+     },
+     {
+      "id": "project/v1alpha1/serviceaccountaccesslistentry",
+      "at": "examples/cluster/project/v1alpha1/serviceaccountaccesslistentry.yaml",
+      "origin": "hand",
+      "with": [
+       "mongodbatlas_project_service_account"
+      ],
+      "fields": [
+       "cidr_block",
+       "project_id"
+      ],
+      "refFields": [
+       "client_id"
+      ],
+      "values": {
+       "cidr_block": "1.2.3.4/32",
+       "project_id": "${data.mongodbatlas.project_id}"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "ServiceAccountAccessListEntry",
+     "at": "config/resources/project.go:60"
+    }
+   },
+   "targetsOurs": {
+    "mongodbatlas_project_service_account": [
+     "project.mongodbatlas.hfl.dev/ProjectServiceAccount"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ProjectServiceAccountSecret",
+    "group": "project.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_project_service_account_secret",
+    "group": "project.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "ServiceAccountSecret",
+    "tested": true,
+    "generated": true,
+    "references": [
+     {
+      "field": "client_id",
+      "target": "mongodbatlas_project_service_account",
+      "targetKind": "project.mongodbatlas.crossplane.io/ServiceAccount",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"client_id\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/project/v1alpha1/zz_serviceaccountsecret_types.go:82"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/project/v1alpha1/zz_serviceaccountsecret_types.go:95"
+     }
+    ],
+    "examples": [
+     {
+      "id": "project/v1alpha1/serviceaccountsecret",
+      "at": "examples-generated/cluster/project/v1alpha1/serviceaccountsecret.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_project_service_account"
+      ],
+      "fields": [
+       "secret_expires_after_hours"
+      ],
+      "refFields": [
+       "client_id",
+       "project_id"
+      ]
+     },
+     {
+      "id": "project/v1alpha1/serviceaccountsecret",
+      "at": "examples/cluster/project/v1alpha1/serviceaccountsecret.yaml",
+      "origin": "hand",
+      "with": [
+       "mongodbatlas_project_service_account"
+      ],
+      "fields": [
+       "project_id",
+       "secret_expires_after_hours"
+      ],
+      "refFields": [
+       "client_id"
+      ],
+      "values": {
+       "project_id": "${data.mongodbatlas.project_id}",
+       "secret_expires_after_hours": 2160
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "ServiceAccountSecret",
+     "at": "config/resources/project.go:76"
+    }
+   },
+   "targetsOurs": {
+    "mongodbatlas_project_service_account": [
+     "project.mongodbatlas.hfl.dev/ProjectServiceAccount"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "PushBasedLogExport",
+    "group": "push.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_push_based_log_export",
+    "group": "mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "PushBasedLogExport",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "templated(\"{{ .parameters.project_id }}\")",
+     "at": "config/resources/mongodbatlas.go:466"
+    },
+    "references": [
+     {
+      "field": "iam_role_id",
+      "target": "mongodbatlas_cloud_provider_access_authorization",
+      "targetKind": "cloud.mongodbatlas.crossplane.io/ProviderAccessAuthorization",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_pushbasedlogexport_types.go:97"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_pushbasedlogexport_types.go:114"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mongodbatlas/v1alpha1/pushbasedlogexport",
+      "at": "examples-generated/cluster/mongodbatlas/v1alpha1/pushbasedlogexport.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_cloud_provider_access_authorization",
+       "mongodbatlas_cloud_provider_access_setup",
+       "mongodbatlas_project"
+      ],
+      "fields": [
+       "bucket_name",
+       "prefix_path"
+      ],
+      "refFields": [
+       "iam_role_id",
+       "project_id"
+      ]
+     },
+     {
+      "id": "mongodbatlas/v1alpha1/pushbasedlogexport",
+      "at": "examples/cluster/mongodbatlas/v1alpha1/pushbasedlogexport.yaml",
+      "origin": "hand",
+      "manualIntervention": "Needs an existing S3 bucket and an AWS IAM role that trusts the Atlas AWS account.",
+      "with": [
+       "mongodbatlas_cloud_provider_access_authorization",
+       "mongodbatlas_cloud_provider_access_setup"
+      ],
+      "fields": [
+       "bucket_name",
+       "prefix_path",
+       "project_id"
+      ],
+      "refFields": [
+       "iam_role_id"
+      ],
+      "values": {
+       "bucket_name": "example-atlas-logs",
+       "prefix_path": "push-based-log-test",
+       "project_id": "${data.mongodbatlas.project_id}"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "PushBasedLogExport",
+     "at": "config/resources/mongodbatlas.go:464"
+    }
+   }
+  },
+  {
+   "ours": {
+    "kind": "ResourcePolicy",
+    "group": "resource.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_resource_policy",
+    "group": "mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "ResourcePolicy",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "providerAssignedID()",
+     "at": "config/resources/mongodbatlas.go:481"
+    },
+    "references": [
+     {
+      "field": "org_id",
+      "target": "mongodbatlas_organization",
+      "targetKind": "mongodbatlas.crossplane.io/Organization",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_resourcepolicy_types.go:141"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mongodbatlas/v1alpha1/resourcepolicy",
+      "at": "examples-generated/cluster/mongodbatlas/v1alpha1/resourcepolicy.yaml",
+      "origin": "generated",
+      "fields": [
+       "description",
+       "name",
+       "policies",
+       "policies.body"
+      ],
+      "refFields": [
+       "org_id"
+      ]
+     },
+     {
+      "id": "mongodbatlas/v1alpha1/resourcepolicy",
+      "at": "examples/cluster/mongodbatlas/v1alpha1/resourcepolicy.yaml",
+      "origin": "hand",
+      "fields": [
+       "description",
+       "name",
+       "org_id",
+       "policies",
+       "policies.body"
+      ],
+      "values": {
+       "description": "Forbids access from anywhere",
+       "name": "forbid-access-from-anywhere",
+       "org_id": "${data.mongodbatlas.org_id}",
+       "policies": [
+        {
+         "body": "        forbid (\n                principal,\n                action == ResourcePolicy::Action::\"project.ipAccessList.modify\",\n                resource\n        )\n                when {\n                context.project.ipAccessList.contains(ip(\"0.0.0.0/0\"))\n        };\n"
+        }
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "ResourcePolicy",
+     "at": "config/resources/mongodbatlas.go:479"
+    }
+   },
+   "targetsOurs": {
+    "mongodbatlas_organization": [
+     "organization.mongodbatlas.hfl.dev/Organization"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "SearchDeployment",
+    "group": "search.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_search_deployment",
+    "group": "search.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "Deployment",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "templated(\"{{ .parameters.project_id }}-{{ .parameters.cluster_name }}\")",
+     "at": "config/resources/search.go:11"
+    },
+    "references": [
+     {
+      "field": "cluster_name",
+      "target": "mongodbatlas_advanced_cluster",
+      "targetKind": "mongodbatlas.crossplane.io/AdvancedCluster",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"name\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/search/v1alpha1/zz_deployment_types.go:92"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/search/v1alpha1/zz_deployment_types.go:109"
+     }
+    ],
+    "examples": [
+     {
+      "id": "search/v1alpha1/deployment",
+      "at": "examples-generated/cluster/search/v1alpha1/deployment.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_advanced_cluster",
+       "mongodbatlas_project"
+      ],
+      "fields": [
+       "specs",
+       "specs.instance_size",
+       "specs.node_count"
+      ],
+      "refFields": [
+       "cluster_name",
+       "project_id"
+      ]
+     },
+     {
+      "id": "search/v1alpha1/deployment",
+      "at": "examples/cluster/search/v1alpha1/deployment.yaml",
+      "origin": "hand",
+      "annotations": {
+       "uptest.upbound.io/timeout": "3600"
+      },
+      "with": [
+       "mongodbatlas_advanced_cluster"
+      ],
+      "fields": [
+       "project_id",
+       "specs",
+       "specs.instance_size",
+       "specs.node_count"
+      ],
+      "refFields": [
+       "cluster_name"
+      ],
+      "values": {
+       "project_id": "${data.mongodbatlas.project_id}",
+       "specs": [
+        {
+         "instance_size": "S20_HIGHCPU_NVME",
+         "node_count": 2
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ServiceAccount",
+    "group": "service.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_service_account",
+    "group": "mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "ServiceAccount",
+    "tested": true,
+    "generated": true,
+    "references": [
+     {
+      "field": "org_id",
+      "target": "mongodbatlas_organization",
+      "targetKind": "mongodbatlas.crossplane.io/Organization",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_serviceaccount_types.go:96"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mongodbatlas/v1alpha1/serviceaccount",
+      "at": "examples-generated/cluster/mongodbatlas/v1alpha1/serviceaccount.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_service_account_secret"
+      ],
+      "fields": [
+       "description",
+       "name",
+       "roles",
+       "without_initial_secret"
+      ],
+      "refFields": [
+       "org_id"
+      ]
+     },
+     {
+      "id": "mongodbatlas/v1alpha1/serviceaccount",
+      "at": "examples/cluster/mongodbatlas/v1alpha1/serviceaccount.yaml",
+      "origin": "hand",
+      "fields": [
+       "description",
+       "name",
+       "org_id",
+       "roles",
+       "secret_expires_after_hours"
+      ],
+      "values": {
+       "description": "Example Service Account",
+       "name": "example-service-account",
+       "org_id": "${data.mongodbatlas.org_id}",
+       "roles": [
+        "ORG_READ_ONLY"
+       ],
+       "secret_expires_after_hours": 2160
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "ServiceAccount",
+     "at": "config/resources/mongodbatlas.go:382"
+    }
+   },
+   "targetsOurs": {
+    "mongodbatlas_organization": [
+     "organization.mongodbatlas.hfl.dev/Organization"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ServiceAccountAccessListEntry",
+    "group": "service.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_service_account_access_list_entry",
+    "group": "mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "ServiceAccountAccessListEntry",
+    "tested": true,
+    "generated": true,
+    "references": [
+     {
+      "field": "client_id",
+      "target": "mongodbatlas_service_account",
+      "targetKind": "mongodbatlas.crossplane.io/ServiceAccount",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"client_id\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_serviceaccountaccesslistentry_types.go:89"
+     },
+     {
+      "field": "org_id",
+      "target": "mongodbatlas_organization",
+      "targetKind": "mongodbatlas.crossplane.io/Organization",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_serviceaccountaccesslistentry_types.go:106"
+     }
+    ],
+    "lateInitIgnored": [
+     {
+      "field": "ip_address",
+      "at": "config/resources/mongodbatlas.go:414"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mongodbatlas/v1alpha1/serviceaccountaccesslistentry",
+      "at": "examples-generated/cluster/mongodbatlas/v1alpha1/serviceaccountaccesslistentry.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_service_account"
+      ],
+      "fields": [
+       "cidr_block"
+      ],
+      "refFields": [
+       "client_id",
+       "org_id"
+      ]
+     },
+     {
+      "id": "mongodbatlas/v1alpha1/serviceaccountaccesslistentry",
+      "at": "examples/cluster/mongodbatlas/v1alpha1/serviceaccountaccesslistentry.yaml",
+      "origin": "hand",
+      "with": [
+       "mongodbatlas_service_account"
+      ],
+      "fields": [
+       "cidr_block",
+       "org_id"
+      ],
+      "refFields": [
+       "client_id"
+      ],
+      "values": {
+       "cidr_block": "1.2.3.4/32",
+       "org_id": "${data.mongodbatlas.org_id}"
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "ServiceAccountAccessListEntry",
+     "at": "config/resources/mongodbatlas.go:412"
+    }
+   },
+   "targetsOurs": {
+    "mongodbatlas_organization": [
+     "organization.mongodbatlas.hfl.dev/Organization"
+    ],
+    "mongodbatlas_service_account": [
+     "service.mongodbatlas.hfl.dev/ServiceAccount"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ServiceAccountProjectAssignment",
+    "group": "service.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_service_account_project_assignment",
+    "group": "mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "ServiceAccountProjectAssignment",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "templated(\"{{ .parameters.project_id }}/{{ .parameters.client_id }}\")",
+     "at": "config/resources/mongodbatlas.go:369"
+    },
+    "references": [
+     {
+      "field": "client_id",
+      "target": "mongodbatlas_service_account",
+      "targetKind": "mongodbatlas.crossplane.io/ServiceAccount",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"client_id\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_serviceaccountprojectassignment_types.go:69"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_serviceaccountprojectassignment_types.go:82"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mongodbatlas/v1alpha1/serviceaccountprojectassignment",
+      "at": "examples-generated/cluster/mongodbatlas/v1alpha1/serviceaccountprojectassignment.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_service_account"
+      ],
+      "fields": [
+       "roles"
+      ],
+      "refFields": [
+       "client_id",
+       "project_id"
+      ]
+     },
+     {
+      "id": "mongodbatlas/v1alpha1/serviceaccountprojectassignment",
+      "at": "examples/cluster/mongodbatlas/v1alpha1/serviceaccountprojectassignment.yaml",
+      "origin": "hand",
+      "with": [
+       "mongodbatlas_service_account"
+      ],
+      "fields": [
+       "project_id",
+       "roles"
+      ],
+      "refFields": [
+       "client_id"
+      ],
+      "values": {
+       "project_id": "${data.mongodbatlas.project_id}",
+       "roles": [
+        "GROUP_READ_ONLY"
+       ]
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "ServiceAccountProjectAssignment",
+     "at": "config/resources/mongodbatlas.go:367"
+    }
+   },
+   "targetsOurs": {
+    "mongodbatlas_service_account": [
+     "service.mongodbatlas.hfl.dev/ServiceAccount"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "ServiceAccountSecret",
+    "group": "service.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_service_account_secret",
+    "group": "mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "ServiceAccountSecret",
+    "tested": true,
+    "generated": true,
+    "references": [
+     {
+      "field": "client_id",
+      "target": "mongodbatlas_service_account",
+      "targetKind": "mongodbatlas.crossplane.io/ServiceAccount",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"client_id\",true)",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_serviceaccountsecret_types.go:82"
+     },
+     {
+      "field": "org_id",
+      "target": "mongodbatlas_organization",
+      "targetKind": "mongodbatlas.crossplane.io/Organization",
+      "source": "inferred",
+      "at": "apis/cluster/mongodbatlas/v1alpha1/zz_serviceaccountsecret_types.go:95"
+     }
+    ],
+    "examples": [
+     {
+      "id": "mongodbatlas/v1alpha1/serviceaccountsecret",
+      "at": "examples-generated/cluster/mongodbatlas/v1alpha1/serviceaccountsecret.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_service_account"
+      ],
+      "fields": [
+       "secret_expires_after_hours"
+      ],
+      "refFields": [
+       "client_id",
+       "org_id"
+      ]
+     },
+     {
+      "id": "mongodbatlas/v1alpha1/serviceaccountsecret",
+      "at": "examples/cluster/mongodbatlas/v1alpha1/serviceaccountsecret.yaml",
+      "origin": "hand",
+      "with": [
+       "mongodbatlas_service_account"
+      ],
+      "fields": [
+       "org_id",
+       "secret_expires_after_hours"
+      ],
+      "refFields": [
+       "client_id"
+      ],
+      "values": {
+       "org_id": "${data.mongodbatlas.org_id}",
+       "secret_expires_after_hours": 2160
+      }
+     }
+    ],
+    "renamed": {
+     "kind": "ServiceAccountSecret",
+     "at": "config/resources/mongodbatlas.go:396"
+    }
+   },
+   "targetsOurs": {
+    "mongodbatlas_organization": [
+     "organization.mongodbatlas.hfl.dev/Organization"
+    ],
+    "mongodbatlas_service_account": [
+     "service.mongodbatlas.hfl.dev/ServiceAccount"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "StreamConnectionFailover",
+    "group": "stream.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_stream_connection_failover",
+    "group": "stream.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "ConnectionFailover",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "computedKeyID(\"failover_connection_id\")",
+     "at": "config/resources/stream.go:59"
+    },
+    "references": [
+     {
+      "field": "cluster_name",
+      "target": "mongodbatlas_advanced_cluster",
+      "targetKind": "mongodbatlas.crossplane.io/AdvancedCluster",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"name\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/stream/v1alpha1/zz_connectionfailover_types.go:349"
+     },
+     {
+      "field": "cluster_project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "both",
+      "at": "config/resources/stream.go:61"
+     },
+     {
+      "field": "connection_name",
+      "target": "mongodbatlas_stream_connection",
+      "targetKind": "stream.mongodbatlas.crossplane.io/Connection",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"connection_name\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/stream/v1alpha1/zz_connectionfailover_types.go:381"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/stream/v1alpha1/zz_connectionfailover_types.go:406"
+     },
+     {
+      "field": "workspace_name",
+      "target": "mongodbatlas_stream_workspace",
+      "targetKind": "stream.mongodbatlas.crossplane.io/Workspace",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"workspace_name\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/stream/v1alpha1/zz_connectionfailover_types.go:436"
+     }
+    ],
+    "examples": [
+     {
+      "id": "stream/v1alpha1/connectionfailover",
+      "at": "examples-generated/cluster/stream/v1alpha1/connectionfailover.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_stream_connection",
+       "mongodbatlas_stream_workspace"
+      ],
+      "fields": [
+       "authentication",
+       "authentication.mechanism",
+       "authentication.username",
+       "bootstrap_servers",
+       "region",
+       "security",
+       "security.protocol",
+       "type"
+      ],
+      "refFields": [
+       "connection_name",
+       "project_id",
+       "workspace_name"
+      ]
+     },
+     {
+      "id": "stream/v1alpha1/connectionfailover",
+      "at": "examples/cluster/stream/v1alpha1/connectionfailover.yaml",
+      "origin": "hand",
+      "manualIntervention": "Needs reachable Kafka brokers and credentials in the referenced Secret.",
+      "with": [
+       "mongodbatlas_stream_connection",
+       "mongodbatlas_stream_workspace"
+      ],
+      "fields": [
+       "authentication",
+       "authentication.mechanism",
+       "authentication.username",
+       "bootstrap_servers",
+       "project_id",
+       "region",
+       "security",
+       "security.protocol",
+       "type"
+      ],
+      "refFields": [
+       "connection_name",
+       "workspace_name"
+      ],
+      "values": {
+       "authentication": {
+        "mechanism": "PLAIN",
+        "username": "failover-kafka-user"
+       },
+       "bootstrap_servers": "failover-broker-1.example.com:9092,failover-broker-2.example.com:9092",
+       "project_id": "${data.mongodbatlas.project_id}",
+       "region": "DUBLIN_IRL",
+       "security": {
+        "protocol": "SASL_SSL"
+       },
+       "type": "Kafka"
+      }
+     }
+    ]
+   },
+   "targetsOurs": {
+    "mongodbatlas_stream_workspace": [
+     "stream.mongodbatlas.hfl.dev/StreamWorkspace"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "StreamPrivatelinkEndpoint",
+    "group": "stream.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_stream_privatelink_endpoint",
+    "group": "stream.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "PrivatelinkEndpoint",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "provider",
+     "expr": "config.IdentifierFromProvider",
+     "at": "config/resources/stream.go:128"
+    },
+    "references": [
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/stream/v1alpha1/zz_privatelinkendpoint_types.go:172"
+     }
+    ],
+    "examples": [
+     {
+      "id": "stream/v1alpha1/privatelinkendpoint",
+      "at": "examples-generated/cluster/stream/v1alpha1/privatelinkendpoint.yaml",
+      "origin": "generated",
+      "fields": [
+       "dns_domain",
+       "dns_sub_domain",
+       "provider_name",
+       "region",
+       "service_endpoint_id",
+       "vendor"
+      ],
+      "refFields": [
+       "project_id"
+      ]
+     },
+     {
+      "id": "stream/v1alpha1/privatelinkendpoint",
+      "at": "examples/cluster/stream/v1alpha1/privatelinkendpoint.yaml",
+      "origin": "hand",
+      "manualIntervention": "Needs a Confluent Cloud PrivateLink network.",
+      "fields": [
+       "dns_domain",
+       "dns_sub_domain",
+       "project_id",
+       "provider_name",
+       "region",
+       "service_endpoint_id",
+       "vendor"
+      ],
+      "values": {
+       "dns_domain": "example.us-east-1.aws.confluent.cloud",
+       "dns_sub_domain": [
+        "use1-az1.example.us-east-1.aws.confluent.cloud"
+       ],
+       "project_id": "${data.mongodbatlas.project_id}",
+       "provider_name": "AWS",
+       "region": "us-east-1",
+       "service_endpoint_id": "com.amazonaws.vpce.us-east-1.vpce-svc-0123456789abcdef0",
+       "vendor": "CONFLUENT"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "StreamProcessor",
+    "group": "stream.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_stream_processor",
+    "group": "stream.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "Processor",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "templated(\"{{ .parameters.instance_name }}-{{ .parameters.project_id }}-{{ .parameters.processor_name }}\")",
+     "at": "config/resources/stream.go:93"
+    },
+    "references": [
+     {
+      "field": "instance_name",
+      "target": "mongodbatlas_stream_instance",
+      "targetKind": "stream.mongodbatlas.crossplane.io/Instance",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"instance_name\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/stream/v1alpha1/zz_processor_types.go:260"
+     },
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/stream/v1alpha1/zz_processor_types.go:285"
+     },
+     {
+      "field": "workspace_name",
+      "target": "mongodbatlas_stream_workspace",
+      "targetKind": "stream.mongodbatlas.crossplane.io/Workspace",
+      "extractor": "github.com/crossplane/upjet/v2/pkg/resource.ExtractParamPath(\"workspace_name\",false)",
+      "source": "inferred",
+      "at": "apis/cluster/stream/v1alpha1/zz_processor_types.go:313"
+     }
+    ],
+    "examples": [
+     {
+      "id": "stream/v1alpha1/processor",
+      "at": "examples-generated/cluster/stream/v1alpha1/processor.yaml",
+      "origin": "generated",
+      "with": [
+       "mongodbatlas_stream_connection",
+       "mongodbatlas_stream_instance"
+      ],
+      "fields": [
+       "pipeline",
+       "processor_name",
+       "state",
+       "tier"
+      ],
+      "refFields": [
+       "project_id",
+       "workspace_name"
+      ]
+     },
+     {
+      "id": "stream/v1alpha1/processor",
+      "at": "examples/cluster/stream/v1alpha1/processor.yaml",
+      "origin": "hand",
+      "with": [
+       "mongodbatlas_stream_connection",
+       "mongodbatlas_stream_workspace"
+      ],
+      "fields": [
+       "pipeline",
+       "processor_name",
+       "project_id"
+      ],
+      "refFields": [
+       "workspace_name"
+      ],
+      "values": {
+       "pipeline": "[\n  {\"$source\": {\"connectionName\": \"sample_stream_solar\"}},\n  {\"$emit\": {\"connectionName\": \"__testLog\"}}\n]\n",
+       "processor_name": "sampleProcessorName",
+       "project_id": "${data.mongodbatlas.project_id}"
+      }
+     }
+    ]
+   },
+   "targetsOurs": {
+    "mongodbatlas_stream_workspace": [
+     "stream.mongodbatlas.hfl.dev/StreamWorkspace"
+    ]
+   }
+  },
+  {
+   "ours": {
+    "kind": "StreamWorkspace",
+    "group": "stream.mongodbatlas.hfl.dev"
+   },
+   "facts": {
+    "terraform": "mongodbatlas_stream_workspace",
+    "group": "stream.mongodbatlas.crossplane.io",
+    "version": "v1alpha1",
+    "kind": "Workspace",
+    "tested": true,
+    "generated": true,
+    "externalName": {
+     "style": "custom",
+     "expr": "templated(\"{{ .parameters.project_id }}-{{ .parameters.workspace_name }}\")",
+     "at": "config/resources/stream.go:110"
+    },
+    "references": [
+     {
+      "field": "project_id",
+      "target": "mongodbatlas_project",
+      "targetKind": "mongodbatlas.crossplane.io/Project",
+      "source": "inferred",
+      "at": "apis/cluster/stream/v1alpha1/zz_workspace_types.go:143"
+     }
+    ],
+    "examples": [
+     {
+      "id": "stream/v1alpha1/workspace",
+      "at": "examples-generated/cluster/stream/v1alpha1/workspace.yaml",
+      "origin": "generated",
+      "fields": [
+       "data_process_region",
+       "data_process_region.cloud_provider",
+       "data_process_region.region",
+       "workspace_name"
+      ],
+      "refFields": [
+       "project_id"
+      ]
+     },
+     {
+      "id": "stream/v1alpha1/workspace",
+      "at": "examples/cluster/stream/v1alpha1/workspace.yaml",
+      "origin": "hand",
+      "fields": [
+       "data_process_region",
+       "data_process_region.cloud_provider",
+       "data_process_region.region",
+       "project_id",
+       "workspace_name"
+      ],
+      "values": {
+       "data_process_region": {
+        "cloud_provider": "AWS",
+        "region": "VIRGINIA_USA"
+       },
+       "project_id": "${data.mongodbatlas.project_id}",
+       "workspace_name": "${Rand.RFC1123Subdomain}"
+      }
+     }
+    ]
+   }
+  }
+ ]
+}
