@@ -138,15 +138,15 @@ func requestBody(spec, op map[string]any) map[string]any {
 			types = append(types, ct)
 		}
 	}
-	sort.Strings(types)
-	for _, ct := range types {
-		s, _ := deref(spec, dig(content, ct, "schema")).(map[string]any)
-		if s["type"] == "array" {
-			return schemaProps(spec, s["items"])
-		}
-		return schemaProps(spec, s)
+	if len(types) == 0 {
+		return nil
 	}
-	return nil
+	sort.Strings(types)
+	s, _ := deref(spec, dig(content, types[0], "schema")).(map[string]any)
+	if s["type"] == "array" {
+		return schemaProps(spec, s["items"])
+	}
+	return schemaProps(spec, s)
 }
 
 // createAnswer is the fields of a call's first 2xx JSON answer (Atlas's
