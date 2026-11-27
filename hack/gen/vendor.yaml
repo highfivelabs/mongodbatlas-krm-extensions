@@ -105,6 +105,14 @@ overrides:
   - /api/atlas/v2/orgs/{orgId}/serviceAccounts/{clientId}/accessList/{ipAddress}
   - /api/atlas/v2/groups/{groupId}/serviceAccounts/{clientId}/accessList/{ipAddress}
   - /api/atlas/v2/orgs/{orgId}/teams/{teamId}/users/{userId}
+  # Atlas Stream Processing answers a workspace and a processor with _id
+  # and name, and names them in its paths by name (StreamsTenant,
+  # StreamsProcessor); a Private Link connection is named by its _id
+  # (StreamsPrivateLinkConnection). None of them answers an id.
+  idFrom:
+    /api/atlas/v2/groups/{groupId}/streams/{tenantName}: name
+    /api/atlas/v2/groups/{groupId}/streams/{tenantName}/processor/{processorName}: name
+    /api/atlas/v2/groups/{groupId}/streams/privateLinkConnections/{connectionId}: _id
   excludePaths:
   - /api/atlas/v2/groups/{groupId}/streamsWorkspacePrivateEndpoints/{endpointId}
   wordSynonyms:

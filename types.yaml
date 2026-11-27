@@ -1956,14 +1956,13 @@ kinds:
     field: groupid
   id:
     param: connectionId
-    from: id
+    from: _id
   terraform:
   - mongodbatlas_stream_privatelink_endpoint
   sample:
     groupid: example-groupId
     provider: example-provider
   serverFields:
-    _id: 32b6e34b3d91647abb20e7b8
     errorMessage: example-errorMessage
     interfaceEndpointId: example-interfaceEndpointId
     interfaceEndpointName: example-interfaceEndpointName
@@ -2005,7 +2004,7 @@ kinds:
     field: tenantname
   id:
     param: processorName
-    from: id
+    from: name
   terraform:
   - mongodbatlas_stream_processor
   sample:
@@ -2053,7 +2052,7 @@ kinds:
     field: groupid
   id:
     param: tenantName
-    from: id
+    from: name
   terraform:
   - mongodbatlas_stream_workspace
   sample:

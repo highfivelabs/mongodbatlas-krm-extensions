@@ -16,75 +16,75 @@
       "body": "{\"provider\":\"example-provider\"}",
       "status": 201,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"errorMessage\":\"example-errorMessage\",\"id\":270000025,\"interfaceEndpointId\":\"example-interfaceEndpointId\",\"interfaceEndpointName\":\"example-interfaceEndpointName\",\"links\":[],\"provider\":\"example-provider\",\"providerAccountId\":\"example-providerAccountId\",\"state\":\"example-state\"}\n"
+      "response": "{\"_id\":270000023,\"errorMessage\":\"example-errorMessage\",\"interfaceEndpointId\":\"example-interfaceEndpointId\",\"interfaceEndpointName\":\"example-interfaceEndpointName\",\"links\":[],\"provider\":\"example-provider\",\"providerAccountId\":\"example-providerAccountId\",\"state\":\"example-state\"}\n"
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000025",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000023",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"errorMessage\":\"example-errorMessage\",\"id\":270000025,\"interfaceEndpointId\":\"example-interfaceEndpointId\",\"interfaceEndpointName\":\"example-interfaceEndpointName\",\"links\":[],\"provider\":\"example-provider\",\"providerAccountId\":\"example-providerAccountId\",\"state\":\"example-state\"}\n"
+      "response": "{\"_id\":270000023,\"errorMessage\":\"example-errorMessage\",\"interfaceEndpointId\":\"example-interfaceEndpointId\",\"interfaceEndpointName\":\"example-interfaceEndpointName\",\"links\":[],\"provider\":\"example-provider\",\"providerAccountId\":\"example-providerAccountId\",\"state\":\"example-state\"}\n"
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000025",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000023",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"errorMessage\":\"example-errorMessage\",\"id\":270000025,\"interfaceEndpointId\":\"example-interfaceEndpointId\",\"interfaceEndpointName\":\"example-interfaceEndpointName\",\"links\":[],\"provider\":\"example-provider\",\"providerAccountId\":\"example-providerAccountId\",\"state\":\"example-state\"}\n"
+      "response": "{\"_id\":270000023,\"errorMessage\":\"example-errorMessage\",\"interfaceEndpointId\":\"example-interfaceEndpointId\",\"interfaceEndpointName\":\"example-interfaceEndpointName\",\"links\":[],\"provider\":\"example-provider\",\"providerAccountId\":\"example-providerAccountId\",\"state\":\"example-state\"}\n"
     },
     {
       "method": "PATCH",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000025",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000023",
       "body": "{\"provider\":\"changed-provider\"}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"errorMessage\":\"example-errorMessage\",\"id\":270000025,\"interfaceEndpointId\":\"example-interfaceEndpointId\",\"interfaceEndpointName\":\"example-interfaceEndpointName\",\"links\":[],\"provider\":\"changed-provider\",\"providerAccountId\":\"example-providerAccountId\",\"state\":\"example-state\"}\n"
+      "response": "{\"_id\":270000023,\"errorMessage\":\"example-errorMessage\",\"interfaceEndpointId\":\"example-interfaceEndpointId\",\"interfaceEndpointName\":\"example-interfaceEndpointName\",\"links\":[],\"provider\":\"changed-provider\",\"providerAccountId\":\"example-providerAccountId\",\"state\":\"example-state\"}\n"
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000025",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000023",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"errorMessage\":\"example-errorMessage\",\"id\":270000025,\"interfaceEndpointId\":\"example-interfaceEndpointId\",\"interfaceEndpointName\":\"example-interfaceEndpointName\",\"links\":[],\"provider\":\"changed-provider\",\"providerAccountId\":\"example-providerAccountId\",\"state\":\"example-state\"}\n"
+      "response": "{\"_id\":270000023,\"errorMessage\":\"example-errorMessage\",\"interfaceEndpointId\":\"example-interfaceEndpointId\",\"interfaceEndpointName\":\"example-interfaceEndpointName\",\"links\":[],\"provider\":\"changed-provider\",\"providerAccountId\":\"example-providerAccountId\",\"state\":\"example-state\"}\n"
     },
     {
       "method": "PATCH",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000025",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000023",
       "body": "{\"provider\":\"hfl-live-drift\"}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"errorMessage\":\"example-errorMessage\",\"id\":270000025,\"interfaceEndpointId\":\"example-interfaceEndpointId\",\"interfaceEndpointName\":\"example-interfaceEndpointName\",\"links\":[],\"provider\":\"hfl-live-drift\",\"providerAccountId\":\"example-providerAccountId\",\"state\":\"example-state\"}\n"
+      "response": "{\"_id\":270000023,\"errorMessage\":\"example-errorMessage\",\"interfaceEndpointId\":\"example-interfaceEndpointId\",\"interfaceEndpointName\":\"example-interfaceEndpointName\",\"links\":[],\"provider\":\"hfl-live-drift\",\"providerAccountId\":\"example-providerAccountId\",\"state\":\"example-state\"}\n"
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000025",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000023",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"errorMessage\":\"example-errorMessage\",\"id\":270000025,\"interfaceEndpointId\":\"example-interfaceEndpointId\",\"interfaceEndpointName\":\"example-interfaceEndpointName\",\"links\":[],\"provider\":\"hfl-live-drift\",\"providerAccountId\":\"example-providerAccountId\",\"state\":\"example-state\"}\n"
+      "response": "{\"_id\":270000023,\"errorMessage\":\"example-errorMessage\",\"interfaceEndpointId\":\"example-interfaceEndpointId\",\"interfaceEndpointName\":\"example-interfaceEndpointName\",\"links\":[],\"provider\":\"hfl-live-drift\",\"providerAccountId\":\"example-providerAccountId\",\"state\":\"example-state\"}\n"
     },
     {
       "method": "PATCH",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000025",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000023",
       "body": "{\"provider\":\"changed-provider\"}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"errorMessage\":\"example-errorMessage\",\"id\":270000025,\"interfaceEndpointId\":\"example-interfaceEndpointId\",\"interfaceEndpointName\":\"example-interfaceEndpointName\",\"links\":[],\"provider\":\"changed-provider\",\"providerAccountId\":\"example-providerAccountId\",\"state\":\"example-state\"}\n"
+      "response": "{\"_id\":270000023,\"errorMessage\":\"example-errorMessage\",\"interfaceEndpointId\":\"example-interfaceEndpointId\",\"interfaceEndpointName\":\"example-interfaceEndpointName\",\"links\":[],\"provider\":\"changed-provider\",\"providerAccountId\":\"example-providerAccountId\",\"state\":\"example-state\"}\n"
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000025",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000023",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"errorMessage\":\"example-errorMessage\",\"id\":270000025,\"interfaceEndpointId\":\"example-interfaceEndpointId\",\"interfaceEndpointName\":\"example-interfaceEndpointName\",\"links\":[],\"provider\":\"changed-provider\",\"providerAccountId\":\"example-providerAccountId\",\"state\":\"example-state\"}\n"
+      "response": "{\"_id\":270000023,\"errorMessage\":\"example-errorMessage\",\"interfaceEndpointId\":\"example-interfaceEndpointId\",\"interfaceEndpointName\":\"example-interfaceEndpointName\",\"links\":[],\"provider\":\"changed-provider\",\"providerAccountId\":\"example-providerAccountId\",\"state\":\"example-state\"}\n"
     },
     {
       "method": "DELETE",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000025",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000023",
       "status": 204
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000025",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/privateLinkConnections/270000023",
       "status": 404,
       "contentType": "text/plain; charset=utf-8",
       "response": "{\"message\":\"Not Found\"}\n"

@@ -16,75 +16,75 @@
       "body": "{\"name\":\"example-name\",\"pipeline\":[]}",
       "status": 201,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"id\":270000023,\"links\":[],\"name\":\"example-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"example-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/270000023",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/example-name",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"id\":270000023,\"links\":[],\"name\":\"example-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"example-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/270000023",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/example-name",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"id\":270000023,\"links\":[],\"name\":\"example-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"example-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
     },
     {
       "method": "PATCH",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/270000023",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/example-name",
       "body": "{\"name\":\"changed-name\",\"pipeline\":[]}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"id\":270000023,\"links\":[],\"name\":\"changed-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"changed-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/270000023",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/example-name",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"id\":270000023,\"links\":[],\"name\":\"changed-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"changed-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
     },
     {
       "method": "PATCH",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/270000023",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/example-name",
       "body": "{\"name\":\"hfl-live-drift\"}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"id\":270000023,\"links\":[],\"name\":\"hfl-live-drift\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"hfl-live-drift\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/270000023",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/example-name",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"id\":270000023,\"links\":[],\"name\":\"hfl-live-drift\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"hfl-live-drift\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
     },
     {
       "method": "PATCH",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/270000023",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/example-name",
       "body": "{\"name\":\"changed-name\",\"pipeline\":[]}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"id\":270000023,\"links\":[],\"name\":\"changed-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"changed-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/270000023",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/example-name",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"id\":270000023,\"links\":[],\"name\":\"changed-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"effectiveTier\":\"SP50\",\"eligibleForFailover\":true,\"links\":[],\"name\":\"changed-name\",\"pipeline\":[],\"state\":\"example-state\",\"stats\":{}}\n"
     },
     {
       "method": "DELETE",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/270000023",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/example-name",
       "status": 204
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/270000023",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-tenantName/processor/example-name",
       "status": 404,
       "contentType": "text/plain; charset=utf-8",
       "response": "{\"message\":\"Not Found\"}\n"

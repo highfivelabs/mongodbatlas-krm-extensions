@@ -16,75 +16,75 @@
       "body": "{\"name\":\"example-name\"}",
       "status": 201,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"id\":270000022,\"links\":[],\"name\":\"example-name\"}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"example-name\"}\n"
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/270000022",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-name",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"id\":270000022,\"links\":[],\"name\":\"example-name\"}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"example-name\"}\n"
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/270000022",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-name",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"id\":270000022,\"links\":[],\"name\":\"example-name\"}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"example-name\"}\n"
     },
     {
       "method": "PATCH",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/270000022",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-name",
       "body": "{\"name\":\"changed-name\"}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"id\":270000022,\"links\":[],\"name\":\"changed-name\"}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"changed-name\"}\n"
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/270000022",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-name",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"id\":270000022,\"links\":[],\"name\":\"changed-name\"}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"changed-name\"}\n"
     },
     {
       "method": "PATCH",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/270000022",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-name",
       "body": "{\"name\":\"hfl-live-drift\"}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"id\":270000022,\"links\":[],\"name\":\"hfl-live-drift\"}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"hfl-live-drift\"}\n"
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/270000022",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-name",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"id\":270000022,\"links\":[],\"name\":\"hfl-live-drift\"}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"hfl-live-drift\"}\n"
     },
     {
       "method": "PATCH",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/270000022",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-name",
       "body": "{\"name\":\"changed-name\"}",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"id\":270000022,\"links\":[],\"name\":\"changed-name\"}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"changed-name\"}\n"
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/270000022",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-name",
       "status": 200,
       "contentType": "application/json",
-      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"id\":270000022,\"links\":[],\"name\":\"changed-name\"}\n"
+      "response": "{\"_id\":\"32b6e34b3d91647abb20e7b8\",\"connections\":[],\"groupId\":\"32b6e34b3d91647abb20e7b8\",\"hostnames\":[],\"links\":[],\"name\":\"changed-name\"}\n"
     },
     {
       "method": "DELETE",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/270000022",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-name",
       "status": 204
     },
     {
       "method": "GET",
-      "path": "/api/atlas/v2/groups/example-groupId/streams/270000022",
+      "path": "/api/atlas/v2/groups/example-groupId/streams/example-name",
       "status": 404,
       "contentType": "text/plain; charset=utf-8",
       "response": "{\"message\":\"Not Found\"}\n"
