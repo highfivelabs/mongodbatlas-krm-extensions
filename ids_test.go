@@ -5,6 +5,7 @@ package extensions
 
 import (
 	"os"
+	"slices"
 	"sort"
 	"strings"
 	"testing"
@@ -298,6 +299,12 @@ func TestCreateAnswerSecretsAreSecretOutputs(t *testing.T) {
 					t.Errorf("%s: %s %s answers %s, which is not a secret output: add it to overrides.secretOutputs in hack/gen/vendor.yaml",
 						k.Kind, k.Create.Method, k.Create.Path, p)
 				}
+				// A service account's secrets: every read answers the list
+				// (masked), only the create the secret. The Secret keeps
+				// the plaintext only under a scalar a read leaves nil.
+				if strings.HasSuffix(p, "secrets") && !slices.Contains(k.SecretOutputs, p+".0.secret") {
+					t.Errorf("%s: %s is a secret output, but %s.0.secret is not: a read would leave the Secret no plaintext", k.Kind, p, p)
+				}
 			}
 		}
 		if k.Kind == "Organization" {
@@ -313,6 +320,9 @@ func TestCreateAnswerSecretsAreSecretOutputs(t *testing.T) {
 			}
 			if dig(status, "apiKey", "publicKey") != "pub" || dig(status, "organization", "id") != "o" {
 				t.Errorf("Organization: more than the secrets left the status: %v", status)
+			}
+			if got := descriptor.Dig(answer, "serviceAccount/secrets/0/secret"); got != "s" {
+				t.Errorf("Organization: serviceAccount.secrets.0.secret finds %v, not the plaintext", got)
 			}
 		}
 	}

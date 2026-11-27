@@ -1252,6 +1252,7 @@ kinds:
   secretOutputs:
   - apiKey.privateKey
   - serviceAccount.secrets
+  - serviceAccount.secrets.0.secret
   readiness: fake
 - kind: PrivateEndpointRegionalMode
   group: private.mongodbatlas.hfl.dev
@@ -1495,6 +1496,7 @@ kinds:
     systemManaged: true
   secretOutputs:
   - secrets
+  - secrets.0.secret
   readiness: live
 - kind: ProjectServiceAccountAccessListEntry
   group: project.mongodbatlas.hfl.dev
@@ -1783,6 +1785,7 @@ kinds:
     systemManaged: true
   secretOutputs:
   - secrets
+  - secrets.0.secret
   readiness: live
 - kind: ServiceAccountAccessListEntry
   group: service.mongodbatlas.hfl.dev
@@ -2386,4 +2389,5 @@ kinds:
     - GROUP_READ_ONLY
   secretOutputs:
   - secrets
+  - secrets.0.secret
   readiness: fake
