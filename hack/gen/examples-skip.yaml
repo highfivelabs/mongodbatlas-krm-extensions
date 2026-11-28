@@ -1,0 +1,12 @@
+# Upjet references that gen/examples.py (krm-rest-runtime) would turn into
+# examples/<Kind>/with-<Target>.yaml, but that don't hold here, with why.
+upjet:
+  StreamProcessor: >-
+    tenantname takes the StreamWorkspace's ID, its name, as Atlas's path
+    does, but the processor's example has an empty pipeline, and Atlas
+    makes no stream processor without a $source stage; the workspace's
+    example also has no dataProcessRegion. The fake takes it.
+  StreamConnectionFailover: >-
+    tenantname takes the StreamWorkspace's name, but connectionname is a
+    placeholder for a connection that no example makes, and the
+    workspace's example has no dataProcessRegion. The fake takes it.
